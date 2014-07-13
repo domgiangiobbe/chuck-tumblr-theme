@@ -29,7 +29,7 @@
 <meta name="color:Body Title" content="#555555"/>
 <meta name="color:Links" content="#0e6e8b"/>
 <meta name="color:Links Hover" content="#239fc5"/>
-<meta name="color:Top Bar Background" content="#212121"/>
+
 <meta name="color:Top Bar Text" content="#ffffff"/>
 <meta name="color:Sidebar Background" content="#012b37"/>
 <meta name="color:Sidebar Dividers" content="#073745"/>
@@ -174,7 +174,6 @@ img{
  
 h1, h2, h3, h4, h5 {
 		font:400 16px/1em "{select:Body Font}", sans-serif;
-		text-shadow:0 1px 0 1px rgba(0,0,0,.3)
 		}
  
 blockquote{
@@ -202,32 +201,6 @@ a,
 		-webkit-transition:all .4s ease;
 		transition:all .4s ease
 		}
-
-/*a#install-button{
-		width:100px;
-		height:20px;
-		padding:2px 4px;
-		background:url("http://static.tumblr.com/tpqedpr/cQ1mbwb60/de.png") rgba(0,0,0,.4) no-repeat;
-		border:1px solid rgba(0,0,0,0.18);
-		-webkit-border-radius:2px;
-		-moz-border-radius:2px;
-		border-radius:2px;
-		z-index:99999;
-		top:-30px;
-		right:5px;
-		position:fixed
-		}
-
-a#install-button:hover{
-		background:url("http://static.tumblr.com/tpqedpr/cQ1mbwb60/de.png") rgba(0,0,0,.32) no-repeat
-		}
-
-span#install-theme-text{
-		float:right;
-		font:400 12px Arial;
-		text-shadow:1px 1px 1px rgba(0,0,0,.08);
-		color:white
-		}*/
 
 #tumblr_controls{
 		position:fixed
@@ -266,7 +239,6 @@ span#install-theme-text{
 
 #cover #cover-information h1{
 		padding:0 0 40px 0;
-		text-transform:uppercase
 		}
 
 #cover #cover-information h1 a{
@@ -336,35 +308,32 @@ span#install-theme-text{
 		position: fixed;
 		top: 0;
 		right: 0;
-		max-height: 50px;
+		height: 50px !important;
 		width: 100%;
-		padding: 35px 70px;
+		padding: 20px;
 		opacity: 1 !important;
 		z-index: 30;
 		pointer-events: none;
 		}
 
 #topbar h1{
-		display:inline-block;
-		font-size:18px;
-		letter-spacing:4px;
-		text-transform:uppercase;
+		display: inline-block;
+		font-size: 34px;
+		letter-spacing: 0;
 		margin: 0;
 		}
 
 #topbar h1 a{
-		padding:10px 18px
+		padding:10px;
 		}
 
-#topbar a#top,
 #topbar a#slide{
-		display:inline;
-		float:right;
-		margin:-10px 0 0 20px;
-		font:16px "icon";
-		padding:10px 11px;
-		border-radius:3px;
-		cursor:pointer
+		display: inline;
+		float: right;
+		margin: -5px 0 0 20px;
+		font: 18px "icon";
+		padding: 15px;
+		cursor: pointer;
 		}
 
 #topbar #category{
@@ -380,14 +349,12 @@ span#install-theme-text{
 		display:inline-block;
 		width:200px;
 		padding:0 15px;
-		text-transform:uppercase;
-		border-radius:3px
+		border-radius:3px;
 		}
 
 #topbar #category a.click-category:after{
 		content:"m";
 		float:right;
-		text-transform:lowercase;
 		font:12px/40px "icon";
 		}
 
@@ -399,11 +366,6 @@ span#install-theme-text{
 		left:0;
 		padding:0 0 20px 0;
 		list-style-type:none;
-		border-bottom-right-radius:3px;
-		border-bottom-left-radius:3px;
-		border-top:0 !important;
-		-webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,.1);
-		box-shadow:0 1px 2px 0 rgba(0,0,0,.1);
 		z-index:31
 		}
 
@@ -671,11 +633,6 @@ span#install-theme-text{
 		right:0;
 		width:100%;
 		padding:35px 0
-		}
-
-#topbar{
-		-webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,.1);
-		box-shadow:0 1px 2px 0 rgba(0,0,0,.1)
 		}
 
 #post-info,.entry{
@@ -1007,8 +964,7 @@ span#install-theme-text{
 				width:auto !important
 				}
 
-		#topbar #category,
-		#topbar a#top{
+		#topbar #category {
 				display:none    
 				}
 
@@ -1091,7 +1047,6 @@ h1,h2,h3,h4,h5{
 
 #cover #cover-information h1 a{
 		color:{color:Cover Title};
-		border:3px solid {color:Cover Title}
 		}
 
 #cover #cover-scroll,
@@ -1132,14 +1087,12 @@ h1,h2,h3,h4,h5{
 
 #topbar,
 #topbar #category{
-		background:{color:Top Bar Background}
+		background: transparent;
 		}
 
 #topbar a,
 #topbar #category ul#category-list{
 		color:{color:Top Bar Text};
-		background:{color:Top Bar Background};
-		border:1px solid rgba({RGBcolor:Top Bar Text},.1)
 		}
 
 #topbar #category a.click-category{
@@ -1156,7 +1109,6 @@ h1,h2,h3,h4,h5{
 		}
 
 #topbar h1 a{
-		border:2px solid {color:Top Bar Text}
 		}
 
 #topbar a:hover{
@@ -1368,9 +1320,6 @@ h1,h2,h3,h4,h5{
 		<a id="slide">\</a>
 		
 		{block:indexpage}
-				{block:ifshowtotopButton}
-						<a id="top">]</a>
-				{/block:ifshowtotopButton}
 		{/block:indexpage}
 
 {block:ifshowcategorylist}
