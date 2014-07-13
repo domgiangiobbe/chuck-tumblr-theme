@@ -62,7 +62,24 @@
 <meta name="if:Open Links In New Tab" content="1"/>
 <meta name="if:Infinite Scrolling" contet="1"/>
 
-<meta name="select:Title Font" content="Montserrat" title="Montserrat"/><meta name="select:Title Font" content="Arial" title="Arial"/><meta name="select:Title Font" content="Abel" title="Abel"/><meta name="select:Title Font" content="courier new" title="Courier"/><meta name="select:Title Font" content="Domine" title="Domine"/><meta name="select:Title Font" content="Droid Sans" title="Droid Sans"/><meta name="select:Title Font" content="Georgia" title="Georgia"/><meta name="select:Title Font" content="helvetica" title="Helvetica"/><meta name="select:Title Font" content="Karla" Title="Karla"/><meta name="select:Title Font" content="Mako" title="Mako"/><meta name="select:Title Font" content="Noto Sans" title="Noto Sans"/><meta name="select:Title Font" content="PT Mono" title="PT Mono"/><meta name="select:Title Font" content="Raleway" title="Raleway"/><meta name="select:Title Font" content="Roboto Slab" title="Roboto Slab"/><meta name="select:Title Font" content="Ropa Sans" title="Ropa Sans"/><meta name="select:Title Font" content="Rokkitt" title="Rokkitt"/><meta name="select:Title Font" content="Source Sans Pro" title="Source Sans Pro"/><meta name="select:Title Font" content="Times New Roman" title="Times New Roman"/><meta name="select:Body Font" content="Arial" title="Arial"/><meta name="select:Body Font" content="Abel" title="Abel"/><meta name="select:Body Font" content="courier new" title="Courier"/><meta name="select:Body Font" content="Domine" title="Domine"/><meta name="select:Body Font" content="Droid Sans" title="Droid Sans"/><meta name="select:Body Font" content="Georgia" title="Georgia"/><meta name="select:Body Font" content="helvetica" title="Helvetica"/><meta name="select:Body Font" content="Karla" Title="Karla"/><meta name="select:Body Font" content="Mako" title="Mako"/><meta name="select:Body Font" content="Noto Sans" title="Noto Sans"/><meta name="select:Body Font" content="PT Mono" title="PT Mono"/><meta name="select:Body Font" content="Raleway" title="Raleway"/><meta name="select:Body Font" content="Roboto Slab" title="Roboto Slab"/><meta name="select:Body Font" content="Rokkitt" title="Rokkitt"/><meta name="select:Body Font" content="Ropa Sans" title="Ropa Sans"/><meta name="select:Body Font" content="Source Sans Pro" title="Source Sans Pro"/><meta name="select:Body Font" content="Times New Roman" title="Times New Roman"/>
+<meta name="select:Body Font" content="Arial" title="Arial"/>
+<meta name="select:Body Font" content="Arial Black" title="Arial Black"/>
+<meta name="select:Body Font" content="Abel" title="Abel"/>
+<meta name="select:Body Font" content="courier new" title="Courier"/>
+<meta name="select:Body Font" content="Domine" title="Domine"/>
+<meta name="select:Body Font" content="Droid Sans" title="Droid Sans"/>
+<meta name="select:Body Font" content="Georgia" title="Georgia"/>
+<meta name="select:Body Font" content="helvetica" title="Helvetica"/>
+<meta name="select:Body Font" content="Karla" Title="Karla"/>
+<meta name="select:Body Font" content="Mako" title="Mako"/>
+<meta name="select:Body Font" content="Noto Sans" title="Noto Sans"/>
+<meta name="select:Body Font" content="PT Mono" title="PT Mono"/>
+<meta name="select:Body Font" content="Raleway" title="Raleway"/>
+<meta name="select:Body Font" content="Roboto Slab" title="Roboto Slab"/>
+<meta name="select:Body Font" content="Rokkitt" title="Rokkitt"/>
+<meta name="select:Body Font" content="Ropa Sans" title="Ropa Sans"/>
+<meta name="select:Body Font" content="Source Sans Pro" title="Source Sans Pro"/>
+<meta name="select:Body Font" content="Times New Roman" title="Times New Roman"/>
 
 <meta name="select:Post Size" content="width" Title="Default"/>
 <meta name="select:Post Size" content="width-tiny" Title="Tiny"/>
@@ -71,7 +88,10 @@
 <meta name="select:Post Size" content="width-large" Title="large"/>
 <meta name="select:Post Size" content="width-huge" Title="Huge"/>
 
-<meta name="select:Instagram Feed Count" content="instagram-count-6" Title="6"/><meta name="select:Instagram Feed Count" content="instagram-count-3" Title="3"/><meta name="select:Instagram Feed Count" content="instagram-count-9" Title="9"/><meta name="select:Instagram Feed Count" content="instagram-count-12" Title="12"/>
+<meta name="select:Instagram Feed Count" content="instagram-count-3" Title="3"/>
+<meta name="select:Instagram Feed Count" content="instagram-count-6" Title="6"/>
+<meta name="select:Instagram Feed Count" content="instagram-count-9" Title="9"/>
+<meta name="select:Instagram Feed Count" content="instagram-count-12" Title="12"/>
 
 <meta name="text:Cover Text" content=""/>
 <meta name="text:Category Title" content="Categories"/>
@@ -138,7 +158,8 @@ html,
 body{
 		height:100%;
 		margin:0;
-		padding:0
+		padding:0;
+		font-family: "{select:Body Font}", sans-serif;
 		}
 
 a,a:hover{
@@ -152,7 +173,7 @@ img{
 		}
  
 h1, h2, h3, h4, h5 {
-		font:400 16px/1em 'Helvetica Neue', "Arial", sans-serif;
+		font:400 16px/1em "{select:Body Font}", sans-serif;
 		text-shadow:0 1px 0 1px rgba(0,0,0,.3)
 		}
  
@@ -312,22 +333,23 @@ span#install-theme-text{
 /*      Default     */
 
 #topbar{
-		position:fixed;
-		top:0;
-		right:0;
-		min-height:90px;
-		width:100%;
-		padding:35px 70px;
-		opacity:0;
-		z-index:30;
-		pointer-events:none
+		position: fixed;
+		top: 0;
+		right: 0;
+		max-height: 50px;
+		width: 100%;
+		padding: 35px 70px;
+		opacity: 1 !important;
+		z-index: 30;
+		pointer-events: none;
 		}
 
 #topbar h1{
-		display:inline;
+		display:inline-block;
 		font-size:18px;
 		letter-spacing:4px;
-		text-transform:uppercase
+		text-transform:uppercase;
+		margin: 0;
 		}
 
 #topbar h1 a{
@@ -414,17 +436,21 @@ span#install-theme-text{
 		right:250px !important
 		}
 
+#topbar.topbar-move h1{
+		margin-left: 250px;
+		}
+
 #sidebar.sidebar-move{
 		right:0 !important
 		}
 
 #posts-container.posts-container-move{
-		right:250px !important
+		/*right:250px !important*/
 		}
 
-#topbar,#sidebar,#posts-container{
-		-webkit-transition:right .3s ease;
-		transition:right .3s ease
+#topbar, #topbar h1, #sidebar, #posts-container{
+		-webkit-transition:all .3s ease;
+		transition:all .3s ease
 		}
 
 #sidebar{
@@ -1049,8 +1075,8 @@ a:hover{
 		}
 
 h1,h2,h3,h4,h5{
-		font-family:{select:Title Font};
-		color:{color:Body Title}
+		font-family: "{select:Body Font}", san-serif;
+		color: {color:Body Title};
 		}
 
 
@@ -1242,12 +1268,12 @@ h1,h2,h3,h4,h5{
 #permalink .permalink-box ol.notes li.more_notes_link_container a.more_notes_link{
 		text-transform:uppercase;
 		letter-spacing:1px;
-		font:11px {select:Title Font};
+		font:11px "{select:Body Font}", san-serif;
 		color:{color:Body Text}
 		}
 
 #pagination a{
-		font:13px {select:Title Font};
+		font:13px "{select:Body Font}", san-serif;
 		color:{color:Body Title};
 		background:{color:Post Background}
 		}
@@ -1299,7 +1325,7 @@ h1,h2,h3,h4,h5{
 		<div id="cover-information">
 				
 				{block:ifnotcoverlogoimage}
-						<h1><a href="/">{title}</a></h1>
+						<!-- <h1><a href="/">{title}</a></h1> -->
 				{/block:ifnotcoverlogoimage}
 				{block:ifcoverlogoimage}
 						<img src="{image:Cover Logo}" alt="{title}"/>
@@ -1396,73 +1422,81 @@ h1,h2,h3,h4,h5{
 		{/block:ifSidebarPortraitimage}
 
 		{block:description}
-				<div id="description">
-						{description}
-				</div>
+			<div id="description">{description}</div>
 		{/block:description}
 
 		{block:ifshowsocialicons}
-				<div id="social">
-{Block:ifURLTwitter}<a href="{text:URL Twitter}" class="twitter" target="_blank">1</a>{/Block:ifURLTwitter}{Block:ifURLFacebook}<a href="{text:URL Facebook}" class="facebook" target="_blank">2</a>{/Block:ifURLFacebook}{Block:ifURLVimeo}<a href="{text:URL Vimeo}" class="vimeo" target="_blank">3</a>{Block:ifURLVimeo}{Block:ifURLFlickr}<a href="{text:URL Flickr}" class="flickr" target="_blank">4</a>{/Block:ifURLFlickr}{Block:ifURLGooglePlus}<a href="{text:URL Google Plus}" class="google" target="_blank">5</a>{/Block:ifURLGooglePlus}{Block:ifURLYoutube}<a href="{text:URL Youtube}" class="youtube" target="_blank">u</a>{/Block:ifURLYoutube}{Block:ifURLPinterest}<a href="{text:URL Pinterest}" class="pinterest" target="_blank">6</a>{/Block:ifURLPinterest}{Block:ifURLLinkedin}<a href="{text:URL Linkedin}" class="linkedin" target="_blank">7</a>{/Block:ifURLLinkedin}{Block:ifURLDribble}<a href="{text:URL Dribble}" class="dribble" target="_blank">8</a>{/Block:ifURLDribble}{Block:ifURLStumbleupon}<a href="{text:URL Stumbleupon}" class="stumbleupon" target="_blank">9</a>{/Block:ifURLStumbleupon}{Block:ifURLSpotify}<a href="{text:URL Spotify}" class="spotify" target="_blank">=</a>{/Block:ifURLSpotify}{Block:ifURLInstagram}<a href="{text:URL Instagram}" class="instagram" target="_blank">q</a>{/Block:ifURLInstagram}{Block:ifURLBehance}<a href="{text:URL Behance}" class="behance" target="_blank">e</a>{/Block:ifURLBehance}{Block:ifURLGithub}<a href="{text:URL Github}" class="github" target="_blank">r</a>{/Block:ifURLGithub}{Block:ifURLSoundcloud}<a href="{text:URL Soundcloud}" class="soundcloud" target="_blank">t</a>{/Block:ifURLSoundcloud}
+			<div id="social">
+				{Block:ifURLTwitter}<a href="{text:URL Twitter}" class="twitter" target="_blank">1</a>{/Block:ifURLTwitter}
+				{Block:ifURLFacebook}<a href="{text:URL Facebook}" class="facebook" target="_blank">2</a>{/Block:ifURLFacebook}
+				{Block:ifURLVimeo}<a href="{text:URL Vimeo}" class="vimeo" target="_blank">3</a>{Block:ifURLVimeo}
+				{Block:ifURLFlickr}<a href="{text:URL Flickr}" class="flickr" target="_blank">4</a>{/Block:ifURLFlickr}
+				{Block:ifURLGooglePlus}<a href="{text:URL Google Plus}" class="google" target="_blank">5</a>{/Block:ifURLGooglePlus}
+				{Block:ifURLYoutube}<a href="{text:URL Youtube}" class="youtube" target="_blank">u</a>{/Block:ifURLYoutube}
+				{Block:ifURLPinterest}<a href="{text:URL Pinterest}" class="pinterest" target="_blank">6</a>{/Block:ifURLPinterest}
+				{Block:ifURLLinkedin}<a href="{text:URL Linkedin}" class="linkedin" target="_blank">7</a>{/Block:ifURLLinkedin}
+				{Block:ifURLDribble}<a href="{text:URL Dribble}" class="dribble" target="_blank">8</a>{/Block:ifURLDribble}
+				{Block:ifURLStumbleupon}<a href="{text:URL Stumbleupon}" class="stumbleupon" target="_blank">9</a>{/Block:ifURLStumbleupon}
+				{Block:ifURLSpotify}<a href="{text:URL Spotify}" class="spotify" target="_blank">=</a>{/Block:ifURLSpotify}
+				{Block:ifURLInstagram}<a href="{text:URL Instagram}" class="instagram" target="_blank">q</a>{/Block:ifURLInstagram}
+				{Block:ifURLBehance}<a href="{text:URL Behance}" class="behance" target="_blank">e</a>{/Block:ifURLBehance}
+				{Block:ifURLGithub}<a href="{text:URL Github}" class="github" target="_blank">r</a>{/Block:ifURLGithub}
+				{Block:ifURLSoundcloud}<a href="{text:URL Soundcloud}" class="soundcloud" target="_blank">t</a>{/Block:ifURLSoundcloud}
 				</div><!--  Social      -->
 		{/block:ifshowsocialicons}
 
 		<nav id="navigation">
-				{block:AskEnabled}
-						<li><a href="/ask">{text:Ask Title}</a></li>
-				{/block:AskEnabled}
-				{block:SubmissionsEnabled}
-						<li><a href="/submit">Submit</a></li>
-				{/block:SubmissionsEnabled}
-				{block:ifshowarchivelink}
-						<li><a href="/archive">{text:Archive Title}</a></li>
-				{/block:ifshowarchivelink}
-				{block:ifshowrandomlink}
-						<li><a href="/random">Random</a></li>
-				{/block:ifshowrandomlink}
-				{block:ifshowrsslink}
-						<li><a href="{RSS}">RSS</a></li>
-				{/block:ifshowrsslink}
-				{block:Pages}
-						<li><a href="{URL}" title="{Label}">{Label}</a></li>
-				{/block:Pages}
-				
+			{block:AskEnabled}
+				<li><a href="/ask">{text:Ask Title}</a></li>
+			{/block:AskEnabled}
+			{block:SubmissionsEnabled}
+				<li><a href="/submit">Submit</a></li>
+			{/block:SubmissionsEnabled}
+			{block:ifshowarchivelink}
+				<li><a href="/archive">{text:Archive Title}</a></li>
+			{/block:ifshowarchivelink}
+			{block:ifshowrandomlink}
+				<li><a href="/random">Random</a></li>
+			{/block:ifshowrandomlink}
+			{block:ifshowrsslink}
+				<li><a href="{RSS}">RSS</a></li>
+			{/block:ifshowrsslink}
+			{block:Pages}
+				<li><a href="{URL}" title="{Label}">{Label}</a></li>
+			{/block:Pages}	
 		</nav>
 
 		{block:ifinstagramid}
 		<div id="instagram" class="{select:Instagram Feed Count}">
-
-				<h2>{text:Instagram Feed Title}</h2>
-
-				<ul id="instagram-feed"></ul>
-
+			<h2>{text:Instagram Feed Title}</h2>
+			<ul id="instagram-feed"></ul>
 		</div>
 		{block:ifinstagramid}
 
 		{block:ifDribbbleUsername}
 		<div id="dribbble">
-				<h2>{text:Dribbble Feed Title}</h2>
-				<div id="dribbble-feed"></div>
+			<h2>{text:Dribbble Feed Title}</h2>
+			<div id="dribbble-feed"></div>
 		</div>
 		{/block:ifDribbbleUsername}
 
 		{block:twitter}
 		<div id="twitter">
-				<h2>{text:Twitter Feed Title}</h2>
-				<div id="tweets"></div>
+			<h2>{text:Twitter Feed Title}</h2>
+			<div id="tweets"></div>
 		</div>
 		<script type="text/javascript">
-				function recent_tweets(data) {
-						for (i=0; i<{text:Twitter Feed Count}; i++) {
+			function recent_tweets(data) {
+				for (i=0; i<{text:Twitter Feed Count}; i++) {
 								document.getElementById("tweets").innerHTML =
-										document.getElementById("tweets").innerHTML +
-										'<a href="http://twitter.com/{TwitterUsername}/status/' +
-										(data[i].id_str ? data[i].id_str : data[i].id) +
-										'"><div class="content">' + data[i].text +
-										'</div></a>';
-						}
-						document.getElementById("twitter").style.display = 'block';
-				}
+									document.getElementById("tweets").innerHTML +
+									'<a href="http://twitter.com/{TwitterUsername}/status/' +
+									(data[i].id_str ? data[i].id_str : data[i].id) +
+									'"><div class="content">' + data[i].text +
+									'</div></a>';
+					}
+					document.getElementById("twitter").style.display = 'block';
+			}
 		</script>
 		{/block:twitter}
 
@@ -1640,7 +1674,33 @@ h1,h2,h3,h4,h5{
 {block:PermalinkPage}
 {block:date}
 
-{block:IfDisqusShortname}<div class="permalink-box"><script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script><div id="disqus_thread"></div><script type="text/javascript">var disqus_identifier = {PostID};(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript></div>{/block:IfDisqusShortname}
+{block:IfDisqusShortname}
+	<div class="permalink-box">
+	
+	<script type="text/javascript">
+		var disqus_url = "{Permalink}"; 
+		var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";
+	</script>
+
+	<div id="disqus_thread"></div>
+
+	<script type="text/javascript">
+		var disqus_identifier = {PostID};
+
+		(function() {
+			var dsq = document.createElement('script'); 
+			dsq.type = 'text/javascript'; 
+			dsq.async = true;
+			dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+	
+	</div>
+{/block:IfDisqusShortname}
 
 {block:ifshowpostnotes}
 {block:PostNotes}
