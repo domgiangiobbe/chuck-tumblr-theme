@@ -37,6 +37,7 @@
 <meta name="color:Sidebar Icons" content="#dddddd"/>
 <meta name="color:Sidebar Description" content="#dddddd"/>
 <meta name="color:Sidebar Links" content="#ffffff"/>
+<meta name="color:Sidebar Links Hover" content="#ffffff"/>
 <meta name="color:Sidebar Tweets" content="#dddddd"/>
 <meta name="color:Post Background" content="#ffffff"/>
 <meta name="color:Post Dividers" content="#efefef"/>
@@ -160,6 +161,7 @@ body{
 		margin:0;
 		padding:0;
 		font-family: "{select:Body Font}", sans-serif;
+		-webkit-font-smoothing: antialiased;
 		}
 
 a,a:hover{
@@ -308,12 +310,12 @@ a,
 		position: fixed;
 		top: 0;
 		right: 0;
-		height: 50px !important;
+		/*height: 50px !important;*/
 		width: 100%;
 		padding: 20px;
 		opacity: 1 !important;
 		z-index: 30;
-		pointer-events: none;
+		pointer-events: auto;
 		}
 
 #topbar h1{
@@ -324,7 +326,7 @@ a,
 		}
 
 #topbar h1 a{
-		padding: 10px 10px 10px 7px;
+		padding: 0px 10px 0px 7px;
 		}
 
 #topbar a#slide{
@@ -395,15 +397,15 @@ a,
 		}
 
 #topbar.topbar-move{
-		right:250px !important
+		right: 215px !important;
 		}
 
 #topbar.topbar-move h1{
-		margin-left: 250px;
+		margin-left: 215px;
 		}
 
 #sidebar.sidebar-move{
-		right:0 !important
+		right: 0 !important;
 		}
 
 #posts-container.posts-container-move{
@@ -418,13 +420,12 @@ a,
 #sidebar{
 		position:fixed;
 		z-index:15;
-		width:250px;
-		height:100%;
-		top:0;
-		right:-250px;
-		padding:30px 0;
-		text-align:center;
-		overflow-y:scroll
+		width: 215px;
+		height: 100%;
+		top: 0;
+		right: -215px;
+		padding: 22px;
+		overflow-y: scroll;
 		}
 
 #sidebar::-webkit-scrollbar{
@@ -476,21 +477,15 @@ a,
 #sidebar #social a.youtube:hover{background:#bb0000}
 
 #sidebar #navigation li{
-		padding:20px 0;
 		list-style-type:none;
-		letter-spacing:1px
 		}
 
 #sidebar #navigation li a{
-		padding:10px 20px;
-		border-radius:30px;
-		letter-spacing:1px;
-		font-weight:700
+		letter-spacing: 0;
 		}
 
 #sidebar h2{
 		padding:0 0 10px 0;
-		text-transform:uppercase;
 		font-size:12px;
 		letter-spacing:1px
 		}
@@ -632,7 +627,7 @@ a,
 		position:relative;
 		right:0;
 		width:100%;
-		padding:35px 0
+		padding: 100px 0;
 		}
 
 #post-info,.entry{
@@ -1108,9 +1103,6 @@ h1,h2,h3,h4,h5{
 		background:rgba({RGBcolor:Links},.2)
 		}
 
-#topbar h1 a{
-		}
-
 #topbar a:hover{
 		background:rgba({RGBcolor:Top Bar Text},.1)
 		}
@@ -1123,13 +1115,12 @@ h1,h2,h3,h4,h5{
 #sidebar #social,
 #sidebar #description,
 #sidebar #navigation{
-		padding:20px 30px;
 		border-top:1px solid {color:Sidebar Dividers}
 		}
 
 #sidebar #navigation li a{
-		font:12px "{select:Title Font}";
-		border:1px solid rgba({RGBcolor:Sidebar Icons},.1)
+		font: 28px "{select:Title Font}";
+		line-height: 1em;
 		}
 
 #sidebar #social a{
@@ -1152,7 +1143,7 @@ h1,h2,h3,h4,h5{
 		}
 
 #sidebar #navigation li a:hover{
-		background:rgba({RGBcolor:Sidebar Links},.06)
+		color:{color:Sidebar Links Hover}
 		}
 
 #sidebar #instagram,
@@ -1236,7 +1227,7 @@ h1,h2,h3,h4,h5{
 {/block:ifnotfullscreencover}
 
 {block:ifuppercaseSidebarlinks}
-#sidebar #navigation li a{text-transform:uppercase}
+/*#sidebar #navigation li a{text-transform:uppercase}*/
 {/block:ifuppercaseSidebarlinks}
 
 {block:ifpostrounded}
@@ -1719,6 +1710,9 @@ h1,h2,h3,h4,h5{
 	});
 
 	$(window).load(function() {
+		console.log('scroll top this ' + $(this).scrollTop());
+		console.log('cover outerHeight ' + $("#cover").outerHeight());
+
 		setTimeout( function(){
 			$("#cover-scroll").css("opacity","1");
 			$('#posts').css("opacity","1");
@@ -1727,14 +1721,11 @@ h1,h2,h3,h4,h5{
 		
 		setTimeout( function(){
 			$('#pagination').css("opacity","1");
-			$('a#install-button').css("top","3px");
 		},600)
 	});
 
 	$('#cover-scroll').click(function(){
-		$('html, body').animate({
-			scrollTop: $("section").offset().top - 90
-		},1000);
+		scrollToTop();
 	});
 
 	$('#cover #cover-information').css({'margin-top':-$("#cover #cover-information").outerHeight()/2 + "px"});
@@ -1753,19 +1744,33 @@ h1,h2,h3,h4,h5{
 		});
 	});
 
-	$(window).scroll(function(){
-		if ($(this).scrollTop()>$("#cover").outerHeight() - 130){
-			$('#topbar').css("pointer-events","auto")
-		}else{
-			$('#topbar').css("pointer-events","none")
-		}
+	// detect scroll up or down and open and close hero
+	var scrollPos = 0;
+
+	$(window).scroll(function () {
+	    var curScrollPos = $(this).scrollTop();
+	    
+	    if (curScrollPos > scrollPos) {
+	        //Scrolling Down
+	        if (curScrollPos < 100 && curScrollPos > 0) {
+	        	scrollToTop();
+	        }
+	    } else {
+	       //Scrolling Up
+	       // console.log('up ' + curScrollPos);
+	    }
+
+	    scrollPos = curScrollPos;
 	});
 
-	$(window).scroll(function(){
-		if ($(this).scrollTop()>$("#cover").outerHeight()){
-			$('#cover').css("opacity","0")}else{$('#cover').css("opacity","1")
-		}
-	});
+	// $(window).scroll(function(){
+	// 	if ($(this).scrollTop() > $("#cover").outerHeight()){
+	// 		$('#cover').css("opacity","0");
+	// 	}else{
+	// 		$('#cover').css("opacity","1");
+	// 		scrollToTop();
+	// 	}
+	// });
 
 	$("a.click-category").click(function() {
 		$("#topbar #category").toggleClass("category-list-move");
@@ -1801,6 +1806,14 @@ h1,h2,h3,h4,h5{
 		}
 	});
 
+	// scroll to top function
+	function scrollToTop() {
+		$('html, body').animate({
+			scrollTop: $("section").offset().top
+		},1000);
+
+		console.log('offset top ' + $("section").offset().top);
+	};
 
 	// to keep static
 	{block:ifactivateslideshow}

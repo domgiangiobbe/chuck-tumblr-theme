@@ -237,7 +237,7 @@ function EasyPeasyParallax() {
 	$('#cover #slideshow').css({'top':-(scrollPos/5)+"px"});
 	$('#cover #cover-information').css({'top': 48+(scrollPos/7.5)+"%",'opacity': 1-(scrollPos/400)});
 	$('#cover #cover-scroll').css({'opacity': 1-(scrollPos/30)});
-	$('#topbar').css({'opacity':scrollPos/($("#cover").outerHeight() - 90),'height':$("#cover").outerHeight() - scrollPos + "px"})
+	$('#topbar').css({'opacity':scrollPos/($("#cover").outerHeight() - 90),'height':$("#cover").outerHeight() - scrollPos + "px"});
 };
 
 $(document).ready(function(){
@@ -277,7 +277,7 @@ $('#topbar a#top').click(function(){
 $("a#slide").click(function(){
 	$("#topbar").toggleClass("topbar-move");
 	$("#sidebar").toggleClass("sidebar-move");
-	$("#posts-container").toggleClass("posts-container-move")
+	$("#posts-container").toggleClass("posts-container-move")	
 });
 
 $("section").click(function(){
