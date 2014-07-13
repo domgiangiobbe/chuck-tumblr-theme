@@ -3,27 +3,9 @@
 <head>
 <meta charset="UTF-8">
 
-<!--
-=======================================================================
+<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
 
-    Quantist | 2014
- 
-    Designed and developed by Jen Yuan
-
-    Download: http://themes.thejenyuan.com
-
-=======================================================================
-
-    Change Log:
-
-    04/08/14    Photo Like_button ( fix )
-    02/26/14    #cover-information in tag and permalink page (fix)
-    02/16/14    Like Button Fix
-    01/11/14    Launch
-
--->
-
-<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>{block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
+{block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
  
 <link rel="alternate" type="application/rss+xml" href="{RSS}">
 <link rel="shortcut icon" href="{favicon}">
@@ -185,7 +167,11 @@
 
 /*      Settings     */
  
-*, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+*, *:before, *:after {
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
 
 html,
 body{
@@ -233,32 +219,6 @@ a,
 .entry .photo .photoset-grid img{
     -webkit-transition:all .4s ease;
     transition:all .4s ease
-    }
-
-a#install-button{
-    width:100px;
-    height:20px;
-    padding:2px 4px;
-    background:url("http://static.tumblr.com/tpqedpr/cQ1mbwb60/de.png") rgba(0,0,0,.4) no-repeat;
-    border:1px solid rgba(0,0,0,0.18);
-    -webkit-border-radius:2px;
-    -moz-border-radius:2px;
-    border-radius:2px;
-    z-index:99999;
-    top:-30px;
-    right:5px;
-    position:fixed
-    }
-
-a#install-button:hover{
-    background:url("http://static.tumblr.com/tpqedpr/cQ1mbwb60/de.png") rgba(0,0,0,.32) no-repeat
-    }
-
-span#install-theme-text{
-    float:right;
-    font:400 12px Arial;
-    text-shadow:1px 1px 1px rgba(0,0,0,.08);
-    color:white
     }
 
 #tumblr_controls{
@@ -371,7 +331,7 @@ span#install-theme-text{
     min-height:90px;
     width:100%;
     padding:35px 70px;
-    opacity:0;
+    opacity:1;
     z-index:30;
     pointer-events:none
     }
@@ -1349,9 +1309,9 @@ h1,h2,h3,h4,h5{
 </head>
 <body {block:permalinkpage}id="permalink"{/block:permalinkpage}{block:TagPage}id="tagpage"{/block:TagPage}>
 
-{block:ifshowcredit}
-<a id="install-button" href="http://themes.thejenyuan.com"><span id="install-theme-text">Install Theme</span></a>
-{/block:ifshowcredit}
+<!-- {block:ifshowcredit}
+
+{/block:ifshowcredit} -->
 
 <div id="cover">
     
@@ -1742,10 +1702,10 @@ h1,h2,h3,h4,h5{
 
 {block:ifshowpostnotes}
 {block:PostNotes}
-<div class="permalink-box">
-<h2>{NoteCountWithLabel}</h2>
-{PostNotes}
-</div>
+    <div class="permalink-box">
+        <h2>{NoteCountWithLabel}</h2>
+        {PostNotes}
+    </div>
 {/block:PostNotes}
 {/block:ifshowpostnotes}
 
@@ -1777,35 +1737,55 @@ h1,h2,h3,h4,h5{
 
 <script type="text/javascript" src="http://static.tumblr.com/3zmswwt/SmLmzp5h9/scripts.js"></script>
 
-{block:Twitter}<script type="text/javascript" src="/tweets.js"></script>{/block:Twitter}{block:ifinstagramid}<script type="text/javascript">$('#instagram-feed').embedagram({instagram_id:{text:Instagram ID},limit:6})</script>{/block:ifinstagramid}
+{block:Twitter}<script type="text/javascript" src="/tweets.js"></script>{/block:Twitter}
+{block:ifinstagramid}<script type="text/javascript">$('#instagram-feed').embedagram({instagram_id:{text:Instagram ID},limit:6})</script>{/block:ifinstagramid}
 
 <script type="text/javascript">
-    {
-        block: ifactivateslideshow
-    }
-    $("#slideshow > li:gt(0)")
-        .hide();
-    setInterval(function () {
-        $('#slideshow > li:first')
-            .fadeOut(1000)
-            .next()
-            .fadeIn(1000)
-            .end()
-            .appendTo('#slideshow');
-    }, 3000); {
-        //
-        block:ifactivateslideshow}{block:ifopenlinksinnewtab}$('a[href^="http://"]').attr('target','_blank');{block:ifopenlinksinnewtab}{block:ifdribbbleusername}$(document).ready(function getDribbbleShots(){$.jribbble.getShotsByPlayerId("{text:Dribbble Username}", function (playerShots){var html = [];$.each(playerShots.shots, function (i, shot) {html.push('<div class="shot"><a href="' + shot.url + '" target="_blank">');html.push('<img class="shot-image" src="' + shot.image_url + '" ');html.push('alt="' + shot.title + '"></a > < /div>');});$('#dribbble-feed').html(html.join(''))},{page: 1, per_page: 6})});{/block: ifdribbbleusername
-    }(function () {
-            var $K = $('#posts');
-            $K.imagesLoaded(function () {
-                $K.masonry({
-                    itemSelector: "#post-info,.entry{block:permalinkpage},.permalink-box{/block:permalinkpage}",
-                    columnWidth: 1,
-                    isFitWidth: true
-                })
-            }); {
-                block: ifinfinitescrolling
-            }
+    {block: ifactivateslideshow}
+        $("#slideshow > li:gt(0)").hide();
+        
+        setInterval(function () {
+            $('#slideshow > li:first')
+                .fadeOut(1000)
+                .next()
+                .fadeIn(1000)
+                .end()
+                .appendTo('#slideshow');
+        }, 3000); 
+    {/block:ifactivateslideshow}
+
+    {block:ifopenlinksinnewtab}
+        $('a[href^="http://"]').attr('target','_blank');
+    {/block:ifopenlinksinnewtab}
+
+    {block:ifdribbbleusername}
+        $(document).ready(function getDribbbleShots(){
+            $.jribbble.getShotsByPlayerId("{text:Dribbble Username}", function (playerShots){
+                var html = [];$.each(playerShots.shots, function (i, shot) {
+                    html.push('<div class="shot"><a href="' + shot.url + '" target="_blank">');
+                    html.push('<img class="shot-image" src="' + shot.image_url + '" ');
+                    html.push('alt="' + shot.title + '"></a > < /div>');
+                });
+                
+                $('#dribbble-feed').html(html.join(''));
+            }, 
+            {page: 1, per_page: 6}
+            )
+        });
+    {/block: ifdribbbleusername}
+
+    (function () {
+        var $K = $('#posts');
+
+        $K.imagesLoaded(function () {
+            $K.masonry({
+                itemSelector: "#post-info,.entry{block:permalinkpage},.permalink-box{/block:permalinkpage}",
+                columnWidth: 1,
+                isFitWidth: true
+            })
+        }); 
+
+        {block: ifinfinitescrolling}
             $K.infinitescroll({
                 navSelector: '#pagination',
                 nextSelector: '#pagination a#older',
@@ -1820,48 +1800,52 @@ h1,h2,h3,h4,h5{
                 var $newElems = $(newElements)
                     .css("opacity", "0")
                     .css("pointer-events", "none");
-                $("p")
-                    .remove(":contains('Source:'),:contains('via ')");
-                $('.photoset-grid')
-                    .photosetGrid({
+                
+                $("p").remove(":contains('Source:'),:contains('via ')");
+                
+                $('.photoset-grid').photosetGrid({
                         highresLinks: true,
                         rel: $('.photoset-grid')
                             .attr('data-id'),
                         gutter: '5px',
                         onComplete: function () {}
+                });
+                
+                $('.photoset-grid').each(function () {
+                    $(this).magnificPopup({
+                        delegate: 'a',
+                        type: 'image',
+                        gallery: {
+                            enabled: true
+                        },
+                        removalDelay: 200,
+                        mainClass: 'mfp-fade'
                     });
-                $('.photoset-grid')
-                    .each(function () {
-                        $(this)
-                            .magnificPopup({
-                                delegate: 'a',
-                                type: 'image',
-                                gallery: {
-                                    enabled: true
-                                },
-                                removalDelay: 200,
-                                mainClass: 'mfp-fade'
-                            });
-                    });
+                });
+                
+                //fade in new elements when added
                 var $newElemsIDs = $newElems.map(function () {
                         return this.id;
-                    })
-                    .get();
+                }).get();
+    
                 $newElems.imagesLoaded(function () {
-                    $('#infscr-loading')
-                        .fadeOut("slow");
+                    $('#infscr-loading').fadeOut("slow");
                     $newElems.css("opacity", "1")
                         .css("pointer-events", "auto");
                     $K.masonry('appended', $newElems, true);
                     console.log($newElems, $newElemsIDs);
                     Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
                 });
-            }); {
-                //
-                block:ifinfinitescrolling}})();{block:ifGoogleAnalyticsID}var _gaq = _gaq || [];_gaq.push(['_setAccount', '{text:Google Analytics ID}']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript
-                '; ga.async = true;ga.src = ('
-                https: ' == document.location.protocol ? '
-                https: //ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();{block:ifGoogleAnalyticsID}
+            }); 
+        {/block:ifinfinitescrolling}
+    })();
+
+    {block:ifGoogleAnalyticsID}
+        var _gaq = _gaq || [];_gaq.push(['_setAccount', '{text:Google Analytics   _gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript
+            '; ga.async = true;ga.src = ('
+            https: ' == document.location.protocol ? '
+            https: //ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.inser    ga, s);})();
+    {/block:ifGoogleAnalyticsID}
 </script>
 
 </body>
