@@ -567,8 +567,8 @@ a#slide{
 		}
 
 #post-info,.entry{
-		width:290px;
-		margin:0 10px 20px 10px
+		width: 30%;
+		margin:0 25px 50px 25px
 		}
 
 #posts-container .large{
@@ -638,9 +638,10 @@ a#slide{
 		}
 
 #post-info,.entry{
-		padding:15px;
+		padding: 0;
+		/*padding:15px;
 		-webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,.1);
-		box-shadow:0 1px 2px 0 rgba(0,0,0,.1)
+		box-shadow:0 1px 2px 0 rgba(0,0,0,.1)*/
 		}
 
 #post-info{
@@ -1896,6 +1897,8 @@ h1,h2,h3,h4,h5{
 				isFitWidth:true
 			})
 		});
+
+		$(window).resize(function(){ $K.masonry('reload'); });
 
 		{block:ifinfinitescrolling}
 			$K.infinitescroll({
