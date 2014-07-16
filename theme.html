@@ -152,7 +152,7 @@
 <style type="text/css">
 
 /*      Settings     */
- 
+
 *, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
 
 html,
@@ -191,10 +191,14 @@ a,
 #sidebar #dribbble #dribbble-feed img,
 #sidebar #twitter .content,
 .entry .photo .photo-hover a.overlay,
-.entry .photo .photo-buttons{
+.entry .photo .photo-buttons, #full-overlay, #full-overlay.show{
 		-webkit-transition:all .3s ease;
 		transition:all .3s ease
 		}
+
+.mb-40 {
+	margin-bottom: 40px;
+}
 
 #cover #cover-scroll,
 .mfp-fade.mfp-bg,
@@ -269,7 +273,8 @@ a,
 		bottom:50px;
 		left:50%;
 		text-align:center;
-		font:20px/50px "icon";
+		font:30px/50px "icon";
+		font-weight: bold;
 		cursor:pointer;
 		z-index:1
 		}
@@ -329,7 +334,9 @@ a,
 		padding: 0px 10px 0px 7px;
 		}
 
-#topbar a#slide{
+#topbar a#top,
+a#slide{
+		color: #000;
 		display: inline;
 		float: right;
 		margin: -5px 0 0 20px;
@@ -979,7 +986,7 @@ a,
 				border:0 !important
 				}
 
-		#topbar a#slide{
+		a#slide{ 
 				margin:3px 0 0 0;
 				padding:0;
 				font-size:13px
@@ -1030,6 +1037,21 @@ h1,h2,h3,h4,h5{
 		color: {color:Body Title};
 		}
 
+/*nav bg when opened http://static.tumblr.com/8u4ydgr/qgIn8s61o/nav-bg.png*/
+#full-overlay {
+	background: url('http://static.tumblr.com/8u4ydgr/qgIn8s61o/nav-bg.png') 0 0 repeat;
+	position: fixed;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#full-overlay.show {
+	opacity: 1;
+	z-index: 15;
+}
 
 #cover #cover-overlay{
 		background:rgba({RGBcolor:Cover Overlay},.{text:Cover Overlay Opacity})
@@ -1121,6 +1143,11 @@ h1,h2,h3,h4,h5{
 #sidebar #navigation li a{
 		font: 28px "{select:Title Font}";
 		line-height: 1em;
+		}
+
+#sidebar #navigation li a.sub-nav{
+		font: 22px "{select:Title Font}";
+		line-height: 1.2em;
 		}
 
 #sidebar #social a{
@@ -1263,6 +1290,10 @@ h1,h2,h3,h4,h5{
 {block:ifshowcredit}
 {/block:ifshowcredit}
 
+<div id="full-overlay"></div>
+
+<!-- <a id="slide">\</a> -->
+
 <div id="cover">
 		
 		<div id="cover-information">
@@ -1311,7 +1342,10 @@ h1,h2,h3,h4,h5{
 		<a id="slide">\</a>
 		
 		{block:indexpage}
-		{/block:indexpage}
+	        {block:ifshowtotopButton}
+	            <a id="top">]</a>
+	        {/block:ifshowtotopButton}
+	    {/block:indexpage}
 
 {block:ifshowcategorylist}
 		<div id="category">
@@ -1386,7 +1420,7 @@ h1,h2,h3,h4,h5{
 		{/block:ifshowsocialicons}
 
 		<nav id="navigation">
-			{block:AskEnabled}
+			<!-- {block:AskEnabled}
 				<li><a href="/ask">{text:Ask Title}</a></li>
 			{/block:AskEnabled}
 			{block:SubmissionsEnabled}
@@ -1400,9 +1434,14 @@ h1,h2,h3,h4,h5{
 			{/block:ifshowrandomlink}
 			{block:ifshowrsslink}
 				<li><a href="{RSS}">RSS</a></li>
-			{/block:ifshowrsslink}
+			{/block:ifshowrsslink} -->
+				<li><a href="/" title="Recent">Recent</a></li>
+				<li><a href="/tagged/painting" title="Paintings">Paintings</a></li>
+				<li><a href="/tagged/drawing" title="Drawings">Drawings</a></li>
+				<li><a href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
+				<div class="mb-40"></div>
 			{block:Pages}
-				<li><a href="{URL}" title="{Label}">{Label}</a></li>
+				<li><a class="sub-nav" href="{URL}" title="{Label}">{Label}</a></li>
 			{/block:Pages}	
 		</nav>
 
@@ -1753,7 +1792,7 @@ h1,h2,h3,h4,h5{
 	    if (curScrollPos > scrollPos) {
 	        //Scrolling Down
 	        if (curScrollPos < 100 && curScrollPos > 0) {
-	        	scrollToTop();
+	        	//scrollToTop();
 	        }
 	    } else {
 	       //Scrolling Up
@@ -1787,15 +1826,18 @@ h1,h2,h3,h4,h5{
 	});
 
 	$("a#slide").click(function(){
+		console.log('slide nav');
 		$("#topbar").toggleClass("topbar-move");
 		$("#sidebar").toggleClass("sidebar-move");
-		$("#posts-container").toggleClass("posts-container-move")	
+		$("#posts-container").toggleClass("posts-container-move")	;
+		$("#full-overlay").toggleClass("show");
 	});
 
 	$("section").click(function(){
 		$("#topbar").removeClass("topbar-move");
 		$("#sidebar").removeClass("sidebar-move");
 		$("#posts-container").removeClass("posts-container-move");
+		$("#full-overlay").removeClass("show");
 	});
 
 	$(window).scroll(function(){
@@ -1803,6 +1845,7 @@ h1,h2,h3,h4,h5{
 			$("#topbar").removeClass("topbar-move");
 			$("#sidebar").removeClass("sidebar-move");
 			$("#posts-container").removeClass("posts-container-move");
+			$("#full-overlay").removeClass("show");
 		}
 	});
 
