@@ -146,6 +146,7 @@
 <meta name="text:Category 9 Title" content=""/>
 
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={select:Body Font}|{select:Title Font}:400,400italic,700,700italic">
+<link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
  
 <link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/i0umzp1kg/icon-embedded.css"/><!--[if IE 7]><link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/Parmzp1kj/icon-ie7.css"/><![endif]-->
  
@@ -1040,6 +1041,18 @@ h1,h2,h3,h4,h5{
 		color: {color:Body Title};
 		}
 
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
 div.mfp-bg {
 	background: {color:Lightbox Background};
 }
@@ -1261,12 +1274,110 @@ div.mfp-figure:after {
 
 #footer {
 	background-color: #e3e3e3;
-	height: 300px;
+	color: #fff;
+	font-family: "Roboto", Arial, san-serif;
+	text-transform: uppercase;
+	position: relative;
+	z-index: 11;
 }
 
-#footer div.foot-logo {
+div.foot-top {
 	background-color: #0006ff;
 	height: 130px;
+}
+
+div.foot-logo, div.foot-main {
+	margin: 0 auto;
+	max-width: 960px;
+	width: auto;
+}
+
+div.foot-main {
+	padding: 35px 10px 100px;
+	overflow: auto;
+}
+
+div.foot-logo-2 {
+	background-color: red;
+	display: block;
+	margin-bottom: 70px;
+	height: 55px;
+	width: 80px;
+}
+
+div.name-foot, div.gallery-foot {
+	font-family: sans-serif;
+	line-height: 1.5em;
+}
+
+div.gallery-foot {
+	margin-left: 55px;
+}
+
+#footer span {
+	display: block;
+}
+
+div.subnav-foot {
+	margin-left: 80px;
+}
+
+div.nav-foot, div.subnav-foot {
+	font-size: 24px;
+	font-weight: bold;
+	letter-spacing: -0.5px;
+	line-height: 1.3em;
+}
+
+div.foot-nav-wrap {
+	clear: none;
+	float: right;
+	overflow: auto;
+}
+
+#footer li {
+	list-style-type:none;
+}
+
+#footer a {
+	color: #fff;
+}
+
+#footer a:hover {
+	color: #6f6f6f;
+}
+
+/* Responsive footer */
+@media screen and (max-width:800px){
+	div.foot-nav-wrap {
+		clear: both;
+		float: left;
+		padding-top: 40px;
+		overflow: auto;
+	}
+}
+
+@media screen and (max-width:500px){
+	div.foot-logo-2 {
+		margin-bottom: 30px;
+	}
+
+	div.nav-foot.left, div.subnav-foot.left, div.name-foot.left, div.gallery-foot.left {
+		float: none;
+	}
+
+	div.gallery-foot {
+		margin-left: 0;
+		margin-top: 30px;
+	}
+
+	div.foot-nav-wrap {
+		padding-top: 30px;
+	}
+
+	div.subnav-foot {
+		margin-left: 0;
+	}
 }
 
 {block:ifnotfullscreencover}
@@ -1739,8 +1850,44 @@ div.mfp-figure:after {
 </section>
 
 <footer id="footer">
-	<div class="foot-logo">
-		CW
+	<div class="foot-top">
+		<div class="foot-logo">
+			CW
+		</div>
+	</div>
+
+	<div class="foot-main">
+		<div class="foot-contact left">
+			<div class="foot-logo-2">CW</div>
+
+			<div class="name-foot left">
+				<span>Chuck Webster</span>
+				<a href="#">studio@chuckwebster.biz</a>
+			</div>
+
+			<div class="gallery-foot left">
+				<span>Gallery Representation</span>
+				<span>Ziehersmith Gallery</span>
+				<span>New York City</span>
+				<a href="#">info@ziehersmith.com</a>
+			</div>
+		</div>
+
+		<div class="foot-nav-wrap clear">
+			<div class="nav-foot left">
+				<li><a href="/" title="Recent">Recent</a></li>
+				<li><a href="/tagged/painting" title="Paintings">Paintings</a></li>
+				<li><a href="/tagged/drawing" title="Drawings">Drawings</a></li>
+				<li><a href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
+			</div>
+			
+			<div class="subnav-foot left">
+			{block:Pages}
+				<li><a class="sub-nav" href="{URL}" title="{Label}">{Label}</a></li>
+			{/block:Pages}
+			</div>
+		</div>
+
 	</div>
 </footer>
 
