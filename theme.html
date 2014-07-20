@@ -1260,6 +1260,16 @@ div.mfp-figure:after {
 		background:{color:Post Background}
 		}
 
+#footer {
+	background-color: #e3e3e3;
+	height: 300px;
+}
+
+#footer div.foot-logo {
+	background-color: #0006ff;
+	height: 130px;
+}
+
 {block:ifnotfullscreencover}
 #cover,#cover #slideshow{height:400px}
 #cover #cover-information{top:50%}
@@ -1305,7 +1315,7 @@ div.mfp-figure:after {
 <div id="full-overlay"></div>
 
 <!-- <a id="slide">\</a> -->
-
+{block:indexpage}
 <div id="cover">
 		
 		<div id="cover-information">
@@ -1346,6 +1356,7 @@ div.mfp-figure:after {
 		<div id="cover-overlay"></div>
 
 </div>
+{/block:indexpage}
 
 <header id="topbar">
 
@@ -1727,6 +1738,12 @@ div.mfp-figure:after {
 
 </div><!--  Posts-Container       -->
 </section>
+
+<footer id="footer">
+	<div class="foot-logo">
+		CW
+	</div>
+</footer>
 
 <!-- <script type="text/javascript" src="http://static.tumblr.com/3zmswwt/SmLmzp5h9/scripts.js"></script> -->
 <script src="http://static.tumblr.com/8u4ydgr/Mi4n8o3wy/base.js" type="text/javascript"></script>
