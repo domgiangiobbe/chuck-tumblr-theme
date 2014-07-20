@@ -1057,6 +1057,10 @@ div.mfp-bg {
 	background: {color:Lightbox Background};
 }
 
+.mfp-fade.mfp-bg.mfp-ready {
+	opacity: 0.93;
+}
+
 div.mfp-figure:after {
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
@@ -1358,6 +1362,10 @@ div.foot-nav-wrap {
 }
 
 @media screen and (max-width:500px){
+	div.foot-main {
+		padding: 35px 10px;
+	}
+
 	div.foot-logo-2 {
 		margin-bottom: 30px;
 	}
@@ -1411,6 +1419,9 @@ div.foot-nav-wrap {
 #tumblr_controls{margin:0 105px 0 0 !important}
 {/block:ifshowcredit}
 
+{block:indexpage}
+article.media-post, article.text-post { display: none; }
+{block:indexpage}
 /*      End-Adjustments     */
 
 {CustomCSS}
@@ -1640,7 +1651,7 @@ div.foot-nav-wrap {
 
 {block:Posts}
 
-<article id="{PostID}" class="entry{block:HasTags}{block:Tags} {Tag}{/block:Tags}{/block:HasTags}">
+<article id="{PostID}" class="entry{block:HasTags}{block:Tags} {Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
  
 {block:Answer}
 <div class="text">
@@ -1688,7 +1699,7 @@ div.foot-nav-wrap {
 
 {block:Photo}
 <div class="photo">
-{block:indexpage}
+	{block:indexpage}
 		<div class="photo-hover">
 		<a href="{permalink}" class="overlay"></a>
 				<div class="photo-buttons">
@@ -1705,12 +1716,13 @@ div.foot-nav-wrap {
 						<img src="{PhotoURL-500}"alt="{PhotoAlt}">
 				</div>
 		</div>
-		{/block:indexpage}
-		{block:permalinkpage}
+	{/block:indexpage}
+		
+	{block:permalinkpage}
 		{LinkOpenTag}
 				<img src="{PhotoURL-HighRes}"alt="{PhotoAlt}">
 		{LinkCloseTag}
-		{/block:permalinkpage}
+	{/block:permalinkpage}
 </div>
 {/block:Photo}
  
