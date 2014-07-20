@@ -46,6 +46,8 @@
 <meta name="color:Photo Overlay" content="#000000"/>
 <meta name="color:Photo Buttons" content="#ffffff"/>
 
+<meta name="color:Lightbox Background" content="#ffffff"/>
+
 <meta name="if:Activate Slide Show" content="0"/>
 <meta name="if:Full Screen Cover" content="1"/>
 <meta name="if:Animated Loading" content="1"/>
@@ -631,6 +633,7 @@ a#slide{
 
 
 #posts-container{
+		border-top: solid 1px #eee;
 		position:relative;
 		right:0;
 		width:100%;
@@ -1018,7 +1021,7 @@ a#slide{
 body,
 section{
 		position:relative;
-		font:12px/1.6em "{select:Body Font}", san-serif;
+		font:12px/1.6em "{select:Body Font}", Arial, san-serif;
 		color:{color:Body Text};
 		background:{color:background} url("{image:background}") fixed;
 		z-index:10
@@ -1034,9 +1037,17 @@ a:hover{
 		}
 
 h1,h2,h3,h4,h5{
-		font-family: "{select:Body Font}", san-serif;
+		font-family: "{select:Body Font}", Arial, san-serif;
 		color: {color:Body Title};
 		}
+
+div.mfp-bg {
+	background: {color:Lightbox Background};
+}
+
+div.mfp-figure:after {
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
 
 /*nav bg when opened http://static.tumblr.com/8u4ydgr/qgIn8s61o/nav-bg.png*/
 #full-overlay {
@@ -1126,7 +1137,7 @@ h1,h2,h3,h4,h5{
 		background:rgba({RGBcolor:Links},.2)
 		}
 
-#topbar a:hover{
+#topbar a#slide:hover{
 		background:rgba({RGBcolor:Top Bar Text},.1)
 		}
 
