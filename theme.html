@@ -163,7 +163,7 @@ body{
 		height:100%;
 		margin:0;
 		padding:0;
-		font-family: "{select:Body Font}", sans-serif;
+		font-family: "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 		-webkit-font-smoothing: antialiased;
 		}
 
@@ -178,7 +178,7 @@ img{
 		}
  
 h1, h2, h3, h4, h5 {
-		font:400 16px/1em "{select:Body Font}", sans-serif;
+		font:400 16px/1em "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 		}
  
 blockquote{
@@ -242,7 +242,7 @@ a,
 		top:48%;
 		left:0;
 		padding:0 5%;
-		font:18px "{select:Body Font}",serif;
+		font:18px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 		z-index:1
 		}
 
@@ -1021,7 +1021,7 @@ a#slide{
 body,
 section{
 		position:relative;
-		font:12px/1.6em "{select:Body Font}", Arial, san-serif;
+		font:12px/1.6em "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 		color:{color:Body Text};
 		background:{color:background} url("{image:background}") fixed;
 		z-index:10
@@ -1037,7 +1037,7 @@ a:hover{
 		}
 
 h1,h2,h3,h4,h5{
-		font-family: "{select:Body Font}", Arial, san-serif;
+		font-family: "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 		color: {color:Body Title};
 		}
 
@@ -1266,12 +1266,12 @@ div.mfp-figure:after {
 #permalink .permalink-box ol.notes li.more_notes_link_container a.more_notes_link{
 		text-transform:uppercase;
 		letter-spacing:1px;
-		font:11px "{select:Body Font}", san-serif;
+		font:11px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 		color:{color:Body Text}
 		}
 
 #pagination a{
-		font:13px "{select:Body Font}", san-serif;
+		font:13px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 		color:{color:Body Title};
 		background:{color:Post Background}
 		}
@@ -1279,7 +1279,7 @@ div.mfp-figure:after {
 #footer {
 	background-color: #e3e3e3;
 	color: #fff;
-	font-family: "Roboto", Arial, san-serif;
+	font-family: "Roboto", Arial, sans-serif;
 	text-transform: uppercase;
 	position: relative;
 	z-index: 11;
@@ -1421,7 +1421,7 @@ div.foot-nav-wrap {
 
 {block:indexpage}
 article.media-post, article.text-post { display: none; }
-{block:indexpage}
+{/block:indexpage}
 /*      End-Adjustments     */
 
 {CustomCSS}
@@ -2116,7 +2116,11 @@ article.media-post, article.text-post { display: none; }
 						type: 'image',
 						gallery:{enabled:true},
 						removalDelay: 200,
-						mainClass: 'mfp-fade'
+						mainClass: 'mfp-fade',
+						image: {
+						    // options for image content type
+							titleSrc: 'title'
+						}
 					});
 				});
 
