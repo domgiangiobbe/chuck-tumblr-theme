@@ -64,6 +64,7 @@
 <meta name="if:Post Rounded" content="1"/>
 <meta name="if:Open Links In New Tab" content="1"/>
 <meta name="if:Infinite Scrolling" contet="1"/>
+<meta name="if:Detailed Footer" contet="0"/>
 
 <meta name="select:Body Font" content="Arial" title="Arial"/>
 <meta name="select:Body Font" content="Arial Black" title="Arial Black"/>
@@ -1287,13 +1288,20 @@ div.mfp-figure:after {
 
 div.foot-top {
 	background-color: #0006ff;
-	height: 130px;
 }
 
 div.foot-logo, div.foot-main {
 	margin: 0 auto;
 	max-width: 960px;
 	width: auto;
+}
+
+div.foot-logo {
+	background: url('http://static.tumblr.com/8u4ydgr/bNhn93g4s/footer-logo.png') no-repeat 50% 50% transparent;
+	display: block;
+	height: 240px;
+	min-width: 160px;
+	text-indent: -10000px;
 }
 
 div.foot-main {
@@ -1867,7 +1875,7 @@ article.media-post, article.text-post { display: none; }
 			CW
 		</div>
 	</div>
-
+	{block:ifdetailedfooter}
 	<div class="foot-main">
 		<div class="foot-contact left">
 			<div class="foot-logo-2">CW</div>
@@ -1901,6 +1909,7 @@ article.media-post, article.text-post { display: none; }
 		</div>
 
 	</div>
+	{/block:ifdetailedfooter}
 </footer>
 
 <!-- <script type="text/javascript" src="http://static.tumblr.com/3zmswwt/SmLmzp5h9/scripts.js"></script> -->
