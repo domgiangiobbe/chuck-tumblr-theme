@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>{block:Description}
-<meta name="description" content="{MetaDescription}">{/block:Description}
+<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+
+{block:Description}
+<meta name="description" content="{MetaDescription}">
+{/block:Description}
  
 <link rel="alternate" type="application/rss+xml" href="{RSS}">
 <link rel="shortcut icon" href="{favicon}">
@@ -33,12 +36,8 @@
 
 <meta name="color:Top Bar Text" content="#ffffff"/>
 <meta name="color:Sidebar Background" content="#012b37"/>
-<meta name="color:Sidebar Dividers" content="#073745"/>
-<meta name="color:Sidebar Icons" content="#dddddd"/>
-<meta name="color:Sidebar Description" content="#dddddd"/>
 <meta name="color:Sidebar Links" content="#ffffff"/>
 <meta name="color:Sidebar Links Hover" content="#ffffff"/>
-<meta name="color:Sidebar Tweets" content="#dddddd"/>
 <meta name="color:Post Background" content="#ffffff"/>
 <meta name="color:Post Dividers" content="#efefef"/>
 <meta name="color:Post Information" content="#bbbbbb"/>
@@ -52,12 +51,7 @@
 <meta name="if:Full Screen Cover" content="1"/>
 <meta name="if:Animated Loading" content="1"/>
 <meta name="if:Uppercase Sidebar Links" content="1"/>
-<meta name="if:Show Category List" content="0"/>
-<meta name="if:Show Archive Link" content="1"/>
 <meta name="if:Show Credit" content="1"/>
-<meta name="if:Show Random Link" content="1"/>
-<meta name="if:Show RSS Link" content="1"/>
-<meta name="if:Show Social Icons" content="0"/>
 <meta name="if:Show Post Notes" content="1"/>
 <meta name="if:Hide Post Tags" content="0"/>
 <meta name="if:Photo Captions" content="0"/>
@@ -92,59 +86,9 @@
 <meta name="select:Post Size" content="width-large" Title="large"/>
 <meta name="select:Post Size" content="width-huge" Title="Huge"/>
 
-<meta name="select:Instagram Feed Count" content="instagram-count-3" Title="3"/>
-<meta name="select:Instagram Feed Count" content="instagram-count-6" Title="6"/>
-<meta name="select:Instagram Feed Count" content="instagram-count-9" Title="9"/>
-<meta name="select:Instagram Feed Count" content="instagram-count-12" Title="12"/>
-
-<meta name="text:Cover Text" content=""/>
-<meta name="text:Category Title" content="Categories"/>
-<meta name="text:Instagram Feed Title" content="Instagram Feed"/>
-<meta name="text:Instagram ID" content=""/>
-<meta name="text:Dribbble Feed Title" content="Dribbble Feed"/>
-<meta name="text:Dribbble Username" content=""/>
-<meta name="text:Twitter Feed Title" content="Twitter Feed"/>
-<meta name="text:Twitter Feed Count" content="5"/>
-<meta name="text:Ask Title" content="Message"/>
-<meta name="text:Archive title" content="Archive"/>
 <meta name="text:Cover Overlay Opacity" content="60"/>
 <meta name="text:Photo Overlay Opacity" content="70"/>
-<meta name="text:Disqus Shortname" content=""/>
 <meta name="text:Google Analytics ID" content=""/>
-<meta name="text:URL Flickr" content=""/>
-<meta name="text:URL Vimeo" content=""/>
-<meta name="text:URL Twitter" content=""/>
-<meta name="text:URL Facebook" content=""/>
-<meta name="text:URL Google Plus" content=""/>
-<meta name="text:URL Pinterest" content=""/>
-<meta name="text:URL Dribble" content=""/>
-<meta name="text:URL Spotify" content=""/>
-<meta name="text:URL Instagram" content=""/>
-<meta name="text:URL Soundcloud" content=""/>
-<meta name="text:URL Behance" content=""/>
-<meta name="text:URL Linkedin" content=""/>
-<meta name="text:URL Stumbleupon" content=""/>
-<meta name="text:URL Github" content=""/>
-<meta name="text:URL Youtube" content=""/>
-
-<meta name="text:Category 1 Tag" content=""/>
-<meta name="text:Category 1 Title" content=""/>
-<meta name="text:Category 2 Tag" content=""/>
-<meta name="text:Category 2 Title" content=""/>
-<meta name="text:Category 3 Tag" content=""/>
-<meta name="text:Category 3 Title" content=""/>
-<meta name="text:Category 4 Tag" content=""/>
-<meta name="text:Category 4 Title" content=""/>
-<meta name="text:Category 5 Tag" content=""/>
-<meta name="text:Category 5 Title" content=""/>
-<meta name="text:Category 6 Tag" content=""/>
-<meta name="text:Category 6 Title" content=""/>
-<meta name="text:Category 7 Tag" content=""/>
-<meta name="text:Category 7 Title" content=""/>
-<meta name="text:Category 8 Tag" content=""/>
-<meta name="text:Category 8 Title" content=""/>
-<meta name="text:Category 9 Tag" content=""/>
-<meta name="text:Category 9 Title" content=""/>
 
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={select:Body Font}|{select:Title Font}:400,400italic,700,700italic">
 <link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
@@ -191,11 +135,9 @@ blockquote{
 a,
 .like_button,
 #sidebar img,
-#sidebar #instagram #instagram-feed li img,
-#sidebar #dribbble #dribbble-feed img,
-#sidebar #twitter .content,
 .entry .photo .photo-hover a.overlay,
-.entry .photo .photo-buttons, #full-overlay, #full-overlay.show{
+.entry .photo .photo-buttons, #full-overlay, #full-overlay.show, 
+#topbar, #topbar h1, #sidebar, #posts-container {
 	-webkit-transition: all .3s ease;
 	transition: all .3s ease;
 }
@@ -207,28 +149,28 @@ a,
 #cover #cover-scroll,
 .mfp-fade.mfp-bg,
 .mfp-fade.mfp-wrap .mfp-content,
-.entry .photo .photoset-grid img{
+.entry .photo .photoset-grid img {
 	-webkit-transition: all .4s ease;
 	transition: all .4s ease;
 }
 
-#tumblr_controls{
+#tumblr_controls {
 	position: fixed;
 }
 
-.like_button{
+.like_button {
 	position: absolute;
 	opacity: 0;
 }
 
-.like_button.liked{
+.like_button.liked {
 	opacity:1 !important
 }
 
 /*      End-Setting     */
 
 /*      Cover       */
-#cover{
+#cover {
 	position: relative;
 	height: 100%;
 	width: 100%;
@@ -236,7 +178,7 @@ a,
 	text-align: center;
 }
 
-#cover-scroll{
+#cover-scroll {
 	position: fixed;
 	display: block;
 	height: 50px;
@@ -251,7 +193,7 @@ a,
 	z-index: 1;
 }
 
-#slideshow{
+#slideshow {
 	position: fixed;
 	height: 100%;
 	width: 100%;
@@ -260,266 +202,86 @@ a,
 	z-index: -5;
 }
 
-#slideshow li{
+#slideshow li {
 	list-style-type: none;
 	width: 100%;
 	height: 100%;
 }
 
-#slideshow > li{ 
+#slideshow > li { 
 	position: absolute;
 }
-
 /*      End-Cover       */
 
+
 /*      Default     */
+#topbar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	padding: 20px;
+	opacity: 1 !important;
+	z-index: 30;
+	pointer-events: auto;
+}
 
-#topbar{
-		position: fixed;
-		top: 0;
-		right: 0;
-		/*height: 50px !important;*/
-		width: 100%;
-		padding: 20px;
-		opacity: 1 !important;
-		z-index: 30;
-		pointer-events: auto;
-		}
+#topbar h1 {
+	display: inline-block;
+	font-size: 34px;
+	letter-spacing: 0;
+	margin: 0;
+}
 
-#topbar h1{
-		display: inline-block;
-		font-size: 34px;
-		letter-spacing: 0;
-		margin: 0;
-		}
+#topbar h1 a {
+	padding: 0px 10px 0px 7px;
+}
 
-#topbar h1 a{
-		padding: 0px 10px 0px 7px;
-		}
-
-#topbar a#top,
-a#slide{
-		color: #000;
-		display: inline;
-		float: right;
-		margin: -5px 0 0 20px;
-		font: 18px "icon";
-		padding: 15px;
-		cursor: pointer;
-		}
-
-#topbar #category{
-		position:relative;
-		display:inline-block;
-		float:right;
-		margin:-11px 0 0 0;
-		z-index:30
-		}
-
-#topbar #category a.click-category{
-		cursor:pointer;
-		display:inline-block;
-		width:200px;
-		padding:0 15px;
-		border-radius:3px;
-		}
-
-#topbar #category a.click-category:after{
-		content:"m";
-		float:right;
-		font:12px/40px "icon";
-		}
-
-#topbar #category ul#category-list{
-		display:none;
-		position:absolute;
-		width:200px;
-		top:29px;
-		left:0;
-		padding:0 0 20px 0;
-		list-style-type:none;
-		z-index:31
-		}
-
-#topbar #category ul#category-list li a{
-		display:block;
-		padding:7px 15px;
-		font-weight:bold;
-		border:0 !important
-		}
-
-#topbar #category.category-list-move a.click-category{
-		border-radius:0;
-		border-top-right-radius:3px;
-		border-top-left-radius:3px
-		}
-
-#topbar #category.category-list-move{
-		background:transparent !important
-		}
-
-#topbar #category.category-list-move ul#category-list{
-		display:block
-		}
-
-#topbar #category.category-list-move a.click-category:after{
-		content:"/"
-		}
-
-#topbar.topbar-move{
-		right: 215px !important;
-		}
-
-#topbar.topbar-move h1{
-		margin-left: 215px;
-		}
+#slide {
+	color: #000;
+	display: inline;
+	float: right;
+	margin: -5px 0 0 20px;
+	font: 18px "icon";
+	padding: 15px;
+	cursor: pointer;
+}
 
 #sidebar.sidebar-move{
-		right: 0 !important;
-		}
+	right: 0 !important;
+}
 
-#posts-container.posts-container-move{
-		/*right:250px !important*/
-		}
+#sidebar {
+	position:fixed;
+	z-index:15;
+	width: 215px;
+	height: 100%;
+	top: 0;
+	right: -215px;
+	padding: 22px;
+	overflow-y: scroll;
+}
 
-#topbar, #topbar h1, #sidebar, #posts-container{
-		-webkit-transition:all .3s ease;
-		transition:all .3s ease
-		}
+#sidebar::-webkit-scrollbar {
+	width: 0;
+}
 
-#sidebar{
-		position:fixed;
-		z-index:15;
-		width: 215px;
-		height: 100%;
-		top: 0;
-		right: -215px;
-		padding: 22px;
-		overflow-y: scroll;
-		}
+#sidebar img {
+	padding:30px;
+	width:100%;
+}
 
-#sidebar::-webkit-scrollbar{
-		width:0
-		}
+#sidebar img:hover {
+	opacity: 0.8;
+}
 
-#sidebar img{
-		padding:30px
-		}
+#navigation li {
+	list-style-type: none;
+}
 
-#sidebar img{
-		width:100%
-		}
-
-#sidebar img:hover{
-		opacity:.8
-		}
-
-#sidebar #social a{
-		display:inline-block;
-		width:31px;
-		height:31px;
-		margin:0 7px;
-		font:13px/31px "icon";
-		text-align:center;
-		box-shadow: inset 0 0 0 3px rgba(0,0,0,.1),
-								0 0 0 2px rgba(0,0,0,0);
-		border-radius:3px
-		}
-
-#sidebar #social a:hover{
-		color:#fff
-		}
-
-#sidebar #social a.flickr:hover{background:#fe0084}
-#sidebar #social a.vimeo:hover{background:#6dceee}
-#sidebar #social a.twitter:hover{background:#00aced}
-#sidebar #social a.facebook:hover{background:#3b5999}
-#sidebar #social a.google:hover{background:#d84937}
-#sidebar #social a.pinterest:hover{background:#c11a22}
-#sidebar #social a.dribble:hover{background:#ea4c89}
-#sidebar #social a.spotify:hover{background:#81b71a}
-#sidebar #social a.instagram:hover{background:#1c5380}
-#sidebar #social a.soundcloud:hover{background:#f70}
-#sidebar #social a.behance:hover{background:#1769ff}
-#sidebar #social a.stumbleupon:hover{background:#f74425}
-#sidebar #social a.github:hover{background:#ea4c89}
-#sidebar #social a.linkedin:hover{background:#1769ff}
-#sidebar #social a.youtube:hover{background:#bb0000}
-
-#sidebar #navigation li{
-		list-style-type:none;
-		}
-
-#sidebar #navigation li a{
-		letter-spacing: 0;
-		}
-
-#sidebar h2{
-		padding:0 0 10px 0;
-		font-size:12px;
-		letter-spacing:1px
-		}
-
-.instagram-count-3 #instagram-feed{height:65px}
-.instagram-count-6 #instagram-feed{height:135px}
-.instagram-count-9 #instagram-feed{height:210px}
-.instagram-count-12 #instagram-feed{height:280px}
-
-#sidebar #instagram #instagram-feed{
-		width:210px;
-		padding:0;
-		list-style:none;
-		overflow:hidden;
-		white-space:nowrap
-		}
-
-#sidebar #instagram #instagram-feed li {
-		float:left;
-		margin:0 5px 5px 0
-		}
-
-#sidebar #instagram #instagram-feed li img{
-		width:65px;
-		height:65px;
-		padding:0;
-		opacity:.85
-		}
-
-#sidebar #instagram #instagram-feed li img:hover{
-		opacity:1
-		}
-
-#sidebar #dribbble #dribbble-feed{
-		width:210px
-		}
-
-#sidebar #dribbble #dribbble-feed img{
-		float:left;
-		width:65px;
-		margin:0 5px 5px 0;
-		padding:0
-		}
-
-#sidebar #dribbble #dribbble-feed img:hover{
-		opacity:.85
-		}
-
-#sidebar #dribbble #dribbble-feed:after{ 
-		content:"";
-		display:block; 
-		height:0; 
-		clear:both
-		}
-
-#sidebar #twitter .content{
-		margin:10px 0 0 0
-		}
-
-#sidebar #twitter .content:hover{
-		opacity:.85
-		}
-
-
+#navigation li a {
+	letter-spacing: 0;
+}
 /*      End-Header     */
 
 #container{
@@ -1431,149 +1193,21 @@ article.media-post, article.text-post { display: none; }
 {/block:indexpage}
 
 <header id="topbar">
+	<h1><a href="/">{title}</a></h1>
 
-		<h1><a href="/">{title}</a></h1>
-
-		<a id="slide">\</a>
-		
-		{block:indexpage}
-	        {block:ifshowtotopButton}
-	            <a id="top">]</a>
-	        {/block:ifshowtotopButton}
-	    {/block:indexpage}
-
-{block:ifshowcategorylist}
-		<div id="category">
-				
-				<a class="click-category">{text:Category Title}</a>
-				
-				<ul id="category-list">
-						
-		{block:ifcategory1title}
-		<li><a href="/tagged/{text:Category 1 Tag}">{text:Category 1 Title}</a></li>
-		{/block:ifcategory1title}
-		{block:ifcategory2title}
-		<li><a href="/tagged/{text:Category 2 Tag}">{text:Category 2 Title}</a></li>
-		{/block:ifcategory2title}
-		{block:ifcategory3title}
-		<li><a href="/tagged/{text:Category 3 Tag}">{text:Category 3 Title}</a></li>
-		{/block:ifcategory3title}
-		{block:ifcategory4title}
-		<li><a href="/tagged/{text:Category 4 Tag}">{text:Category 4 Title}</a></li>
-		{/block:ifcategory4title}
-		{block:ifcategory5title}
-		<li><a href="/tagged/{text:Category 5 Tag}">{text:Category 5 Title}</a></li>
-		{/block:ifcategory5title}
-		{block:ifcategory6title}
-		<li><a href="/tagged/{text:Category 6 Tag}">{text:Category 6 Title}</a></li>
-		{/block:ifcategory6title}
-		{block:ifcategory7title}
-		<li><a href="/tagged/{text:Category 7 Tag}">{text:Category 7 Title}</a></li>
-		{/block:ifcategory7title}
-		{block:ifcategory8title}
-		<li><a href="/tagged/{text:Category 8 Tag}">{text:Category 8 Title}</a></li>
-		{/block:ifcategory8title}
-		{block:ifcategory9title}
-		<li><a href="/tagged/{text:Category 9 Tag}">{text:Category 9 Title}</a></li>
-		{/block:ifcategory9title}
-	
-				</ul>
-				
-		</div>
-{/block:ifshowcategorylist}
-
+	<a id="slide">\</a>
 </header>
 
 <aside id="sidebar">
-
-		{block:ifSidebarPortraitimage}
-				<img src="{image:Sidebar Portrait}" alt="{title}"/>
-		{/block:ifSidebarPortraitimage}
-
-		{block:description}
-			<div id="description">{description}</div>
-		{/block:description}
-
-		{block:ifshowsocialicons}
-			<div id="social">
-				{Block:ifURLTwitter}<a href="{text:URL Twitter}" class="twitter" target="_blank">1</a>{/Block:ifURLTwitter}
-				{Block:ifURLFacebook}<a href="{text:URL Facebook}" class="facebook" target="_blank">2</a>{/Block:ifURLFacebook}
-				{Block:ifURLVimeo}<a href="{text:URL Vimeo}" class="vimeo" target="_blank">3</a>{Block:ifURLVimeo}
-				{Block:ifURLFlickr}<a href="{text:URL Flickr}" class="flickr" target="_blank">4</a>{/Block:ifURLFlickr}
-				{Block:ifURLGooglePlus}<a href="{text:URL Google Plus}" class="google" target="_blank">5</a>{/Block:ifURLGooglePlus}
-				{Block:ifURLYoutube}<a href="{text:URL Youtube}" class="youtube" target="_blank">u</a>{/Block:ifURLYoutube}
-				{Block:ifURLPinterest}<a href="{text:URL Pinterest}" class="pinterest" target="_blank">6</a>{/Block:ifURLPinterest}
-				{Block:ifURLLinkedin}<a href="{text:URL Linkedin}" class="linkedin" target="_blank">7</a>{/Block:ifURLLinkedin}
-				{Block:ifURLDribble}<a href="{text:URL Dribble}" class="dribble" target="_blank">8</a>{/Block:ifURLDribble}
-				{Block:ifURLStumbleupon}<a href="{text:URL Stumbleupon}" class="stumbleupon" target="_blank">9</a>{/Block:ifURLStumbleupon}
-				{Block:ifURLSpotify}<a href="{text:URL Spotify}" class="spotify" target="_blank">=</a>{/Block:ifURLSpotify}
-				{Block:ifURLInstagram}<a href="{text:URL Instagram}" class="instagram" target="_blank">q</a>{/Block:ifURLInstagram}
-				{Block:ifURLBehance}<a href="{text:URL Behance}" class="behance" target="_blank">e</a>{/Block:ifURLBehance}
-				{Block:ifURLGithub}<a href="{text:URL Github}" class="github" target="_blank">r</a>{/Block:ifURLGithub}
-				{Block:ifURLSoundcloud}<a href="{text:URL Soundcloud}" class="soundcloud" target="_blank">t</a>{/Block:ifURLSoundcloud}
-				</div><!--  Social      -->
-		{/block:ifshowsocialicons}
-
-		<nav id="navigation">
-			<!-- {block:AskEnabled}
-				<li><a href="/ask">{text:Ask Title}</a></li>
-			{/block:AskEnabled}
-			{block:SubmissionsEnabled}
-				<li><a href="/submit">Submit</a></li>
-			{/block:SubmissionsEnabled}
-			{block:ifshowarchivelink}
-				<li><a href="/archive">{text:Archive Title}</a></li>
-			{/block:ifshowarchivelink}
-			{block:ifshowrandomlink}
-				<li><a href="/random">Random</a></li>
-			{/block:ifshowrandomlink}
-			{block:ifshowrsslink}
-				<li><a href="{RSS}">RSS</a></li>
-			{/block:ifshowrsslink} -->
-				<li><a href="/" title="Recent">Recent</a></li>
-				<li><a href="/tagged/painting" title="Paintings">Paintings</a></li>
-				<li><a href="/tagged/drawing" title="Drawings">Drawings</a></li>
-				<li><a href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
-				<div class="mb-40"></div>
-			{block:Pages}
-				<li><a class="sub-nav" href="{URL}" title="{Label}">{Label}</a></li>
-			{/block:Pages}	
-		</nav>
-
-		{block:ifinstagramid}
-		<div id="instagram" class="{select:Instagram Feed Count}">
-			<h2>{text:Instagram Feed Title}</h2>
-			<ul id="instagram-feed"></ul>
-		</div>
-		{block:ifinstagramid}
-
-		{block:ifDribbbleUsername}
-		<div id="dribbble">
-			<h2>{text:Dribbble Feed Title}</h2>
-			<div id="dribbble-feed"></div>
-		</div>
-		{/block:ifDribbbleUsername}
-
-		{block:twitter}
-		<div id="twitter">
-			<h2>{text:Twitter Feed Title}</h2>
-			<div id="tweets"></div>
-		</div>
-		<script type="text/javascript">
-			function recent_tweets(data) {
-				for (i=0; i<{text:Twitter Feed Count}; i++) {
-								document.getElementById("tweets").innerHTML =
-									document.getElementById("tweets").innerHTML +
-									'<a href="http://twitter.com/{TwitterUsername}/status/' +
-									(data[i].id_str ? data[i].id_str : data[i].id) +
-									'"><div class="content">' + data[i].text +
-									'</div></a>';
-					}
-					document.getElementById("twitter").style.display = 'block';
-			}
-		</script>
-		{/block:twitter}
-
+	<nav id="navigation">
+		<li><a href="/" title="Recent">Recent</a></li>
+		<li><a href="/tagged/painting" title="Paintings">Paintings</a></li>
+		<li><a href="/tagged/drawing" title="Drawings">Drawings</a></li>
+		<li><a href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
+		{block:Pages}
+			<li><a href="{URL}" title="{Label}">{Label}</a></li>
+		{/block:Pages}	
+	</nav>
 </aside>
 
 
