@@ -100,37 +100,66 @@
 <style type="text/css">
 
 /*      Settings     */
-
 *, *:before, *:after {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
 
-html,
-body{
-		height:100%;
-		margin:0;
-		padding:0;
-		font-family: "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		}
+html, body {
+	font-family: "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	-webkit-font-smoothing: antialiased;
 
-a,a:hover{
-		word-wrap:break-word;
-		text-decoration:none
-		}
+	color: {color:Body Text};
+}
 
-img{
-		max-width:100%;
-		display:block
-		}
- 
+body, section{
+	position:relative;
+	z-index: 10;
+	
+	background:{color:background} url("{image:background}") fixed;
+}
+
+a, a:hover, a:link, a:visited {		
+	word-wrap: break-word;
+	text-decoration: none;
+	color: {color:Links};
+}
+
+a:hover {
+	color: {color:Links Hover};
+}
+
+img {
+	max-width: 100%;
+	display: block
+}
+
 h1, h2, h3, h4, h5 {
-		font:400 16px/1em "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-		}
+	font-family: 400 16px/1em "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
+	color: {color:Body Title};
+}
  
 blockquote{
-		padding:0 0 0 15px;
-		margin:0 0 0 15px;
-		border-left:2px solid #ccc
-		}
+	padding: 0 0 0 15px;
+	margin: 0 0 0 15px;
+	border-left: 2px solid #ccc;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.mb-40 {
+	margin-bottom: 40px;
+}
 
 a,
 .like_button,
@@ -142,16 +171,24 @@ a,
 	transition: all .3s ease;
 }
 
-.mb-40 {
-	margin-bottom: 40px;
-}
-
 #cover #cover-scroll,
 .mfp-fade.mfp-bg,
 .mfp-fade.mfp-wrap .mfp-content,
 .entry .photo .photoset-grid img {
 	-webkit-transition: all .4s ease;
 	transition: all .4s ease;
+}
+
+div.mfp-bg {
+	background: {color:Lightbox Background};
+}
+
+.mfp-fade.mfp-bg.mfp-ready {
+	opacity: 0.93;
+}
+
+div.mfp-figure:after {
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 #tumblr_controls {
@@ -166,8 +203,25 @@ a,
 .like_button.liked {
 	opacity:1 !important
 }
-
 /*      End-Setting     */
+
+/*		Overlay 	*/
+#full-overlay {
+	background: url('http://static.tumblr.com/8u4ydgr/qgIn8s61o/nav-bg.png') 0 0 repeat;
+	position: fixed;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#full-overlay.show {
+	opacity: 1;
+	z-index: 15;
+}
+/*      End Overlay  */
+
 
 /*      Cover       */
 #cover {
@@ -193,6 +247,11 @@ a,
 	z-index: 1;
 }
 
+#cover-scroll:hover{
+	background: rgba({RGBcolor:Cover Overlay},.3);
+	box-shadow: 0 0 0 1.5px rgba({RGBcolor:Cover Text},.2);
+}
+
 #slideshow {
 	position: fixed;
 	height: 100%;
@@ -211,11 +270,42 @@ a,
 #slideshow > li { 
 	position: absolute;
 }
+
+#slideshow li.slide-1{
+	background: url("{image:Cover Slide 1}") center no-repeat;
+	background-size: cover;
+}
+
+#slideshow li.slide-2{
+	background: url("{image:Cover Slide 2}") center no-repeat;
+	background-size: cover;
+}
+
+#slideshow li.slide-3{
+	background: url("{image:Cover Slide 3}") center no-repeat;
+	background-size: cover;
+}
+
+#slideshow li.slide-4{
+	background: url("{image:Cover Slide 4}") center no-repeat;
+	background-size: cover;
+}
+
+#slideshow li.slide-5{
+	background: url("{image:Cover Slide 5}") center no-repeat;
+	background-size: cover;
+}
+
+#slideshow li.slide-6{
+	background: url("{image:Cover Slide 6}") center no-repeat;
+	background-size: cover;
+}
 /*      End-Cover       */
 
 
-/*      Default     */
+/*      Topbar/Nav    */
 #topbar {
+	background: transparent;
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -235,20 +325,25 @@ a,
 
 #topbar h1 a {
 	padding: 0px 10px 0px 7px;
+	color: {color:Top Bar Text};
 }
 
-#slide {
-	color: #000;
+a#slide {
 	display: inline;
 	float: right;
 	margin: -5px 0 0 20px;
 	font: 18px "icon";
 	padding: 15px;
 	cursor: pointer;
+	color: {color:Top Bar Text};
 }
 
-#sidebar.sidebar-move{
-	right: 0 !important;
+a#slide:hover{
+	background: rgba({RGBcolor:Top Bar Text}, .1);
+}
+
+#topbar.topbar-move #slide {
+	margin-right: 215px;
 }
 
 #sidebar {
@@ -260,6 +355,11 @@ a,
 	right: -215px;
 	padding: 22px;
 	overflow-y: scroll;
+	background: {color:Sidebar Background};
+}
+
+#sidebar.sidebar-move{
+	right: 0 !important;
 }
 
 #sidebar::-webkit-scrollbar {
@@ -280,8 +380,19 @@ a,
 }
 
 #navigation li a {
+	font: 28px "{select:Title Font}";
+	line-height: 1em;
 	letter-spacing: 0;
+	color:{color:Sidebar Links};
 }
+
+#navigation li a:hover{
+	color:{color:Sidebar Links Hover};
+}
+/*    End Topbar/Nav    */
+
+
+
 /*      End-Header     */
 
 #container{
@@ -740,199 +851,6 @@ a,
 
 /*      Adjustments     */
 
-body,
-section{
-		position:relative;
-		font:12px/1.6em "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-		color:{color:Body Text};
-		background:{color:background} url("{image:background}") fixed;
-		z-index:10
-		}
-
-a,a:link,a:visited{
-		text-decoration:none;
-		color:{color:Links}
-		}
- 
-a:hover{
-		color:{color:Links Hover}
-		}
-
-h1,h2,h3,h4,h5{
-		font-family: "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-		color: {color:Body Title};
-		}
-
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
-}
-
-.clear {
-	clear: both;
-}
-
-div.mfp-bg {
-	background: {color:Lightbox Background};
-}
-
-.mfp-fade.mfp-bg.mfp-ready {
-	opacity: 0.93;
-}
-
-div.mfp-figure:after {
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-}
-
-/*nav bg when opened http://static.tumblr.com/8u4ydgr/qgIn8s61o/nav-bg.png*/
-#full-overlay {
-	background: url('http://static.tumblr.com/8u4ydgr/qgIn8s61o/nav-bg.png') 0 0 repeat;
-	position: fixed;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	height: 100%;
-	width: 100%;
-}
-
-#full-overlay.show {
-	opacity: 1;
-	z-index: 15;
-}
-
-#cover #cover-overlay{
-		background:rgba({RGBcolor:Cover Overlay},.{text:Cover Overlay Opacity})
-		}
-
-#cover #cover-scroll:hover{
-		background:rgba({RGBcolor:Cover Overlay},.3);
-		box-shadow:0 0 0 1.5px rgba({RGBcolor:Cover Text},.2)
-		}
-
-#cover #cover-information h1 a{
-		color:{color:Cover Title};
-		}
-
-#cover #cover-scroll,
-#cover #cover-information,
-#cover #cover-information a{
-		color:{color:Cover Text}
-		}
-
-#cover #slideshow li.slide-1{
-		background:url("{image:Cover Slide 1}") center no-repeat;
-		background-size:cover
-		}
-
-#cover #slideshow li.slide-2{
-		background:url("{image:Cover Slide 2}") center no-repeat;
-		background-size:cover
-		}
-
-#cover #slideshow li.slide-3{
-		background:url("{image:Cover Slide 3}") center no-repeat;
-		background-size:cover
-		}
-
-#cover #slideshow li.slide-4{
-		background:url("{image:Cover Slide 4}") center no-repeat;
-		background-size:cover
-		}
-
-#cover #slideshow li.slide-5{
-		background:url("{image:Cover Slide 5}") center no-repeat;
-		background-size:cover
-		}
-
-#cover #slideshow li.slide-6{
-		background:url("{image:Cover Slide 6}") center no-repeat;
-		background-size:cover
-		}
-
-#topbar,
-#topbar #category{
-		background: transparent;
-		}
-
-#topbar a,
-#topbar #category ul#category-list{
-		color:{color:Top Bar Text};
-		}
-
-#topbar #category a.click-category{
-		font:13px/40px "{select:Title Font}";
-		color:{color:Top Bar Text}
-		}
-
-#topbar #category ul#category-list li a{
-		color:{color:Top Bar Text}
-		}
-
-#topbar #category ul#category-list li a:hover{
-		background:rgba({RGBcolor:Links},.2)
-		}
-
-#topbar a#slide:hover{
-		background:rgba({RGBcolor:Top Bar Text},.1)
-		}
-
-#container,
-#sidebar{
-		background:{color:Sidebar Background}
-		}
-
-#sidebar #social,
-#sidebar #description,
-#sidebar #navigation{
-		border-top:1px solid {color:Sidebar Dividers}
-		}
-
-#sidebar #navigation li a{
-		font: 28px "{select:Title Font}";
-		line-height: 1em;
-		}
-
-#sidebar #navigation li a.sub-nav{
-		font: 22px "{select:Title Font}";
-		line-height: 1.2em;
-		}
-
-#sidebar #social a{
-		color:{color:Sidebar Icons};
-		border:1px solid rgba({RGBcolor:Sidebar Icons},.1)
-		}
-
-#sidebar #social a:hover{
-		box-shadow: inset 0 0 0 rgba({RGBcolor:Sidebar Icons},.5)
-		}
-
-#sidebar #description,
-#sidebar #description a{
-		color:{color:Sidebar Description}
-		}
-
-#sidebar h2,
-#sidebar #navigation li a{
-		color:{color:Sidebar Links}
-		}
-
-#sidebar #navigation li a:hover{
-		color:{color:Sidebar Links Hover}
-		}
-
-#sidebar #instagram,
-#sidebar #dribbble,
-#sidebar #twitter{
-		padding:25px;
-		border-top:1px solid {color:Sidebar Dividers}
-		}
-
-#sidebar #twitter .content{
-		color:{color:Sidebar Tweets}
-		}
 
 #infscr-loading img,#permalink .permalink-box,#post-info,.entry{
 		background:{color:Post Background}
