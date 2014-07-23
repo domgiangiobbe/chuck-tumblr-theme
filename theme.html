@@ -108,15 +108,17 @@ html, body {
 	padding: 0;
 	height: 100%;
 	-webkit-font-smoothing: antialiased;
-
 	color: {color:Body Text};
 }
 
 body, section{
 	position:relative;
 	z-index: 10;
-	
-	background:{color:background} url("{image:background}") fixed;
+	background: {color:background} url("{image:background}") fixed;
+}
+
+section {
+	min-height: 100%;
 }
 
 a, a:hover, a:link, a:visited {		
@@ -135,16 +137,18 @@ img {
 }
 
 h1, h2, h3, h4, h5 {
-	font-family: 400 16px/1em "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
+	font: 400 16px/1em "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 	color: {color:Body Title};
+}
+
+p {
+	font: 12px/1em Arial, sans-serif;
 }
  
 blockquote{
-	padding: 0 0 0 15px;
-	margin: 0 0 0 15px;
-	border-left: 2px solid #ccc;
 }
 
+/* universal class */
 .left {
 	float: left;
 }
@@ -157,10 +161,58 @@ blockquote{
 	clear: both;
 }
 
-.mb-40 {
+.blue-text {
+	color: #0006ff;
+}
+
+.blue-bg {
+	background-color: #0006ff;
+}
+
+/*
+	arb = "Arial Black"
+	ar  = Arial
+*/
+.arb {
+	font-family: "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
+	font-weight: 400;
+}
+
+.ar {
+	font-family: Arial, sans-serif;
+
+}
+
+.mb40 {
 	margin-bottom: 40px;
 }
 
+/*
+	Font-sizes
+*/
+.sz12 {
+	font-size: 12px;
+}
+
+.sz14 {
+	font-size: 14px;
+}
+
+.sz18 {
+	font-size: 18px;
+}
+
+.sz28 {
+	font-size: 28px;
+}
+
+.sz34 {
+	font-size: 34px;
+}
+
+
+
+/*
 a,
 .like_button,
 #sidebar img,
@@ -178,6 +230,7 @@ a,
 	-webkit-transition: all .4s ease;
 	transition: all .4s ease;
 }
+*/
 
 div.mfp-bg {
 	background: {color:Lightbox Background};
@@ -318,13 +371,11 @@ div.mfp-figure:after {
 
 #topbar h1 {
 	display: inline-block;
-	font-size: 34px;
 	letter-spacing: 0;
-	margin: 0;
+	margin: 0 10px 0 7px;
 }
 
 #topbar h1 a {
-	padding: 0px 10px 0px 7px;
 	color: {color:Top Bar Text};
 }
 
@@ -366,23 +417,12 @@ a#slide:hover{
 	width: 0;
 }
 
-#sidebar img {
-	padding:30px;
-	width:100%;
-}
-
-#sidebar img:hover {
-	opacity: 0.8;
-}
-
 #navigation li {
 	list-style-type: none;
 }
 
 #navigation li a {
-	font: 28px "{select:Title Font}";
 	line-height: 1em;
-	letter-spacing: 0;
 	color:{color:Sidebar Links};
 }
 
@@ -996,6 +1036,8 @@ div.foot-nav-wrap {
 	color: #6f6f6f;
 }
 
+/* Custom Pages CSS */
+
 /* Responsive footer */
 @media screen and (max-width:800px){
 	div.foot-nav-wrap {
@@ -1109,19 +1151,19 @@ article.media-post, article.text-post { display: none; }
 {/block:indexpage}
 
 <header id="topbar">
-	<h1><a href="/">{title}</a></h1>
+	<h1 class="sz34"><a href="/">{title}</a></h1>
 
 	<a id="slide">\</a>
 </header>
 
 <aside id="sidebar">
 	<nav id="navigation">
-		<li><a href="/" title="Recent">Recent</a></li>
-		<li><a href="/tagged/painting" title="Paintings">Paintings</a></li>
-		<li><a href="/tagged/drawing" title="Drawings">Drawings</a></li>
-		<li><a href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
+		<li><a class="arb sz28" href="/" title="Recent">Recent</a></li>
+		<li><a class="arb sz28" href="/tagged/painting" title="Paintings">Paintings</a></li>
+		<li><a class="arb sz28" href="/tagged/drawing" title="Drawings">Drawings</a></li>
+		<li><a class="arb sz28" href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
 		{block:Pages}
-			<li><a href="{URL}" title="{Label}">{Label}</a></li>
+			<li><a class="arb sz28" href="{URL}" title="{Label}">{Label}</a></li>
 		{/block:Pages}	
 	</nav>
 </aside>
