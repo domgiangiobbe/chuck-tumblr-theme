@@ -196,9 +196,9 @@ a,
 #sidebar #twitter .content,
 .entry .photo .photo-hover a.overlay,
 .entry .photo .photo-buttons, #full-overlay, #full-overlay.show{
-		-webkit-transition:all .3s ease;
-		transition:all .3s ease
-		}
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+}
 
 .mb-40 {
 	margin-bottom: 40px;
@@ -208,108 +208,67 @@ a,
 .mfp-fade.mfp-bg,
 .mfp-fade.mfp-wrap .mfp-content,
 .entry .photo .photoset-grid img{
-		-webkit-transition:all .4s ease;
-		transition:all .4s ease
-		}
+	-webkit-transition: all .4s ease;
+	transition: all .4s ease;
+}
 
 #tumblr_controls{
-		position:fixed
-		}
+	position: fixed;
+}
 
 .like_button{
-		position:absolute;
-		opacity:0
-		}
+	position: absolute;
+	opacity: 0;
+}
 
 .like_button.liked{
-		opacity:1 !important
-		}
+	opacity:1 !important
+}
 
 /*      End-Setting     */
 
 /*      Cover       */
-
 #cover{
-		position:relative;
-		height:100%;
-		width:100%;
-		padding:0 100px;
-		text-align:center
-		}
+	position: relative;
+	height: 100%;
+	width: 100%;
+	padding: 0 100px;
+	text-align: center;
+}
 
-#cover #cover-information{
-		position:absolute;
-		width:100%;
-		top:48%;
-		left:0;
-		padding:0 5%;
-		font:18px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-		z-index:1
-		}
+#cover-scroll{
+	position: fixed;
+	display: block;
+	height: 50px;
+	width: 50px;
+	margin: 0 0 0 -25px;
+	bottom: 50px;
+	left: 50%;
+	text-align: center;
+	font: 30px/50px "icon";
+	font-weight: bold;
+	cursor: pointer;
+	z-index: 1;
+}
 
-#cover #cover-information h1{
-		padding:0 0 40px 0;
-		}
+#slideshow{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0px !important;
+	right: 0;
+	z-index: -5;
+}
 
-#cover #cover-information h1 a{
-		padding:12px 20px;
-		font-size:26px;
-		letter-spacing:3px
-		}
+#slideshow li{
+	list-style-type: none;
+	width: 100%;
+	height: 100%;
+}
 
-#cover #cover-information img{
-		max-width:100%;
-		margin:auto;
-		padding:0 0 40px 0
-		}
-
-#cover #cover-information p{
-		width:80%;
-		margin:auto
-		}
-
-#cover #cover-scroll{
-		position:fixed;
-		display:block;
-		height:50px;
-		width:50px;
-		margin:0 0 0 -25px;
-		bottom:50px;
-		left:50%;
-		text-align:center;
-		font:30px/50px "icon";
-		font-weight: bold;
-		cursor:pointer;
-		z-index:1
-		}
-
-#cover #cover-overlay{
-		position:absolute;
-		width:100%;
-		height:100%;
-		top:0;
-		right:0;
-		z-index:-4
-		}
-
-#cover #slideshow{
-		position:fixed;
-		height:100%;
-		width:100%;
-		top: 0px !important;
-		right:0;
-		z-index:-5
-		}
-
-#cover #slideshow li{
-		list-style-type:none;
-		width:100%;
-		height:100%
-		}
-
-#cover #slideshow > li{ 
-		position:absolute
-		}
+#slideshow > li{ 
+	position: absolute;
+}
 
 /*      End-Cover       */
 
@@ -1446,44 +1405,28 @@ article.media-post, article.text-post { display: none; }
 <!-- <a id="slide">\</a> -->
 {block:indexpage}
 <div id="cover">
+	<div id="cover-scroll">[</div>
 		
-		<div id="cover-information">
-				
-				{block:ifnotcoverlogoimage}
-						<!-- <h1><a href="/">{title}</a></h1> -->
-				{/block:ifnotcoverlogoimage}
-				{block:ifcoverlogoimage}
-						<img src="{image:Cover Logo}" alt="{title}"/>
-				{/block:ifcoverlogoimage}
-				<p>{text:Cover Text}</p>
-
-		</div>
-		
-		<div id="cover-scroll">[</div>
-		
-		<div id="slideshow">
-				{block:ifcoverslide1image}
-						<li class="slide-1"></li>
-				{/block:ifcoverslide1image}
-				{block:ifcoverslide2image}
-						<li class="slide-2"></li>
-				{/block:ifcoverslide2image}
-				{block:ifcoverslide3image}
-						<li class="slide-3"></li>
-				{/block:ifcoverslide3image}
-				{block:ifcoverslide4image}
-						<li class="slide-4"></li>
-				{/block:ifcoverslide4image}
-				{block:ifcoverslide5image}
-						<li class="slide-5"></li>
-				{/block:ifcoverslide5image}
-				{block:ifcoverslide6image}
-						<li class="slide-6"></li>
-				{/block:ifcoverslide6image}
-		</div>
-
-		<div id="cover-overlay"></div>
-
+	<div id="slideshow">
+		{block:ifcoverslide1image}
+			<li class="slide-1"></li>
+		{/block:ifcoverslide1image}
+		{block:ifcoverslide2image}
+			<li class="slide-2"></li>
+		{/block:ifcoverslide2image}
+		{block:ifcoverslide3image}
+			<li class="slide-3"></li>
+		{/block:ifcoverslide3image}
+		{block:ifcoverslide4image}
+			<li class="slide-4"></li>
+		{/block:ifcoverslide4image}
+		{block:ifcoverslide5image}
+			<li class="slide-5"></li>
+		{/block:ifcoverslide5image}
+		{block:ifcoverslide6image}
+			<li class="slide-6"></li>
+		{/block:ifcoverslide6image}
+	</div>
 </div>
 {/block:indexpage}
 
