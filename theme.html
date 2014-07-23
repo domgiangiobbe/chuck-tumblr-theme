@@ -392,7 +392,7 @@ a#slide:hover{
 /*    End Topbar/Nav    */
 
 
-/*#post-container {
+/*#container {
 	position: relative;
 	width: 100%;
 	margin: auto;
@@ -487,163 +487,211 @@ a#slide:hover{
 }
 
 .entry iframe{
-		width:100%;
-		display:block
-		}
+	width: 100%;
+	display: block;
+}
 
+
+/* Photo Post */
 .entry .photo img{
-		width:100%
+	width: 100%;
+}
+
+.entry .photo:hover a.overlay {
+	opacity: 0.{text:Photo Overlay Opacity};
+}
+
+.entry .photo .photo-hover a.overlay {
+	background: {color:Photo Overlay};
+}
+
+.entry .photo .photo-hover .photo-buttons a{
+	color: {color:Photo Buttons};
+	border: 2px solid {color:Photo Buttons};
+}
+
+.entry .photo .photo-hover .photo-buttons a:hover {
+	background: rgba({RGBcolor:Photo Buttons},.3);
+}
+
+.entry .photo .photoset-grid img:hover {
+	opacity: 0.7;
+}
+
+.entry .photo-post .details {
+	display: none;
+}
+
+ /* Grid hover effect */
+.entry .photo .photo-hover {
+	position: relative;
+	overflow: hidden;
+}
+ 
+.entry .photo .photo-hover a.overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.entry .photo .photo-buttons {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	margin: -20px 0;
+	text-align: center;
+	z-index: 20;
+	transform: scale(.4,.4);
+	-ms-transform: scale(.4,.4);
+	-webkit-transform: scale(.4,.4);
+	opacity: 0;
+}
+
+.entry:hover .photo-buttons {
+	transform: scale(1,1);
+	-ms-transform: scale(1,1);
+	-webkit-transform: scale(1,1);
+	opacity: 1;
+}
+
+.entry .photo .photo-buttons a {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	margin: 0 7px;
+	text-align: center;
+	font: 17px/38px "icon";
+	border-radius: 20px;
+}
+
+.entry .photo .photo-buttons .photoset-grid {
+	display: inline;
 		}
 
-.entry .photo .photoset-grid img:hover{
-		opacity:.7
-		}
+.entry .photo .photo-buttons .like_button {
+	top: 11px;
+	left: 0;
+}
 
-.entry .photo-post .details{
-		display:none
-		}
 
-.entry .text-post{
-		display:block !important;
-		}
+/* Text Post */
+.entry .text-post {
+	display: block !important;
+}
 
 .entry .text,
-.entry .text-post{
-		padding:5px
-		}
+.entry .text-post {
+	padding: 5px;
+}
 
-.entry .details{
-		margin:20px 0 0 0;
-		padding:15px 0 0
-		}
+.entry .text .odd, 
+.entry .text .even {
+	margin: 5px 0 0 0;
+	padding: 10px 7px;
+}
+ 
+.entry .text .odd {
+	background: #eee;
+}
+
+
+/* Quote Post */
+.entry .quote h3 {
+	font-weight: 400;
+	line-height: 1.6em;
+}
+
+.entry .text .source {
+	margin: 20px 0 0 0;
+	text-align: right;
+}
+
+
+/* Link Post */
+.entry .link > a {
+	display: block;
+	padding: 12px 15px;
+	font-size: 15px;
+	color: #fff !important;
+	background: {color:Links};
+}
+ 
+.entry .link > a:hover {
+	opacity: 0.7;
+}
+ 
+.entry .link > a span {
+	margin: 0 0 0 20px;
+	font: 14px/2.5em 'icon';
+}
+
+
+/* Audio Post */
+
+
+
+/* Video Post */
+
+
+
+/* Answer Post */
+.entry .text .question {
+	padding: 0 0 15px 0;
+	border-bottom: 1px solid {color:Post Dividers};
+}
+
+
+
+
+/* Post Footer */
+.entry .details {
+	margin: 20px 0 0 0;
+	padding: 15px 0 0;
+	border-top: 1px solid {color:Post Dividers};
+}
  
 .entry .details,
-.entry .details a{
-		font:11px/20px "arial"
-		}
+.entry .details a {
+	font: 11px/20px "arial";
+	color: {color:Post Information};
+}
 
-.entry .details .tags{
-		margin:0 0 10px 0
-		}
+.entry .details a:hover {
+	color: {color:Post Information Hover};
+}
 
-.entry .details .tags a{
-		margin:0 10px 0 0
-		}
- 
-.entry .details .buttons{
-		display:inline;
-		float:right;
-		margin:2px 0 0 0
-		}
- 
-.entry .details .buttons a{
-		display:inline-block;
-		font:13px "icon";
-		margin:0 0 0 10px;
-		opacity:.8
-		}
- 
-.entry .details .buttons a.like-button{
-		position:relative;
-		cursor:pointer
-		}
+.entry .details .tags {
+	margin:0 0 10px 0;
+}
 
-.entry .details .buttons .like_button{
-		bottom:2px;
-		left:0
-		}
+.entry .details .tags a {
+	margin:0 10px 0 0;
+}
  
-.entry .text .odd,.entry .text .even{
-		margin:5px 0 0 0;
-		padding:10px 7px;
-		}
+.entry .details .buttons {
+	display: inline;
+	float: right;
+	margin: 2px 0 0 0;
+}
  
-.entry .text .odd{
-		background:#eee
-		}
+.entry .details .buttons a {
+	display: inline-block;
+	font: 13px "icon";
+	margin: 0 0 0 10px;
+	opacity: 0.8;
+}
  
-.entry .text a.link{
-		display:block;
-		padding:12px 15px;
-		font-size:15px;
-		color:#fff !important
-		}
- 
-.entry .text a.link:hover{
-		opacity:.7
-		}
- 
-.entry .text a.link span{
-		margin:0 0 0 20px;
-		font:14px/2.5em 'icon'
-		}
- 
-.entry .text .question{
-		padding:0 0 15px 0
-		}
- 
-.entry .quote h3{
-		font-weight:400;
-		line-height:1.6em
-		}
- 
-.entry .text .source{
-		margin:20px 0 0 0;
-		text-align:right
-		}
- 
-.entry .photo .photo-hover{
-		position:relative;
-		overflow:hidden
-		}
- 
-.entry .photo .photo-hover a.overlay{
-		position:absolute;
-		width:100%;
-		height:100%;
-		opacity:0
-		}
+.entry .details .buttons a.like-button {
+	position: relative;
+	cursor: pointer;
+}
 
-
-.entry .photo .photo-buttons{
-		position:absolute;
-		top:50%;
-		width:100%;
-		margin:-20px 0;
-		text-align:center;
-		z-index:20;
-		transform:scale(.4,.4);
-		-ms-transform:scale(.4,.4);
-		-webkit-transform:scale(.4,.4);
-		opacity:0
-		}
-
-.entry:hover .photo-buttons{
-		transform:scale(1,1);
-		-ms-transform:scale(1,1);
-		-webkit-transform:scale(1,1);
-		opacity:1
-		}
-
-.entry .photo .photo-buttons a{
-		position:relative;
-		display:inline-block;
-		width:40px;
-		height:40px;
-		margin:0 7px;
-		text-align:center;
-		font:17px/38px "icon";
-		border-radius:20px
-		}
-
-.entry .photo .photo-buttons .photoset-grid{
-		display:inline
-		}
-
-.entry .photo .photo-buttons .like_button{
-		top:11px;
-		left:0
-		}
+.entry .details .buttons .like_button {
+	bottom: 2px;
+	left: 0;
+}
 
 
 /*      End-Entry       */
@@ -687,11 +735,10 @@ a#slide:hover{
 #pagination a#older{
 		float:right
 		}
-
 /*      End-Pagination      */
 
-/*      Permalink       */
 
+/*      Permalink       */
 #tagpage #cover,
 #tagpage #cover #slideshow,
 #permalink #cover,
@@ -851,44 +898,6 @@ a#slide:hover{
 
 #infscr-loading img,#permalink .permalink-box,#post-info,.entry{
 		background:{color:Post Background}
-		}
-
-.entry .photo:hover a.overlay{
-		opacity:.{text:Photo Overlay Opacity}
-		}
-
-.entry .photo .photo-hover a.overlay{
-		background:{color:Photo Overlay}
-		}
-
-.entry .photo .photo-hover .photo-buttons a:hover{
-		background:rgba({RGBcolor:Photo Buttons},.3);
-		}
-
-.entry .photo .photo-hover .photo-buttons a{
-		color:{color:Photo Buttons};
-		border:2px solid {color:Photo Buttons}
-		}
-
-.entry .details{
-		border-top:1px solid {color:Post Dividers}
-		}
-
-.entry .details,
-.entry .details a{
-		color:{color:Post Information}
-		}
-
-.entry .details a:hover{
-		color:{color:Post Information Hover}
-		}
-
-.entry .text .question{
-		border-bottom:1px solid {color:Post Dividers}
-		}
-
-.entry .text a.link{
-		background:{color:Links}
 		}
 
 #permalink .permalink-box{
@@ -1127,239 +1136,191 @@ article.media-post, article.text-post { display: none; }
 
 
 <section>
-
 <div id="posts-container" class="{select:Post Size}">
+	<div id="loading"></div>
 
-<div id="loading"></div>
+	<div id="posts">
+		{block:TagPage}
+		<div id="post-info">
+			<h3>Posts tagged with &lsquo;{Tag}&rsquo;</h3>
+		</div>
+		{/block:TagPage}
 
-<div id="posts">
-
-{block:SearchPage}
-<div id="post-info">
-		<h3>Search results for &ldquo;{SearchQuery}&rdquo;</h3>
-		{block:NoSearchResults}
-				<p>Sorry, nothing found.</p>
-		{/block:NoSearchResults}
-</div>
-{/block:SearchPage}
-
-{block:TagPage}
-<div id="post-info">
-		<h3>Posts tagged with &lsquo;{Tag}&rsquo;</h3>
-</div>
-{/block:TagPage}
-
-{block:Posts}
-
-<article id="{PostID}" class="entry{block:HasTags}{block:Tags} {Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+	{block:Posts}
+		<article id="{PostID}" class="entry{block:HasTags}{block:Tags} {Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
  
-{block:Answer}
-<div class="text">
-		<div class="question">
+		{block:Answer}
+		<div class="text">
+			<div class="question">
 				<h3>{Question}</h3>
 				<div class="source">Asked by {Asker}</div>
+			</div>
+			{answer}
 		</div>
-		{answer}
-</div>
-{/block:Answer}
+		{/block:Answer}
  
-{block:Chat}
-<div class="text">
-		{block:Title}<h2>{Title}</h2>{/block:Title}
-		{block:Lines}
+		{block:Chat}
+		<div class="text">
+			{block:Title}<h2>{Title}</h2>{/block:Title}
+			{block:Lines}
 				<div class="{Alt} user_{UserNumber}">
-						{block:Label}<b>{Label}</b>{/block:Label} {Line}
+					{block:Label}<b>{Label}</b>{/block:Label} {Line}
 				</div>
-		{/block:Lines}
-</div>
-{/block:Chat}
+			{/block:Lines}
+		</div>
+		{/block:Chat}
  
-{block:Link}
-<div class="text">
-		<a class="link" href="{URL}">{Name}<span>.</span></a>
-		{block:Description}
+		{block:Link}
+		<div class="link">
+			<a href="{URL}">{Name}<span>.</span></a>
+			{block:Description}
 				{Description}
-		{/block:Description}
-</div>
-{/block:Link}
- 
-{block:Text}
-<div class="text">
-		{block:Title}<h2>{Title}</h2>{/block:Title}
-		{Body}
-</div>
-{/block:Text}
- 
-{block:Quote}
-<div class="text quote">
-		<h3>&ldquo; {Quote} &rdquo;</h3>
-		<div class="source">&mdash; &nbsp;&nbsp;&nbsp;{Source}</div>
-</div>
-{/block:Quote}
-
-{block:Photo}
-<div class="photo">
-	{block:indexpage}
-		<div class="photo-hover">
-		<a href="{permalink}" class="overlay"></a>
-				<div class="photo-buttons">
-				<div class="photoset-grid">
-						<a class="lightbox-button" href="{PhotoURL-HighRes}">j</a>
-				</div>
-				<a href="{ReblogURL}" class="reblog-button">c</a>
-				<a class="like-button">{LikeButton size="16"}z</a>
-				</div>
-				<div class="large-post">
-						<img src="{PhotoURL-HighRes}"alt="{PhotoAlt}">
-				</div>
-				<div class="small-post">
-						<img src="{PhotoURL-500}"alt="{PhotoAlt}">
-				</div>
+			{/block:Description}
 		</div>
-	{/block:indexpage}
-		
-	{block:permalinkpage}
-		{LinkOpenTag}
-				<img src="{PhotoURL-HighRes}"alt="{PhotoAlt}">
-		{LinkCloseTag}
-	{/block:permalinkpage}
-</div>
-{/block:Photo}
+		{/block:Link}
  
-{block:Photoset}
+		{block:Text}
+		<div class="text">
+			{block:Title}<h2>{Title}</h2>{/block:Title}
+			{Body}
+		</div>
+		{/block:Text}
+ 
+		{block:Quote}
+		<div class="text quote">
+			<h3>&ldquo; {Quote} &rdquo;</h3>
+			<div class="source">&mdash; &nbsp;&nbsp;&nbsp;{Source}</div>
+		</div>
+		{/block:Quote}
+
+		{block:Photo}
 		<div class="photo">
-				<div class="photoset-grid" data-layout="{PhotosetLayout}" data-id="photoset{PostID}">
-		{block:Photos}
-<img src="{PhotoURL-HighRes}"{block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes}{block:Caption}alt="{Caption}"{/block:caption}/>
-		{/block:Photos}
+			{block:indexpage}
+				<div class="photo-hover">
+				<a href="{permalink}" class="overlay"></a>
+					<div class="photo-buttons">
+					<div class="photoset-grid">
+						<a class="lightbox-button" href="{PhotoURL-HighRes}">j</a>
+					</div>
+					<a href="{ReblogURL}" class="reblog-button">c</a>
+					<a class="like-button">{LikeButton size="16"}z</a>
+					</div>
+					<div class="large-post">
+						<img src="{PhotoURL-HighRes}"alt="{PhotoAlt}">
+					</div>
+					<div class="small-post">
+						<img src="{PhotoURL-500}"alt="{PhotoAlt}">
+					</div>
 				</div>
+			{/block:indexpage}
+				
+			{block:permalinkpage}
+				{LinkOpenTag}
+					<img src="{PhotoURL-HighRes}"alt="{PhotoAlt}">
+				{LinkCloseTag}
+			{/block:permalinkpage}
 		</div>
-{/block:Photoset}
+		{/block:Photo}
  
-{block:Audio}
-<div class="media">
-		{block:IndexPage}
+		{block:Photoset}
+		<div class="photo">
+			<div class="photoset-grid" data-layout="{PhotosetLayout}" data-id="photoset{PostID}">
+				{block:Photos}
+					<img src="{PhotoURL-HighRes}"{block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes}block:Caption}alt="{Caption}"{/block:caption}/>
+				{/block:Photos}
+			</div>
+		</div>
+		{/block:Photoset}
+ 
+		{block:Audio}
+		<div class="media">
+			{block:IndexPage}
 				{AudioEmbed-400}
-		{/block:IndexPage}
-		{block:permalinkpage}
+			{/block:IndexPage}
+			{block:permalinkpage}
 				{AudioEmbed-640}
-		{/block:permalinkpage}
-</div>
-{/block:Audio}
-
-{block:Video}
-<div class="media">
-		{block:IndexPage}
-				{VideoEmbed-400}
-		{/block:IndexPage}
-		{block:permalinkpage}
-				{VideoEmbed-700}
-		{/block:permalinkpage}
-</div>
-{/block:Video}
- 
-{block:date}
-<div class="{block:Answer}text-post{/block:Answer}{block:Chat}text-post{/block:Chat}{block:Link}text-post{/block:Link}{block:Text}text-post{/block:Text}{block:Quote}text-post{/block:Quote}{block:Video}text-post{/block:Video}{block:Audio}text-post{/block:Audio}{block:Photo}{block:indexpage}photo{/block:indexpage}{block:permalinkpage}text{/block:permalinkpage}-post{/block:Photo}{block:Photoset}text-post{/block:Photoset}">
- 
-		{block:Caption}
-			<div class="captions">{Caption}</div>
-		{/block:Caption}
- 
-		<div class="details">
-			 
-				{block:ifnothideposttags}
-				{block:HasTags}
-						<div class="tags">
-								{block:Tags}
-										<a href="{TagURL}">#{Tag}</a>
-								{/block:Tags}
-						</div>        
-				{/block:HasTags}
-				{/block:ifnothideposttags}
-			 
-				<a href="{permalink}">{TimeAgo}</a>
-			 
-				{block:NoteCount}
-				/ <a href="{permalink}">{NoteCountWithLabel}</a>
-				{/block:NoteCount}
-			 
-				<div class="buttons">
-						<a href="{ReblogURL}" class="reblog-button">c</a>
-						<a class="like-button">{LikeButton size="13"}z</a>
-				</div>
-			 
+			{/block:permalinkpage}
 		</div>
+		{/block:Audio}
+
+		{block:Video}
+		<div class="media">
+			{block:IndexPage}
+				{VideoEmbed-400}
+			{/block:IndexPage}
+			{block:permalinkpage}
+				{VideoEmbed-700}
+			{/block:permalinkpage}
+		</div>
+		{/block:Video}
  
-</div>
-{/block:date}
+		{block:date}
+		<div class="{block:Answer}text-post{/block:Answer}{block:Chat}text-post{/block:Chat}{block:Link}text-post{/block:Link}{block:Text}text-post{/block:Text}{block:Quote}text-post{/block:Quote}{block:Video}text-post{/block:Video}{block:Audio}text-post{/block:Audio}{block:Photo}{block:indexpage}photo{/block:indexpage}{block:permalinkpage}text{/block:permalinkpage}-post{/block:Photo}{block:Photoset}text-post{/block:Photoset}">
+		 
+			{block:Caption}
+				<div class="captions">{Caption}</div>
+			{/block:Caption}
+		 
+			<div class="details">
+				{block:ifnothideposttags}
+					{block:HasTags}
+						<div class="tags">
+							{block:Tags}
+								<a href="{TagURL}">#{Tag}</a>
+							{/block:Tags}
+						</div>        
+					{/block:HasTags}
+				{/block:ifnothideposttags}
+				 
+				<a href="{permalink}">{TimeAgo}</a>
+				 
+				{block:NoteCount}
+					/ <a href="{permalink}">{NoteCountWithLabel}</a>
+				{/block:NoteCount}
+				 
+				<div class="buttons">
+					<a href="{ReblogURL}" class="reblog-button">c</a>
+					<a class="like-button">{LikeButton size="13"}z</a>
+				</div>
+				 
+			</div>
+		</div>
+		{/block:date}
 
-</article><!--      entry       -->
+		</article><!--      entry       -->
 
-{block:PermalinkPage}
-{block:date}
+		{block:PermalinkPage}
+		{block:date}
 
-{block:IfDisqusShortname}
-	<div class="permalink-box">
-	
-	<script type="text/javascript">
-		var disqus_url = "{Permalink}"; 
-		var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";
-	</script>
+			{block:ifshowpostnotes}
+				{block:PostNotes}
+					<div class="permalink-box">
+						<h2>{NoteCountWithLabel}</h2>
+						{PostNotes}
+					</div>
+				{/block:PostNotes}
+			{/block:ifshowpostnotes}
 
-	<div id="disqus_thread"></div>
+		{/block:date}
+		{/block:PermalinkPage}
 
-	<script type="text/javascript">
-		var disqus_identifier = {PostID};
+	{/block:Posts}
+	</div><!--  Posts       -->
 
-		(function() {
-			var dsq = document.createElement('script'); 
-			dsq.type = 'text/javascript'; 
-			dsq.async = true;
-			dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
-
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
-
-	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
-	
-	</div>
-{/block:IfDisqusShortname}
-
-{block:ifshowpostnotes}
-{block:PostNotes}
-<div class="permalink-box">
-<h2>{NoteCountWithLabel}</h2>
-{PostNotes}
-</div>
-{/block:PostNotes}
-{/block:ifshowpostnotes}
-
-{/block:date}
-{/block:PermalinkPage}
-
-{/block:Posts}
-
-</div><!--  Posts       -->
-
-<div id="pagination">
-
+	<div id="pagination">
 		{block:Pagination}
-
-				{block:PreviousPage}
-						<a href="{PreviousPage}">&larr; Newer</a>
-				{/block:PreviousPage}
-
-				{block:NextPage}
-						<a href="{NextPage}" id="older">Older &rarr;</a>
-				{/block:NextPage}
-
+			{block:PreviousPage}
+				<a href="{PreviousPage}">&larr; Newer</a>
+			{/block:PreviousPage}
+			{block:NextPage}
+				<a href="{NextPage}" id="older">Older &rarr;</a>
+			{/block:NextPage}
 		{/block:Pagination}
-
-</div>
+	</div>
 
 </div><!--  Posts-Container       -->
 </section>
+
 
 <footer id="footer">
 	<div class="foot-top">
