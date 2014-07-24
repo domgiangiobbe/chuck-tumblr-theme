@@ -149,6 +149,10 @@ blockquote{
 }
 
 /* universal class */
+.hidden {
+	display: none;
+}
+
 .left {
 	float: left;
 }
@@ -206,8 +210,8 @@ blockquote{
 	font-size: 28px;
 }
 
-.sz34 {
-	font-size: 34px;
+.sz37 {
+	font-size: 37px;
 }
 
 
@@ -356,7 +360,7 @@ a,
 	top: 0;
 	right: 0;
 	width: 100%;
-	padding: 20px;
+	padding: 20px 20px 0;
 	opacity: 1 !important;
 	z-index: 16;
 	pointer-events: auto;
@@ -502,10 +506,15 @@ a#slide:hover{
 
 /*		Posts Structure		*/
 #post-info {
-	width: 30%;
-	margin: 0 25px 50px 25px;
-	padding: 20px;
-	line-height: 2em;
+	position: fixed;
+	left: 27px;
+	top: 55px;
+	z-index: 13;
+}
+
+#post-info > h3 {
+	margin: 0;
+	text-transform: capitalize;
 }
 
 #posts {
@@ -628,7 +637,32 @@ div.mfp-figure:after {
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
+div.mfp-bottom-bar {
+	margin: 0;
+}
+
+img.mfp-img {
+	padding: 0;
+}
+
+/* Images title */
 .mfp-title {
+	font-size: 14px;
+	line-height: 15px;
+	margin: 25px 0 0 25px;
+	color: {color:Links};
+}
+
+.mfp-title ul {
+	padding: 0;
+	margin: 0;
+}
+
+.mfp-title li {
+	list-style: none;
+}
+
+.mfp-title strong {
 	color: #000;
 }
 
@@ -946,7 +980,7 @@ div.mfp-figure:after {
 /*      Adjustments     */
 
 
-#infscr-loading img,#permalink .permalink-box,#post-info,.entry{
+#infscr-loading img,#permalink .permalink-box, .entry{
 		background:{color:Post Background}
 		}
 
@@ -1126,6 +1160,10 @@ div.foot-nav-wrap {
 
 {block:Indexpage}
 article.media-post, .text-post { display: none !important; }
+#topbar h1 { display: none; }
+{block:TagPage}
+#topbar h1 { display: inline-block; }
+{/block:TagPage}
 {/block:Indexpage}
 /*      End-Adjustments     */
 
@@ -1142,9 +1180,9 @@ article.media-post, .text-post { display: none !important; }
 
 <!-- <a id="slide">\</a> -->
 {block:Indexpage}
-<div id="cover-scroll">[</div>
+<div id="cover-scroll" {block:TagPage}class="hidden"{/block:TagPage}>[</div>
 
-<div id="cover">
+<div id="cover" {block:TagPage}class="hidden"{/block:TagPage}>
 	<div id="slideshow">
 		{block:ifcoverslide1image}
 			<li class="slide-1"></li>
@@ -1169,7 +1207,7 @@ article.media-post, .text-post { display: none !important; }
 {/block:Indexpage}
 
 <header id="topbar">
-	<h1 class="sz34"><a href="/">{title}</a></h1>
+	<h1 class="sz37"><a href="/">{title}</a></h1>
 
 	<a id="slide">\</a>
 </header>
@@ -1177,8 +1215,8 @@ article.media-post, .text-post { display: none !important; }
 <aside id="sidebar">
 	<nav id="navigation">
 		<li><a class="arb sz28" href="/" title="Recent">Recent</a></li>
-		<li><a class="arb sz28" href="/tagged/painting" title="Paintings">Paintings</a></li>
-		<li><a class="arb sz28" href="/tagged/drawing" title="Drawings">Drawings</a></li>
+		<li><a class="arb sz28" href="/tagged/paintings" title="Paintings">Paintings</a></li>
+		<li><a class="arb sz28" href="/tagged/drawings" title="Drawings">Drawings</a></li>
 		<li><a class="arb sz28" href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
 		{block:Pages}
 			<li><a class="arb sz28" href="{URL}" title="{Label}">{Label}</a></li>
@@ -1186,17 +1224,15 @@ article.media-post, .text-post { display: none !important; }
 	</nav>
 </aside>
 
+<div id="post-info">
+	<h3 class="sz37 arb blue-text">{block:TagPage}{Tag}{/block:TagPage}</h3>
+</div>
 
 <section>
 <div id="posts-container" class="{select:Post Size}">
 	<div id="loading"></div>
 
 	<div id="posts">
-		{block:TagPage}
-		<div id="post-info">
-			<h3>Posts tagged with &lsquo;{Tag}&rsquo;</h3>
-		</div>
-		{/block:TagPage}
 
 	{block:Posts}
 		<article id="{PostID}" class="entry{block:HasTags}{block:Tags} {Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
@@ -1401,8 +1437,8 @@ article.media-post, .text-post { display: none !important; }
 		<div class="foot-nav-wrap clear">
 			<div class="nav-foot left">
 				<li><a href="/" title="Recent">Recent</a></li>
-				<li><a href="/tagged/painting" title="Paintings">Paintings</a></li>
-				<li><a href="/tagged/drawing" title="Drawings">Drawings</a></li>
+				<li><a href="/tagged/paintings" title="Paintings">Paintings</a></li>
+				<li><a href="/tagged/drawings" title="Drawings">Drawings</a></li>
 				<li><a href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
 			</div>
 			
@@ -1424,6 +1460,8 @@ article.media-post, .text-post { display: none !important; }
 	$(window).load(function() {
 		console.log('scroll top this ' + $(this).scrollTop());
 		console.log('cover outerHeight ' + $("#cover").outerHeight());
+
+		$('div.hidden').remove();
 
 		{block:Indexpage}
 		$('article.text-post, article.link-post').remove();
@@ -1451,21 +1489,22 @@ article.media-post, .text-post { display: none !important; }
 			mainClass: 'mfp-fade',
 			image: {
 				titleSrc: function(item) {
+					var titleHtml;
 
 					$('div.large-post > img').each(function() {
 						if($(this).attr('src') == item.el.attr('href')) {
-							console.log('this if statment work ' + $(this).parent().attr('class'));
+							console.log('this if statment work ' + $(this).closest('div.photo').next().find('div.captions').html());
+							titleHtml = $(this).closest('div.photo').next().find('div.captions').html();
 						}
 					});
 
-					return item.el.html();
-					//return item.el.closest('div.photo').next().children('captions').html();
-					//return item + ' fuck did it work?';
+					return titleHtml;
 				}
 			}
 		});
 	});
 
+	{block:Indexpage}
 	$('#cover-scroll').click(function(){
 		scrollToTop();
 	});
@@ -1514,25 +1553,18 @@ article.media-post, .text-post { display: none !important; }
 	// 	}
 	// });
 
-	$("a.click-category").click(function() {
-		$("#topbar #category").toggleClass("category-list-move");
-	});
-
-	$("#posts-container,a#slide,a#top").click(function() {
-		$("#topbar #category").removeClass("category-list-move");
-	});
-
 	$('#topbar a#top').click(function(){
 		$('html, body').animate({
 			scrollTop: $('body').offset().top
 		},1000);
 	});
+	{/block:Indexpage}
 
 	$("a#slide").click(function(){
 		console.log('slide nav');
 		$("#topbar").toggleClass("topbar-move");
 		$("#sidebar").toggleClass("sidebar-move");
-		$('#cover-scroll').toggleClass("off");
+		{block:Indexpage}$('#cover-scroll').toggleClass("off");{/block:Indexpage}
 		$("#posts-container").toggleClass("posts-container-move")	;
 		$("#full-overlay").toggleClass("show");
 	});
@@ -1544,6 +1576,7 @@ article.media-post, .text-post { display: none !important; }
 		$("#full-overlay").removeClass("show");
 	});
 
+	{block:Indexpage}
 	$(window).scroll(function(){
 		if ($(this).scrollTop() < $("#cover").outerHeight() - 130){
 			$("#topbar").removeClass("topbar-move");
@@ -1552,6 +1585,7 @@ article.media-post, .text-post { display: none !important; }
 			$("#full-overlay").removeClass("show");
 		}
 	});
+	{/block:Indexpage}
 
 	// scroll to top function
 	function scrollToTop() {
@@ -1574,21 +1608,6 @@ article.media-post, .text-post { display: none !important; }
 	{block:ifopenlinksinnewtab}
 		$('a[href^="http://"]').attr('target','_blank');
 	{/block:ifopenlinksinnewtab}
-	
-	{block:ifdribbbleusername}
-		$(document).ready( function getDribbbleShots(){
-			$.jribbble.getShotsByPlayerId("{text:Dribbble Username}", function (playerShots){
-				var html = [];
-				$.each(playerShots.shots, function (i, shot) {
-					html.push('<div class="shot"><a href="' + shot.url + '" target="_blank">');
-					html.push('<img class="shot-image" src="' + shot.image_url + '" ');
-					html.push('alt="' + shot.title + '"></a></div>');
-				});
-				
-				$('#dribbble-feed').html(html.join('')
-			)},{page: 1, per_page: 6})
-		});
-	{/block:ifdribbbleusername}
 
 	(function (){
 		var $K = $('#posts');
