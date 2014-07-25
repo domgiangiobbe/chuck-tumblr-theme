@@ -144,6 +144,10 @@ h1, h2, h3, h4, h5 {
 p {
 	font: 12px/1em Arial, sans-serif;
 }
+
+li {
+	list-style: none;
+}
  
 blockquote{
 }
@@ -180,6 +184,7 @@ blockquote{
 .arb {
 	font-family: "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 	font-weight: 400;
+	letter-spacing: -0.04em;
 }
 
 .ar {
@@ -221,7 +226,7 @@ a,
 .like_button,
 #sidebar img,
 .entry .photo .photo-hover a.overlay,
-.entry .photo .photo-buttons, #full-overlay, #full-overlay.show, 
+.entry .photo .photo-buttons, #full-overlay, #full-overlay.overlay-show, 
 #topbar, #topbar h1, #sidebar, #posts-container {
 	-webkit-transition: all .3s ease;
 	transition: all .3s ease;
@@ -261,9 +266,10 @@ a,
 	width: 100%;
 }
 
-#full-overlay.show {
+#full-overlay.overlay-show {
+	cursor: pointer;
 	opacity: 1;
-	z-index: 15;
+	z-index: 16;
 }
 /*      End Overlay  */
 
@@ -362,13 +368,13 @@ a,
 	width: 100%;
 	padding: 20px 20px 0;
 	opacity: 1 !important;
-	z-index: 16;
+	z-index: 15;
 	pointer-events: auto;
 }
 
 #topbar h1 {
 	display: inline-block;
-	letter-spacing: 0;
+	letter-spacing: -0.04em;
 	margin: 0 10px 0 7px;
 }
 
@@ -537,9 +543,9 @@ a#slide:hover{
 
 /* Photo Post */
 .photo-post {
-	width: 30%;
 	margin: 0 25px 50px 25px;
 	padding: 0;
+	width: 30%;
 }
 
 .photo-post .photo img{
@@ -1089,16 +1095,24 @@ div.foot-nav-wrap {
 }
 
 /* Static Pages CSS */
-#contact-page {
+#contact-page, #cv-head {
 	line-height: 1em;
 	position: fixed;
 	left: 27px;
-	top: 55px;
+	top: 57px;
 	z-index: 13;
 }
 
 div.contact-group {
 	margin-bottom: 30px;
+}
+
+#cv-page li {
+	margin-bottom: 16px;
+}
+
+#cv-page li span {
+	float: left;
 }
 
 /* Responsive footer */
@@ -1191,8 +1205,6 @@ article.media-post, .text-post { display: none !important; }
 
 <!-- <a id="slide">\</a> -->
 {block:Indexpage}
-<div id="cover-scroll" {block:TagPage}class="hidden"{/block:TagPage}>[</div>
-
 <div id="cover" {block:TagPage}class="hidden"{/block:TagPage}>
 	<div id="slideshow">
 		{block:ifcoverslide1image}
@@ -1572,20 +1584,30 @@ article.media-post, .text-post { display: none !important; }
 	{/block:Indexpage}
 
 	$("a#slide").click(function(){
-		console.log('slide nav');
-		$("#topbar").toggleClass("topbar-move");
-		$("#sidebar").toggleClass("sidebar-move");
-		{block:Indexpage}$('#cover-scroll').toggleClass("off");{/block:Indexpage}
-		$("#posts-container").toggleClass("posts-container-move")	;
-		$("#full-overlay").toggleClass("show");
+		$("#topbar").addClass("topbar-move");
+		$("#sidebar").addClass("sidebar-move");
+		$("#posts-container").addClass("posts-container-move")	;
+		$("#full-overlay").addClass("overlay-show");
 	});
 
-	$("section").click(function(){
+	$("#full-overlay").click(function(){
+		closeNav();
+	});
+
+	if($("#full-overlay").hasClass("overlay-show")){
+		console.log('nav is open');
+	};
+
+	$(window).scroll(function(){
+		//closeNav();
+	});
+
+	function closeNav() {
 		$("#topbar").removeClass("topbar-move");
 		$("#sidebar").removeClass("sidebar-move");
 		$("#posts-container").removeClass("posts-container-move");
-		$("#full-overlay").removeClass("show");
-	});
+		$("#full-overlay").removeClass("overlay-show");
+	};
 
 	{block:Indexpage}
 	$(window).scroll(function(){
@@ -1593,7 +1615,7 @@ article.media-post, .text-post { display: none !important; }
 			$("#topbar").removeClass("topbar-move");
 			$("#sidebar").removeClass("sidebar-move");
 			$("#posts-container").removeClass("posts-container-move");
-			$("#full-overlay").removeClass("show");
+			$("#full-overlay").removeClass("overlay-show");
 		}
 	});
 	{/block:Indexpage}
