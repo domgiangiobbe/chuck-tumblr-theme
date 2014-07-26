@@ -1188,10 +1188,11 @@ div.contact-group {
 {block:Indexpage}
 article.media-post, .text-post { display: none !important; }
 #topbar h1 { display: none; }
+{/block:Indexpage}
+
 {block:TagPage}
 #topbar h1 { display: inline-block; }
 {/block:TagPage}
-{/block:Indexpage}
 /*      End-Adjustments     */
 
 {CustomCSS}
@@ -1262,8 +1263,6 @@ article.media-post, .text-post { display: none !important; }
 
 	{block:Posts}
 		<article id="{PostID}" class="entry{block:HasTags}{block:Tags} {Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
- 
-		
  		
  		{block:TagPage}
  			{block:Answer}
@@ -1330,8 +1329,15 @@ article.media-post, .text-post { display: none !important; }
 			</div>
 			{/block:Video}
 		{/block:TagPage}
- 
-		
+
+ 		{block:permalinkpage}
+			{block:Text}
+			<div class="text">
+				{block:Title}<h2>{Title}</h2>{/block:Title}
+				{Body}
+			</div>
+			{/block:Text}
+		{/block:permalinkpage}
 
 		{block:Photo}
 		<div class="photo">
@@ -1491,8 +1497,13 @@ article.media-post, .text-post { display: none !important; }
 		console.log('scroll top this ' + $(this).scrollTop());
 		console.log('cover outerHeight ' + $("#cover").outerHeight());
 
+			if(window.location.href == "http://chucktheme.tumblr.com/") {
+				$('article.text-post, article.link-post').remove();
+				$('#posts').masonry('reload');
+			}
+
 		$('#contact-head').closest('body').addClass('contact-page');
-		// $('article.press').closest('body').addClass('link-page');
+		$('#cv-head').closest('body').addClass('cv-page');
 	});
 
 	// ADDED THROUGH .JavaScript
