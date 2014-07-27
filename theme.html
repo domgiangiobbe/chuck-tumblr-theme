@@ -55,7 +55,6 @@
 <meta name="if:Show Post Notes" content="1"/>
 <meta name="if:Hide Post Tags" content="0"/>
 <meta name="if:Photo Captions" content="0"/>
-<meta name="if:Post Rounded" content="1"/>
 <meta name="if:Open Links In New Tab" content="1"/>
 <meta name="if:Infinite Scrolling" contet="1"/>
 <meta name="if:Detailed Footer" contet="0"/>
@@ -1229,18 +1228,9 @@ div.cv-group.p0 li > p {
 /*#sidebar #navigation li a{text-transform:uppercase}*/
 {/block:ifuppercaseSidebarlinks}
 
-{block:ifpostrounded}
-#infscr-loading img,#post-info,.entry,.permalink-box,#pagination a{border-radius:3px}
-{/block:ifpostrounded}
-
 {block:ifnotphotocaptions}
 .photo-post .photo-post{display:none}
 {/block:ifnotphotocaptions}
-
-{block:ifinfinitescrolling}
-#pagination{opacity:0 !important}
-#posts{padding-bottom:120px}
-{/block:ifinfinitescrolling}
 
 {block:ifnotanimatedloading}
 #cover #cover-scroll,#container,#posts,#pagination{opacity:1}
@@ -1497,7 +1487,7 @@ article.media-post, .text-post { display: none !important; }
 	{/block:Posts}
 	</div><!--  Posts       -->
 
-	<div id="pagination">
+	<div id="pagination" {block:ifinfinitescrolling}class="hidden"{/block:ifinfinitescrolling}>
 		{block:Pagination}
 			{block:PreviousPage}
 				<a class="left" href="{PreviousPage}">&larr; Newer</a>
@@ -1738,6 +1728,7 @@ article.media-post, .text-post { display: none !important; }
 				navSelector:'#pagination',
 				nextSelector:'#pagination a#older',
 				itemSelector: ".entry",
+				animate: false,
 				loading:{
 					finishedMsg: function(){
 						$('#infscr-loading').fadeOut("slow")
@@ -1762,13 +1753,23 @@ article.media-post, .text-post { display: none !important; }
 						delegate: 'a',
 						type: 'image',
 						gallery: {
-							enabled:true
+							enabled: true
 						},
 						removalDelay: 200,
 						mainClass: 'mfp-fade',
 						image: {
-						    // options for image content type
-							titleSrc: 'title'
+							titleSrc: function(item) {
+								var titleHtml;
+
+								$('div.large-post > img').each(function() {
+									if($(this).attr('src') == item.el.attr('href')) {
+										console.log('this if statment work ' + $(this).closest('div.photo').next().find('div.captions').html());
+										titleHtml = $(this).closest('div.photo').next().find('div.captions').html();
+									}
+								});
+
+								return titleHtml;
+							}
 						}
 					});
 				});
@@ -1778,7 +1779,7 @@ article.media-post, .text-post { display: none !important; }
 				}).get();
 
 				$newElems.imagesLoaded(function (){
-					$('#infscr-loading').fadeOut("slow");
+					//$('#infscr-loading').fadeOut("slow");
 					$newElems.css("opacity","1").css("pointer-events","auto");
 					$K.masonry('appended',$newElems,true);
 
