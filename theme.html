@@ -666,6 +666,7 @@ img.mfp-img {
 
 .text {
 	padding: 5px;
+	overflow: auto;
 }
 
 .text .odd, 
@@ -976,12 +977,6 @@ img.mfp-img {
 
 		}
 
-@media screen and (max-width:500px){
-	.sz37 {
-		font-size: 30px;
-	}
-}
-
 
 /*      End-Responsive      */
 
@@ -1115,6 +1110,11 @@ div.contact-group {
 
 .cv-page #posts {
 	margin: 0;
+	width: auto !important;
+}
+
+.cv-page div.left {
+	width: 50%;
 }
 
 div.cv-group {
@@ -1132,7 +1132,8 @@ div.cv-group ul {
 
 div.cv-group li {
 	margin-bottom: 16px;
-	max-width: 420px;
+	width: auto;
+	max-width: 700px;
 }
 
 div.cv-group li > span {
@@ -1143,7 +1144,12 @@ div.cv-group li > p {
 	padding-left: 60px;
 }
 
-/* Responsive footer */
+div.cv-group.p0 li > p {
+	padding: 0;
+}
+
+
+/* Responsive Sections */
 @media screen and (max-width:800px){
 	div.foot-nav-wrap {
 		clear: both;
@@ -1153,7 +1159,40 @@ div.cv-group li > p {
 	}
 }
 
+@media screen and (max-width:700px){
+	.cv-page #post-container {
+		padding-top: 200px 0 50px;
+	}
+
+	#cv-head {
+		width: 356px;
+	}
+}
+
+@media screen and (max-width:600px){
+	.cv-page div.left {
+		float: none;
+		width: 90%;
+	}
+}
+
 @media screen and (max-width:500px){
+	.sz37 {
+		font-size: 30px;
+	}
+
+
+	.cv-page #post-container {
+		padding-top: 180px 0 50px;
+	}
+
+	#cv-head {
+		width: 90%;
+		max-width: 356px;
+	}
+
+
+
 	div.foot-main {
 		padding: 35px 10px;
 	}
