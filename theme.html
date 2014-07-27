@@ -146,9 +146,19 @@ h1, h2, h3, h4, h5 {
 	color: {color:Body Title};
 }
 
+h2 {
+	font-size: 28px;
+	line-height: 1em;
+	margin: 0;
+}
+
 p, blockquote {
-	font: 13px/1.5em Arial, sans-serif;
+	font: 12px/1.5em Arial, sans-serif;
 	margin: 10px 0;
+}
+
+strong {
+	font-family: "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 }
 
 li {
@@ -659,8 +669,49 @@ img.mfp-img {
 
 
 /* Text Post */
+/* hide all text posts expect on tagged pages */
+#upcoming #posts-container, #etc #posts-container {
+	margin: 25px;
+	max-width: 850px;
+	width: auto;
+}
+
+#upcoming #posts, #etc #posts {
+	width: auto !important;
+}
+
 .text-post {
+	display: none;
+}
+
+#upcoming .text-post, #etc .text-post {
 	display: block;
+}
+
+.text-post span.date {
+	color: #262626;
+	display: inline-block;
+	padding: 3px 0;
+}
+
+.text-post img {
+	margin-bottom: 40px;
+	width: 95%;
+}
+
+.text-post p.left {
+	margin: 0;
+	padding: 10px 0;
+	width: 57%;
+}
+
+.text-post p:last-of-type {
+	font-size: 14px;
+	line-height: 1.3em;
+	margin: 10px 0 0;
+	position: absolute;
+	right: 0;
+	width: 35%;
 }
 
 .text {
@@ -1091,6 +1142,10 @@ div.foot-nav-wrap {
 }
 
 /* Static Pages CSS */
+.contact-page .text-post, .cv-page .text-post {
+	display: block;
+}
+
 #contact-head, #cv-head {
 	line-height: 1em;
 	position: fixed;
@@ -1166,6 +1221,26 @@ div.cv-group.p0 li > p {
 	#cv-head {
 		width: 356px;
 	}
+	
+	.text-post img {
+		margin-bottom: 20px;
+		width: 100%;
+	}
+
+	.text-post p.left {
+		float: none;
+		margin: 0;
+		padding: 10px 0;
+		width: 100%;
+	}
+
+	.text-post p:last-of-type {
+		float: none;
+		font-size: 14px;
+		line-height: 1.3em;
+		margin-top: 10px;
+		width: 100%;
+	}
 }
 
 @media screen and (max-width:600px){
@@ -1176,6 +1251,10 @@ div.cv-group.p0 li > p {
 }
 
 @media screen and (max-width:500px){
+	h2 {
+		font-size: 24px;	
+	}
+
 	.sz37 {
 		font-size: 30px;
 	}
@@ -1186,12 +1265,18 @@ div.cv-group.p0 li > p {
 	}
 
 	#cv-head {
-		top: 50px;
+		top: 48px;
 		width: 90%;
 		max-width: 356px;
 	}
 
-
+	#upcoming #posts-container, #etc #posts-container {
+		padding-top: 70px;
+	}
+	
+	#post-info {
+		top: 50px;
+	}
 
 	div.foot-main {
 		padding: 35px 10px;
@@ -1242,7 +1327,6 @@ div.cv-group.p0 li > p {
 {/block:ifshowcredit}
 
 {block:Indexpage}
-article.media-post, .text-post { display: none !important; }
 #topbar h1 { display: none; }
 {/block:Indexpage}
 
