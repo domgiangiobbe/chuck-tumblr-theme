@@ -676,10 +676,6 @@ img.mfp-img {
 	width: auto;
 }
 
-#upcoming #posts, #etc #posts {
-	width: auto !important;
-}
-
 .text-post {
 	display: none;
 }
@@ -743,10 +739,6 @@ img.mfp-img {
 
 
 /* Link Post */
-#press #posts {
-	margin: 0;
-}
-
 .link-post {
 	margin: 40px 27px 0 27px;
 	max-width: 900px;
@@ -1165,8 +1157,6 @@ div.contact-group {
 
 .cv-page #posts {
 	margin: 0;
-	height: auto !important;
-	width: auto !important;
 }
 
 .cv-page div.left {
@@ -1642,10 +1632,11 @@ div.sharing-post { display: none; }
 		console.log('scroll top this ' + $(this).scrollTop());
 		console.log('cover outerHeight ' + $("#cover").outerHeight());
 
-			if(window.location.href == "http://chucktheme.tumblr.com/") {
-				$('article.text-post, article.link-post').remove();
-				$('#posts').masonry('reload');
-			}
+		if(window.location.href == "http://chucktheme.tumblr.com/") {
+			$('body').addClass('index-page');
+			$('article.text-post, article.link-post').remove();
+			// $('#posts').masonry('reload');
+		}
 
 		$('#contact-head').closest('body').addClass('contact-page');
 		$('#cv-head').closest('body').addClass('cv-page');
@@ -1801,7 +1792,7 @@ div.sharing-post { display: none; }
 		$('a[href^="http://"]').attr('target','_blank');
 	{/block:ifopenlinksinnewtab}
 
-	(function (){
+	function masonryInfinite(){
 		var $K = $('#posts');
 
 		$K.imagesLoaded(function (){
@@ -1880,7 +1871,19 @@ div.sharing-post { display: none; }
 				});
 			});
 		{/block:ifinfinitescrolling}
-	})();
+	};
+
+	if($('#paintings').length || $('#drawings').length) {
+		console.log(this + ' current page runs masonry');
+		masonryInfinite();
+	}
+
+	if(window.location.href == "http://chucktheme.tumblr.com/") {
+		masonryInfinite();
+	}
+
+	
+	// $(this).masonry('reload');
 
 	{block:ifGoogleAnalyticsID}var _gaq = _gaq || [];_gaq.push(['_setAccount', '{text:Google Analytics ID}']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
 	{/block:ifGoogleAnalyticsID}
