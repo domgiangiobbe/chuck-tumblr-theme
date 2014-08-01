@@ -694,25 +694,25 @@ img.mfp-img {
 	padding: 3px 0;
 }
 
-/*.text-post img {
+.text-post img {
 	margin-bottom: 40px;
 	width: 95%;
 }
 
-.text-post p.left {
+#upcoming .text-post p.left , #etc .text-post p.left {
 	margin: 0;
 	padding: 10px 0;
 	width: 57%;
-}*/
+}
 
-/*.text-post p:last-of-type {
+#upcoming .text-post p:last-of-type, #etc .text-post p:last-of-type {
 	font-size: 14px;
 	line-height: 1.3em;
 	margin: 10px 0 0;
 	position: absolute;
 	right: 0;
 	width: 35%;
-}*/
+}
 
 .text {
 	padding: 5px;
@@ -1229,14 +1229,14 @@ div.cv-group.p0 li > p {
 		width: 100%;
 	}
 
-	.text-post p.left {
+	#upcoming .text-post p.left, #etc .text-post p.left {
 		float: none;
 		margin: 0;
 		padding: 10px 0;
 		width: 100%;
 	}
 
-	.text-post p:last-of-type {
+	#upcoming .text-post p:last-of-type, #etc .text-post p:last-of-type {
 		float: none;
 		font-size: 14px;
 		line-height: 1.3em;
@@ -1336,6 +1336,9 @@ div.cv-group.p0 li > p {
 #topbar h1 { display: inline-block; }
 {/block:TagPage}
 /*      End-Adjustments     */
+
+/* uncomment later */
+div.sharing-post { display: none; }
 
 {CustomCSS}
 
@@ -1521,7 +1524,7 @@ div.cv-group.p0 li > p {
 		{/block:Photoset}
  
 		{block:date}
-		<div class="{block:Answer}text-post{/block:Answer}{block:Chat}text-post{/block:Chat}{block:Link}text-post{/block:Link}{block:Text}text-post{/block:Text}{block:Quote}text-post{/block:Quote}{block:Video}text-post{/block:Video}{block:Audio}text-post{/block:Audio}{block:Photo}{block:Indexpage}photo{/block:Indexpage}{block:permalinkpage}text{/block:permalinkpage}-post{/block:Photo}{block:Photoset}text-post{/block:Photoset}">
+		<div class="{block:Answer}sharing-post{/block:Answer}{block:Chat}sharing-post{/block:Chat}{block:Link}sharing-post{/block:Link}{block:Text}sharing-post{/block:Text}{block:Quote}sharing-post{/block:Quote}{block:Video}sharing-post{/block:Video}{block:Audio}sharing-post{/block:Audio}{block:Photo}{block:Indexpage}photo{/block:Indexpage}{block:permalinkpage}text{/block:permalinkpage}-post{/block:Photo}{block:Photoset}sharing-post{/block:Photoset}">
 		 
 			{block:Caption}
 				<div class="captions">{Caption}</div>
@@ -1697,9 +1700,11 @@ div.cv-group.p0 li > p {
 	};
 
 	$(document).ready(function(){
-		$(window).scroll(function() {
-			EasyPeasyParallax();
-		});
+		if(window.location.href == "http://chucktheme.tumblr.com/") {
+			$(window).scroll(function() {
+				EasyPeasyParallax();
+			});
+		}
 	});
 
 	// detect scroll up or down and open and close hero
