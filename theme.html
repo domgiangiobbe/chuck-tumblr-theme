@@ -517,7 +517,7 @@ a#slide:hover{
 }
 
 #posts {
-	margin: auto;
+	/*margin: auto;*/
 }
 /*	  End Posts Structure	*/
 
@@ -535,12 +535,29 @@ a#slide:hover{
 
 
 /* Photo Post */
+
+/* Set max-width on photo-posts */
+.index-page #posts-container, #paintings #posts-container, #drawings #posts-container {
+	/*margin: 0 auto;
+	max-width: 1200px;*/
+}
+
+/*.index-page #posts, #paintings #posts, #drawings #posts {
+	display: -ms-flexbox;
+	-ms-flex-direction: column;
+	-ms-flex-wrap: wrap;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 100vw;
+	font-size: 0;
+}*/
+
 .photo-post {
-	margin: 0 25px 50px 25px;
-	padding: 0;
-	/*width: 30%;*/
+	/*margin: 0 25px 50px 25px;*/
+	/*padding: 0;*/
 	width: auto;
-	max-width: 400px;
+	/*max-width: 400px;*/
 }
 
 .photo-post .photo img{
@@ -569,6 +586,10 @@ a#slide:hover{
 }
 
 .photo-post .details {
+	display: none;
+}
+
+.photo-post div.caption {
 	display: none;
 }
 
@@ -1478,20 +1499,19 @@ div.sharing-post { display: none; }
 		<div class="photo">
 			{block:Indexpage}
 				<div class="photo-hover">
-				<a href="{permalink}" class="overlay"></a>
-					<div class="photo-buttons">
-					<div class="photoset-grid">
-						<a class="lightbox-button" href="{PhotoURL-HighRes}">j</a>
-					</div>
-					<a href="{ReblogURL}" class="reblog-button">c</a>
-					<a class="like-button">{LikeButton size="16"}z</a>
-					</div>
-					<div class="large-post">
-						<img src="{PhotoURL-HighRes}"alt="{PhotoAlt}">
-					</div>
+					<a href="{PhotoURL-HighRes}" class="overlay"></a>
+					<!-- <div class="large-post">
+						<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
+					</div> -->
 					<div class="small-post">
-						<img src="{PhotoURL-500}"alt="{PhotoAlt}">
+						<img src="{PhotoURL-500}" alt="{PhotoAlt}">
 					</div>
+					
+					{block:Caption}
+					<div class="caption">
+						 {Caption}
+					</div>
+					{/block:Caption}
 				</div>
 			{/block:Indexpage}
 				
@@ -1645,8 +1665,16 @@ div.sharing-post { display: none; }
 	}
 
 	if(window.location.href == "http://chucktheme.tumblr.com/" || $('#paintings').length || $('#drawings').length) {
+		$('#posts')
+			.addClass('photoset-grid')
+			.attr({
+				'data-id': 'photoset{PostID}',
+				'data-layout': '23'
+				// data-layout: '{PhotosetLayout}'
+			});
+		
 		photoControls()
-		masonryInfinite();
+		// masonryInfinite();
 	}
 
 	$('#cover').click(function(){
@@ -1671,19 +1699,21 @@ div.sharing-post { display: none; }
 
 
 	function photoControls() {
+		// Photogrid
 		$('.photoset-grid').photosetGrid({
 			highresLinks: true,
 			rel: $('.photoset-grid').attr('data-id'),
-			gutter: '5px',
+			gutter: '25px',
 			onComplete: function(){}
 		});
-
-		$('.photoset-grid').each(function() {
+		
+		// Lightbox
+		$('div.photo-hover').each(function() {
 			$(this).magnificPopup({
-				delegate: 'a',
+				delegate: 'a.overlay',
 				type: 'image',
 				gallery: {
-					enabled: true
+					enabled: true,
 				},
 				removalDelay: 200,
 				mainClass: 'mfp-fade',
@@ -1691,10 +1721,9 @@ div.sharing-post { display: none; }
 					titleSrc: function(item) {
 						var titleHtml;
 
-						$('div.large-post > img').each(function() {
-							if($(this).attr('src') == item.el.attr('href')) {
-								console.log('this if statment work ' + $(this).closest('div.photo').next().find('div.captions').html());
-								titleHtml = $(this).closest('div.photo').next().find('div.captions').html();
+						$('a.overlay').each(function() {
+							if($(this).attr('href') == item.el.attr('href')) {
+								titleHtml = $(this).nextAll('.caption:first').html();
 							}
 						});
 
@@ -1707,48 +1736,46 @@ div.sharing-post { display: none; }
 
 
 	function masonryInfinite(){
-		var $K = $('#posts');
+		var postContainer = $('#posts');
 
-		$K.imagesLoaded(function (){
-			$K.masonry({
-				itemSelector:"#post-info,.entry{block:permalinkpage},.permalink-box{/block:permalinkpage}",
-				columnWidth:1,
-				isFitWidth:true
+		// Masonry
+		postContainer.imagesLoaded(function (){
+			postContainer.masonry({
+				itemSelector: '.photo-post',
+				columnWidth: 1,
+				isFitWidth: true
 			})
 		});
 
-		$(window).resize(function(){ $K.masonry('reload'); });
+		$(window).masonry('bindResize');
 
-		{block:ifinfinitescrolling}
-			$K.infinitescroll({
-				navSelector:'#pagination',
-				nextSelector:'#pagination a#older',
-				itemSelector: ".entry",
-				animate: false,
-				loading:{
-					finishedMsg: function(){
-						$('#infscr-loading').fadeOut("slow")
-					}
-				}
-			},
-
-			function(newElements){
-				var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
-				var $newElemsIDs = $newElems.map(function (){
-					return this.id;
-				}).get();
-
-				$newElems.imagesLoaded(function (){
-					//$('#infscr-loading').fadeOut("slow");
-					$newElems.css("opacity","1").css("pointer-events","auto");
-					$K.masonry('appended', $newElems, false);
-
-					// console.log($newElems,$newElemsIDs);
-
-					Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
-				});
-			});
-		{/block:ifinfinitescrolling}
+		// Infinite Scrolling
+		// {block:ifinfinitescrolling}
+		// postContainer.infinitescroll({
+		// 	navSelector:'#pagination',
+		// 	nextSelector:'#pagination a#older',
+		// 	itemSelector: ".entry",
+		// 	animate: false,
+		// 	loading:{
+		// 		finishedMsg: function(){
+		// 			$('#infscr-loading').fadeOut("slow")
+		// 		}
+		// 	}
+		// },
+		// function(newElements){
+		// 	var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
+		// 	var $newElemsIDs = $newElems.map(function (){
+		// 		return this.id;
+		// 	}).get();
+		// 	$newElems.imagesLoaded(function (){
+		// 		//$('#infscr-loading').fadeOut("slow");
+		// 		$newElems.css("opacity","1").css("pointer-events","auto");
+		// 		postContainer.masonry('appended', $newElems, false);
+		// 		// console.log($newElems,$newElemsIDs);
+		// 		Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
+		// 	});
+		// });
+		// {/block:ifinfinitescrolling}
 	};
 	
 
