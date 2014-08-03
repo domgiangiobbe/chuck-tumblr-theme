@@ -697,14 +697,6 @@ img.mfp-img {
 	width: auto;
 }
 
-.text-post {
-	display: none;
-}
-
-#upcoming .text-post, #etc .text-post {
-	display: block;
-}
-
 .text-post span.date {
 	color: #262626;
 	display: inline-block;
@@ -1364,7 +1356,7 @@ div.sharing-post { display: none; }
 
 <!-- <a id="slide">\</a> -->
 {block:Indexpage}
-<div id="cover" {block:TagPage}class="hidden"{/block:TagPage}>
+<div id="cover" {block:TagPage}class="hidden"{/block:TagPage}{block:permalinkpage}class="hidden"{/block:permalinkpage}>
 	<div id="slideshow">
 		{block:ifcoverslide1image}
 			<li class="slide-1"></li>
@@ -1416,93 +1408,28 @@ div.sharing-post { display: none; }
 	<div id="loading"></div>
 
 	<div id="posts">
-
 	{block:Posts}
-		<article id="{PostID}" class="entry{block:HasTags}{block:Tags} {Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
- 		
- 		{block:TagPage}
- 			{block:Answer}
-			<div class="text">
-				<div class="question">
-					<h3>{Question}</h3>
-					<div class="source">Asked by {Asker}</div>
-				</div>
-				{answer}
-			</div>
-			{/block:Answer}
-	 
-			{block:Chat}
-			<div class="text">
-				{block:Title}<h2>{Title}</h2>{/block:Title}
-				{block:Lines}
-					<div class="{Alt} user_{UserNumber}">
-						{block:Label}<b>{Label}</b>{/block:Label} {Line}
-					</div>
-				{/block:Lines}
-			</div>
-			{/block:Chat}
-
-			{block:Link}
-				<a href="{URL}" class="text-blue sz37 arb">{Name}</a>
-				{block:Description}
-					{Description}
-				{/block:Description}
-			{/block:Link}
-		 
-			{block:Text}
-			<div class="text">
-				{block:Title}<h2>{Title}</h2>{/block:Title}
-				{Body}
-			</div>
-			{/block:Text}
-
-			{block:Quote}
-			<div class="text quote">
-				<h3>&ldquo; {Quote} &rdquo;</h3>
-				<div class="source">&mdash; &nbsp;&nbsp;&nbsp;{Source}</div>
-			</div>
-			{/block:Quote}
-
-			{block:Audio}
-			<div class="media">
-				{block:IndexPage}
-					{AudioEmbed-400}
-				{/block:IndexPage}
-				{block:permalinkpage}
-					{AudioEmbed-640}
-				{/block:permalinkpage}
-			</div>
-			{/block:Audio}
-
-			{block:Video}
-			<div class="media">
-				{block:IndexPage}
-					{VideoEmbed-400}
-				{/block:IndexPage}
-				{block:permalinkpage}
-					{VideoEmbed-700}
-				{/block:permalinkpage}
-			</div>
-			{/block:Video}
-		{/block:TagPage}
-
- 		{block:permalinkpage}
-			{block:Text}
-			<div class="text">
-				{block:Title}<h2>{Title}</h2>{/block:Title}
-				{Body}
-			</div>
-			{/block:Text}
-		{/block:permalinkpage}
 
 		{block:Photo}
-		<div class="photo">
+		<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+			<div class="overlay">
+				<img src="{PhotoURL-500}"
+			        {block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes} width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="" {block:Caption}data-caption="{Caption}"{/block:caption} />
+		    </div>
+		</article><!--      entry       -->
+        {/block:Photo}
+				
+		<!-- {block:Photo}
+		<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+            <div class="photo">
 			{block:Indexpage}
 				<div class="photo-hover">
-					<a href="{PhotoURL-HighRes}" class="overlay"></a>
-					<!-- <div class="large-post">
+					<a href="{PhotoURL-HighRes}" class="overlay">
+						<img src="{PhotoURL-500}" alt="{PhotoAlt}">
+					</a>
+					<div class="large-post">
 						<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
-					</div> -->
+					</div>
 					<div class="small-post">
 						<img src="{PhotoURL-500}" alt="{PhotoAlt}">
 					</div>
@@ -1520,70 +1447,52 @@ div.sharing-post { display: none; }
 					<img src="{PhotoURL-HighRes}"alt="{PhotoAlt}">
 				{LinkCloseTag}
 			{/block:permalinkpage}
-		</div>
-		{/block:Photo}
- 
-		{block:Photoset}
-		<div class="photo">
-			<div class="photoset-grid" data-layout="{PhotosetLayout}" data-id="photoset{PostID}">
-				{block:Photos}
-					<img src="{PhotoURL-HighRes}"{block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes}block:Caption}alt="{Caption}"{/block:caption}/>
-				{/block:Photos}
 			</div>
-		</div>
-		{/block:Photoset}
- 
-		{block:date}
-		<div class="{block:Answer}sharing-post{/block:Answer}{block:Chat}sharing-post{/block:Chat}{block:Link}sharing-post{/block:Link}{block:Text}sharing-post{/block:Text}{block:Quote}sharing-post{/block:Quote}{block:Video}sharing-post{/block:Video}{block:Audio}sharing-post{/block:Audio}{block:Photo}{block:Indexpage}photo{/block:Indexpage}{block:permalinkpage}text{/block:permalinkpage}-post{/block:Photo}{block:Photoset}sharing-post{/block:Photoset}">
-		 
-			{block:Caption}
-				<div class="captions">{Caption}</div>
-			{/block:Caption}
-		 
-			<div class="details">
-				{block:ifnothideposttags}
-					{block:HasTags}
-						<div class="tags">
-							{block:Tags}
-								<a href="{TagURL}">#{Tag}</a>
-							{/block:Tags}
-						</div>        
-					{/block:HasTags}
-				{/block:ifnothideposttags}
-				 
-				<a href="{permalink}">{TimeAgo}</a>
-				 
-				{block:NoteCount}
-					/ <a href="{permalink}">{NoteCountWithLabel}</a>
-				{/block:NoteCount}
-				 
-				<div class="buttons">
-					<a href="{ReblogURL}" class="reblog-button">c</a>
-					<a class="like-button">{LikeButton size="13"}z</a>
+		</article>
+        {/block:Photo} -->
+		
+		{block:TagPage}
+			{block:Text}
+			<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+	        	<div class="text">
+					{block:Title}<h2>{Title}</h2>{/block:Title}
+					{Body}
 				</div>
-				 
-			</div>
-		</div>
-		{/block:date}
+			</article><!--      entry       -->
+			{/block:Text}
 
-		</article><!--      entry       -->
+	        {block:Link}
+	        <article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+	        	<a href="{URL}" class="text-blue sz37 arb">{Name}</a>
+				{block:Description}
+					{Description}
+				{/block:Description}
+			</article><!--      entry       -->
+	        {/block:Link}
+	    {/block:TagPage}
 
-		{block:PermalinkPage}
-		{block:date}
+	    {block:permalinkpage}
+			{block:Text}
+			<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+	        	<div class="text">
+					{block:Title}<h2>{Title}</h2>{/block:Title}
+					{Body}
+				</div>
+			</article><!--      entry       -->
+			{/block:Text}
 
-			{block:ifshowpostnotes}
-				{block:PostNotes}
-					<div class="permalink-box">
-						<h2>{NoteCountWithLabel}</h2>
-						{PostNotes}
-					</div>
-				{/block:PostNotes}
-			{/block:ifshowpostnotes}
+	        {block:Link}
+	        <article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+	        	<a href="{URL}" class="text-blue sz37 arb">{Name}</a>
+				{block:Description}
+					{Description}
+				{/block:Description}
+			</article><!--      entry       -->
+	        {/block:Link}
+	    {/block:permalinkpage}
 
-		{/block:date}
-		{/block:PermalinkPage}
-
-	{/block:Posts}
+		
+    {/block:Posts}
 	</div><!--  Posts       -->
 
 	<div id="pagination" {block:ifinfinitescrolling}class="hidden"{/block:ifinfinitescrolling}>
@@ -1657,7 +1566,6 @@ div.sharing-post { display: none; }
 	
 	if(window.location.href == "http://chucktheme.tumblr.com/") {
 		$('body').addClass('index-page');
-		$('article.text-post, article.link-post').remove();
 		 
 		// $(window).scroll(function() {
 		// 	EasyPeasyParallax();
@@ -1669,11 +1577,11 @@ div.sharing-post { display: none; }
 			.addClass('photoset-grid')
 			.attr({
 				'data-id': 'photoset{PostID}',
-				'data-layout': '23'
+				'data-layout': '23232'
 				// data-layout: '{PhotosetLayout}'
 			});
 		
-		photoControls()
+		photoControls();
 		// masonryInfinite();
 	}
 
@@ -1704,13 +1612,17 @@ div.sharing-post { display: none; }
 			highresLinks: true,
 			rel: $('.photoset-grid').attr('data-id'),
 			gutter: '25px',
-			onComplete: function(){}
+			onComplete: function(){
+				console.log('grid is complete');
+				photoModal();
+			}
 		});
-		
+	}
+
+	function photoModal() {
 		// Lightbox
-		$('div.photo-hover').each(function() {
+		$('a.photoset-cell').each(function() {
 			$(this).magnificPopup({
-				delegate: 'a.overlay',
 				type: 'image',
 				gallery: {
 					enabled: true,
@@ -1721,9 +1633,9 @@ div.sharing-post { display: none; }
 					titleSrc: function(item) {
 						var titleHtml;
 
-						$('a.overlay').each(function() {
-							if($(this).attr('href') == item.el.attr('href')) {
-								titleHtml = $(this).nextAll('.caption:first').html();
+						$(this).each(function() {
+							if($(this).attr('href') == item.el.attr('src')) {
+								titleHtml = item.el.children('img').data('caption');
 							}
 						});
 
