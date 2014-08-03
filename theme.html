@@ -440,7 +440,7 @@ a#slide:hover{
 	position: relative;
 	right: 0;
 	width: 100%;
-	padding: 100px 0;
+	padding: 100px 25px;
 }
 
 #posts-container .large{
@@ -538,8 +538,12 @@ a#slide:hover{
 
 /* Set max-width on photo-posts */
 .index-page #posts-container, #paintings #posts-container, #drawings #posts-container {
-	/*margin: 0 auto;
-	max-width: 1200px;*/
+	padding: 100px 29px;
+}
+
+.index-page #posts, #paintings #posts, #drawings #posts {
+	margin: 0 auto;
+	max-width: 1400px;
 }
 
 /*.index-page #posts, #paintings #posts, #drawings #posts {
@@ -552,6 +556,10 @@ a#slide:hover{
 	height: 100vw;
 	font-size: 0;
 }*/
+
+.photoset-row {
+	margin-bottom: 2%;
+}
 
 .photo-post {
 	/*margin: 0 25px 50px 25px;*/
@@ -692,7 +700,7 @@ img.mfp-img {
 /* Text Post */
 /* hide all text posts expect on tagged pages */
 #upcoming #posts-container, #etc #posts-container {
-	margin: 25px;
+	margin-top: 15px;
 	max-width: 850px;
 	width: auto;
 }
@@ -752,6 +760,10 @@ img.mfp-img {
 
 
 /* Link Post */
+#press #posts-container {
+	padding: 100px 0;
+}
+
 .link-post {
 	margin: 40px 27px 0 27px;
 	max-width: 900px;
@@ -1412,44 +1424,9 @@ div.sharing-post { display: none; }
 
 		{block:Photo}
 		<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
-			<div class="overlay">
-				<img src="{PhotoURL-500}"
-			        {block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes} width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="" {block:Caption}data-caption="{Caption}"{/block:caption} />
-		    </div>
-		</article><!--      entry       -->
-        {/block:Photo}
-				
-		<!-- {block:Photo}
-		<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
-            <div class="photo">
-			{block:Indexpage}
-				<div class="photo-hover">
-					<a href="{PhotoURL-HighRes}" class="overlay">
-						<img src="{PhotoURL-500}" alt="{PhotoAlt}">
-					</a>
-					<div class="large-post">
-						<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
-					</div>
-					<div class="small-post">
-						<img src="{PhotoURL-500}" alt="{PhotoAlt}">
-					</div>
-					
-					{block:Caption}
-					<div class="caption">
-						 {Caption}
-					</div>
-					{/block:Caption}
-				</div>
-			{/block:Indexpage}
-				
-			{block:permalinkpage}
-				{LinkOpenTag}
-					<img src="{PhotoURL-HighRes}"alt="{PhotoAlt}">
-				{LinkCloseTag}
-			{/block:permalinkpage}
-			</div>
+			<img src="{PhotoURL-500}" {block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes} width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="" {block:Caption}data-caption="{Caption}"{/block:caption} />
 		</article>
-        {/block:Photo} -->
+        {/block:Photo}
 		
 		{block:TagPage}
 			{block:Text}
@@ -1458,7 +1435,7 @@ div.sharing-post { display: none; }
 					{block:Title}<h2>{Title}</h2>{/block:Title}
 					{Body}
 				</div>
-			</article><!--      entry       -->
+			</article>
 			{/block:Text}
 
 	        {block:Link}
@@ -1467,7 +1444,7 @@ div.sharing-post { display: none; }
 				{block:Description}
 					{Description}
 				{/block:Description}
-			</article><!--      entry       -->
+			</article>
 	        {/block:Link}
 	    {/block:TagPage}
 
@@ -1478,7 +1455,7 @@ div.sharing-post { display: none; }
 					{block:Title}<h2>{Title}</h2>{/block:Title}
 					{Body}
 				</div>
-			</article><!--      entry       -->
+			</article>
 			{/block:Text}
 
 	        {block:Link}
@@ -1487,7 +1464,7 @@ div.sharing-post { display: none; }
 				{block:Description}
 					{Description}
 				{/block:Description}
-			</article><!--      entry       -->
+			</article>
 	        {/block:Link}
 	    {/block:permalinkpage}
 
@@ -1554,7 +1531,7 @@ div.sharing-post { display: none; }
 </footer>
 
 <!-- <script type="text/javascript" src="http://static.tumblr.com/3zmswwt/SmLmzp5h9/scripts.js"></script> -->
-<script src="http://static.tumblr.com/8u4ydgr/Mi4n8o3wy/base.js" type="text/javascript"></script>
+<script src="http://static.tumblr.com/8u4ydgr/aKgn9qzm5/base.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 
@@ -1611,7 +1588,7 @@ div.sharing-post { display: none; }
 		$('.photoset-grid').photosetGrid({
 			highresLinks: true,
 			rel: $('.photoset-grid').attr('data-id'),
-			gutter: '25px',
+			gutter: '2%',
 			onComplete: function(){
 				console.log('grid is complete');
 				photoModal();
