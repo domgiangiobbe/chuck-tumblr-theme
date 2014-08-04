@@ -558,13 +558,55 @@ a#slide:hover{
 }*/
 
 .photoset-row {
-	margin-bottom: 2%;
+	margin-bottom: 5%;
+	overflow: auto;
+}
+
+.photoset-row .photo-post {
+	float: left;
+	height: 100%;
+	width: auto;
+}
+
+.photoset-row .photo-post a {
+	margin: 10% 10% 0;
+	width: 80%;
+}
+
+.photoset-row:nth-of-type(6n+4) .photo-post:first-child {
+	width: 60% !important;
+}
+
+.photoset-row:nth-of-type(6n+4) .photo-post:first-child > a {
+	margin-top: 7%;
+}
+
+.photoset-row:nth-of-type(6n+4) .photo-post:last-child > a {
+	margin-top: 20%;
+}
+
+
+.photoset-row:nth-of-type(6n+5) .photo-post:first-child {
+	float: right;
+	width: 65% !important;
+}
+
+.photoset-row:nth-of-type(6n+5) .photo-post:first-child > a {
+	margin-top: 7%;
+}
+
+.photoset-row:nth-of-type(6n+5) .photo-post:last-child > a {
+	margin-top: 20%;
+}
+
+.photoset-row.cols-3 {
+	
 }
 
 .photo-post {
 	/*margin: 0 25px 50px 25px;*/
 	/*padding: 0;*/
-	width: auto;
+	/*width: auto;*/
 	/*max-width: 400px;*/
 }
 
@@ -1420,52 +1462,56 @@ div.sharing-post { display: none; }
 	<div id="loading"></div>
 
 	<div id="posts">
-	{block:Posts}
-
-		{block:Photo}
-		<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
-			<img src="{PhotoURL-500}" {block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes} width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="" {block:Caption}data-caption="{Caption}"{/block:caption} />
-		</article>
-        {/block:Photo}
+		{block:Posts}
+			{block:Photo}
+			<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+				<img src="{PhotoURL-500}" {block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes} width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="" {block:Caption}data-caption="{Caption}"{/block:caption} />
+			</article>
+	        {/block:Photo}
+	    {/block:Posts}
 		
 		{block:TagPage}
-			{block:Text}
-			<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
-	        	<div class="text">
-					{block:Title}<h2>{Title}</h2>{/block:Title}
-					{Body}
-				</div>
-			</article>
-			{/block:Text}
+			{block:Posts}
+				{block:Text}
+				<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+		        	<div class="text">
+						{block:Title}<h2>{Title}</h2>{/block:Title}
+						{Body}
+					</div>
+				</article>
+				{/block:Text}
 
-	        {block:Link}
-	        <article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
-	        	<a href="{URL}" class="text-blue sz37 arb">{Name}</a>
-				{block:Description}
-					{Description}
-				{/block:Description}
-			</article>
-	        {/block:Link}
+		        {block:Link}
+		        <article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+		        	<a href="{URL}" class="text-blue sz37 arb">{Name}</a>
+					{block:Description}
+						{Description}
+					{/block:Description}
+				</article>
+		        {/block:Link}
+	        {/block:Posts}
 	    {/block:TagPage}
 
 	    {block:permalinkpage}
-			{block:Text}
-			<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
-	        	<div class="text">
-					{block:Title}<h2>{Title}</h2>{/block:Title}
-					{Body}
-				</div>
-			</article>
-			{/block:Text}
+	    	{block:Posts}
+				{block:Text}
+				<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+		        	<div class="text">
+						{block:Title}<h2>{Title}</h2>{/block:Title}
+						{Body}
+					</div>
+				</article>
+				{/block:Text}
 
-	        {block:Link}
-	        <article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
-	        	<a href="{URL}" class="text-blue sz37 arb">{Name}</a>
-				{block:Description}
-					{Description}
-				{/block:Description}
-			</article>
-	        {/block:Link}
+		        {block:Link}
+		        <article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+		        	<a href="{URL}" class="text-blue sz37 arb">{Name}</a>
+					{block:Description}
+						{Description}
+					{/block:Description}
+				</article>
+		        {/block:Link}
+	        {/block:Posts}
 	    {/block:permalinkpage}
 
 		
@@ -1531,7 +1577,7 @@ div.sharing-post { display: none; }
 </footer>
 
 <!-- <script type="text/javascript" src="http://static.tumblr.com/3zmswwt/SmLmzp5h9/scripts.js"></script> -->
-<script src="http://static.tumblr.com/8u4ydgr/aKgn9qzm5/base.js" type="text/javascript"></script>
+<script src="http://static.tumblr.com/8u4ydgr/A2Tn9rb5a/base.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 
@@ -1554,7 +1600,7 @@ div.sharing-post { display: none; }
 			.addClass('photoset-grid')
 			.attr({
 				'data-id': 'photoset{PostID}',
-				'data-layout': '23232'
+				'data-layout': '232332'
 				// data-layout: '{PhotosetLayout}'
 			});
 		
@@ -1588,7 +1634,6 @@ div.sharing-post { display: none; }
 		$('.photoset-grid').photosetGrid({
 			highresLinks: true,
 			rel: $('.photoset-grid').attr('data-id'),
-			gutter: '2%',
 			onComplete: function(){
 				console.log('grid is complete');
 				photoModal();

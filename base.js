@@ -270,9 +270,9 @@
           imageIndex = rowEnd;
         });
 
-        $(elem).find('.photoset-row:not(:last-child)').css({
-          'margin-bottom': options.gutter
-        });
+        // $(elem).find('.photoset-row:not(:last-child)').css({
+        //   'margin-bottom': options.gutter
+        // });
       },
 
       _setupColumns: function(  elem, options ){
@@ -310,23 +310,23 @@
           }
 
           var $cells = $(elem).find('.photoset-cell');
-          var $cols1 = $(elem).find('.cols-1 .photoset-cell');
-          var $cols2 = $(elem).find('.cols-2 .photoset-cell');
-          var $cols3 = $(elem).find('.cols-3 .photoset-cell');
-          var $cols4 = $(elem).find('.cols-4 .photoset-cell');
-          var $cols5 = $(elem).find('.cols-5 .photoset-cell');
+          var $cols1 = $(elem).find('.cols-1 .photo-post');
+          var $cols2 = $(elem).find('.cols-2 .photo-post');
+          var $cols3 = $(elem).find('.cols-3 .photo-post');
+          var $cols4 = $(elem).find('.cols-4 .photo-post');
+          var $cols5 = $(elem).find('.cols-5 .photo-post');
 
           // Apply styles initial structure styles to the grid
           $(elem).css({
             'width': options.width
           });
           $rows.css({
-            'clear': 'left',
+            // 'clear': 'left',
             'display': 'block',
-            'overflow': 'hidden'
+            // 'overflow': 'hidden'
           });
           $cells.css({
-            'float': 'left',
+            // 'float': 'left',
             'display': 'block',
             'line-height': '0',
             '-webkit-box-sizing': 'border-box',
@@ -405,10 +405,10 @@
             } 
 
           }
-          resizePhotosetGrid();
+          // resizePhotosetGrid();
 
           $(window).on("resize", function() {
-            resizePhotosetGrid();
+            // resizePhotosetGrid();
           }); 
 
         };
