@@ -47,7 +47,6 @@
 
 <meta name="color:Lightbox Background" content="#ffffff"/>
 
-<meta name="if:Activate Slide Show" content="0"/>
 <meta name="if:Full Screen Cover" content="1"/>
 <meta name="if:Animated Loading" content="1"/>
 <meta name="if:Uppercase Sidebar Links" content="1"/>
@@ -111,7 +110,8 @@ html, body {
 }
 
 body.contact-page {
-	background: url("{image:Cover Slide 1}") center no-repeat;
+	background-position: center;
+	background-repeat: no-repeat;
 	background-size: cover;
 }
 
@@ -301,7 +301,7 @@ a,
 	text-align: center;
 }
 
-#slideshow {
+#hero {
 	position: fixed;
 	height: 100%;
 	width: 100%;
@@ -310,44 +310,14 @@ a,
 	z-index: -5;
 }
 
-#slideshow li {
+#hero li {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	list-style-type: none;
+	position: absolute;
 	width: 100%;
 	height: 100%;
-}
-
-#slideshow > li { 
-	position: absolute;
-}
-
-#slideshow li.slide-1{
-	background: url("{image:Cover Slide 1}") center no-repeat;
-	background-size: cover;
-}
-
-#slideshow li.slide-2{
-	background: url("{image:Cover Slide 2}") center no-repeat;
-	background-size: cover;
-}
-
-#slideshow li.slide-3{
-	background: url("{image:Cover Slide 3}") center no-repeat;
-	background-size: cover;
-}
-
-#slideshow li.slide-4{
-	background: url("{image:Cover Slide 4}") center no-repeat;
-	background-size: cover;
-}
-
-#slideshow li.slide-5{
-	background: url("{image:Cover Slide 5}") center no-repeat;
-	background-size: cover;
-}
-
-#slideshow li.slide-6{
-	background: url("{image:Cover Slide 6}") center no-repeat;
-	background-size: cover;
 }
 /*      End-Cover       */
 
@@ -1204,6 +1174,7 @@ div.foot-nav-wrap {
 .contact-page .text-post, .cv-page .text-post {
 	display: block;
 	position: relative !important;
+	background-color: transparent;
 }
 
 #contact-head, #cv-head {
@@ -1364,7 +1335,7 @@ div.cv-group.p0 li > p {
 }
 
 {block:ifnotfullscreencover}
-#cover,#cover #slideshow{height:400px}
+#cover,#cover #hero{height:400px}
 #cover #cover-information{top:50%}
 {/block:ifnotfullscreencover}
 
@@ -1408,28 +1379,10 @@ div.sharing-post { display: none; }
 
 <div id="full-overlay"></div>
 
-<!-- <a id="slide">\</a> -->
 {block:Indexpage}
 <div id="cover" {block:TagPage}class="hidden"{/block:TagPage}{block:permalinkpage}class="hidden"{/block:permalinkpage}>
-	<div id="slideshow">
-		{block:ifcoverslide1image}
-			<li class="slide-1"></li>
-		{/block:ifcoverslide1image}
-		{block:ifcoverslide2image}
-			<li class="slide-2"></li>
-		{/block:ifcoverslide2image}
-		{block:ifcoverslide3image}
-			<li class="slide-3"></li>
-		{/block:ifcoverslide3image}
-		{block:ifcoverslide4image}
-			<li class="slide-4"></li>
-		{/block:ifcoverslide4image}
-		{block:ifcoverslide5image}
-			<li class="slide-5"></li>
-		{/block:ifcoverslide5image}
-		{block:ifcoverslide6image}
-			<li class="slide-6"></li>
-		{/block:ifcoverslide6image}
+	<div id="hero">
+		<li></li>
 	</div>
 </div>
 {/block:Indexpage}
@@ -1608,16 +1561,29 @@ div.sharing-post { display: none; }
 		// masonryInfinite();
 	}
 
+	// Random BG Image
+	var bgs = ["{image:Cover Slide 1}", "{image:Cover Slide 2}", "{image:Cover Slide 3}", "{image:Cover Slide 4}", "{image:Cover Slide 5}", "{image:Cover Slide 6}", "{image:Cover Slide 7}", "{image:Cover Slide 8}"],
+		bgImgs = [];
+
+	bgs.forEach(function(item) {
+		if(item != "http://assets.tumblr.com/images/x.gif") {
+			bgImgs.push(item);
+		}
+	});
+
+	// var rndBg = bgImgs[Math.floor(Math.random()*bgImgs.length)];
+	$('body.contact-page, #hero li').css('background-image', 'url(' + bgImgs[Math.floor(Math.random()*bgImgs.length)] + ')');
+
 	$('#cover').click(function(){
 		scrollToTop();
 	});
 
 	$("a#slide").click(function(){
-		openNav();
+		navControl.open();
 	});
 
 	$("#full-overlay").click(function(){
-		closeNav();
+		navControl.close();
 	});
 
 	if($("#full-overlay").hasClass("overlay-show")){
@@ -1625,7 +1591,7 @@ div.sharing-post { display: none; }
 	};
 
 	$(window).scroll(function(){
-		closeNav();
+		navControl.close();
 	});
 
 
@@ -1714,35 +1680,25 @@ div.sharing-post { display: none; }
 	
 
 	// User controlled settings
-	{block:ifactivateslideshow}
-		$("#slideshow > li:gt(0)").hide();
-
-		setInterval(function() { 
-			$('#slideshow > li:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('#slideshow');
-		},3000);
-	{/block:ifactivateslideshow}
-
 	{block:ifopenlinksinnewtab}
 		$('a[href^="http://"]').attr('target','_blank');
 	{/block:ifopenlinksinnewtab}
 
 
-	// REUSABLE FUNCTIONS
-	
-	// open nav 
-	function openNav() {
-		$("#topbar").addClass("topbar-move");
-		$("#sidebar").addClass("sidebar-move");
-		$("#posts-container").addClass("posts-container-move");
-		$("#full-overlay").addClass("overlay-show");
-	};
-
-	// close nav
-	function closeNav() {
-		$("#topbar").removeClass("topbar-move");
-		$("#sidebar").removeClass("sidebar-move");
-		$("#posts-container").removeClass("posts-container-move");
-		$("#full-overlay").removeClass("overlay-show");
+	// REUSABLES
+	var navControl = {
+		open: function() {
+			$("#topbar").addClass("topbar-move");
+			$("#sidebar").addClass("sidebar-move");
+			$("#posts-container").addClass("posts-container-move");
+			$("#full-overlay").addClass("overlay-show");
+		},
+		close: function() {
+			$("#topbar").removeClass("topbar-move");
+			$("#sidebar").removeClass("sidebar-move");
+			$("#posts-container").removeClass("posts-container-move");
+			$("#full-overlay").removeClass("overlay-show");
+		}
 	};
 
 	// scroll to top function
@@ -1757,7 +1713,7 @@ div.sharing-post { display: none; }
 	// EasyPeasyParallax
 	function EasyPeasyParallax() {
 		scrollPos = $(this).scrollTop();
-		// $('#cover #slideshow').css({'top':-(scrollPos/5)+"px"});
+		// $('#cover #hero').css({'top':-(scrollPos/5)+"px"});
 		// $('#topbar').css({'opacity':scrollPos/($("#cover").outerHeight() - 90),'height':$("#cover").outerHeight() - scrollPos + "px"});
 	};
 
