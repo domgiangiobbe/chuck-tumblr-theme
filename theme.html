@@ -26,6 +26,7 @@
 <meta name="image:Cover Slide 7" content=""/>
 <meta name="image:Cover Slide 8" content=""/>
 
+<meta name="color:Main Color" content="#0006ff"/>
 <meta name="color:Cover Title" content="#ffffff"/>
 <meta name="color:Cover Text" content="#eeeeee"/>
 <meta name="color:Background" content="#f4f4f4"/>
@@ -35,7 +36,6 @@
 <meta name="color:Links Hover" content="#239fc5"/>
 
 <meta name="color:Top Bar Text" content="#ffffff"/>
-<meta name="color:Sidebar Background" content="#012b37"/>
 <meta name="color:Sidebar Links" content="#ffffff"/>
 <meta name="color:Sidebar Links Hover" content="#ffffff"/>
 <meta name="color:Post Background" content="#ffffff"/>
@@ -116,7 +116,7 @@ body.contact-page {
 }
 
 section {
-	background-color: #fff;
+	background-color: {color:Background};
 	min-height: 100%;
 	position:relative;
 	z-index: 10;
@@ -129,7 +129,7 @@ body.contact-page section {
 a, a:hover, a:link, a:visited {		
 	word-wrap: break-word;
 	text-decoration: none;
-	color: {color:Links};
+	color: {color:Main Color};
 }
 
 a:hover {
@@ -186,12 +186,12 @@ blockquote{
 	clear: both;
 }
 
-.blue-text {
-	color: #0006ff;
+.main-color {
+	color: {color:Main Color};
 }
 
-.blue-bg {
-	background-color: #0006ff;
+.main-color-bg {
+	background-color: {color:Main Color};
 }
 
 /*
@@ -372,7 +372,7 @@ a#slide:hover{
 	right: -215px;
 	padding: 22px;
 	overflow-y: scroll;
-	background: {color:Sidebar Background};
+	background: {color:Main Color};
 }
 
 #sidebar.sidebar-move{
@@ -694,7 +694,7 @@ img.mfp-img {
 
 /* MFP Buttons */
 button.mfp-arrow {
-	background: #0006ff;
+	background: {color:Main Color};
 }
 
 /* Images title */
@@ -702,7 +702,7 @@ button.mfp-arrow {
 	font-size: 14px;
 	line-height: 15px;
 	margin: 25px 0 0 25px;
-	color: {color:Links};
+	color: {color:Main Color};
 }
 
 .mfp-title ul {
@@ -1108,7 +1108,7 @@ button.mfp-arrow {
 }
 
 div.foot-top {
-	background-color: #0006ff;
+	background-color: {color:Main Color};
 }
 
 div.foot-logo, div.foot-main {
@@ -1439,7 +1439,7 @@ div.sharing-post { display: none; }
 </aside>
 
 <div id="post-info">
-	<h3 class="sz37 arb blue-text">{block:TagPage}{Tag}{/block:TagPage}</h3>
+	<h3 class="sz37 arb main-color">{block:TagPage}{Tag}{/block:TagPage}</h3>
 </div>
 
 <section>
