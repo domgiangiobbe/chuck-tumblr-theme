@@ -88,8 +88,8 @@
 <meta name="text:Photo Overlay Opacity" content="70"/>
 <meta name="text:Google Analytics ID" content=""/>
 
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family={select:Body Font}|{select:Title Font}:400,400italic,700,700italic">
-<link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family={select:Body Font}{select:Title Font}:400,400italic,700,700italic">
+<!-- <link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'> -->
  
 <link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/i0umzp1kg/icon-embedded.css"/><!--[if IE 7]><link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/Parmzp1kj/icon-ie7.css"/><![endif]-->
  
@@ -1634,14 +1634,15 @@ div.sharing-post { display: none; }
 
 	function photoModal() {
 		// Lightbox
-		$('a.photoset-cell').each(function() {
-			$(this).magnificPopup({
+		$('div.photoset-grid').each(function() {
+			$('a.photoset-cell').magnificPopup({
 				type: 'image',
 				gallery: {
 					enabled: true,
+					navigateByImgClick: true
 				},
-				removalDelay: 200,
-				mainClass: 'mfp-fade',
+				// removalDelay: 200,
+				// mainClass: 'mfp-fade',
 				image: {
 					titleSrc: function(item) {
 						var titleHtml;
