@@ -692,6 +692,11 @@ img.mfp-img {
 	/*max-height: 70% !important;*/
 }
 
+/* MFP Buttons */
+button.mfp-arrow {
+	background: #0006ff;
+}
+
 /* Images title */
 .mfp-title {
 	font-size: 14px;
@@ -1640,21 +1645,22 @@ div.sharing-post { display: none; }
 				type: 'image',
 				gallery: {
 					enabled: true,
+					preload: [1,2],
 					navigateByImgClick: true
 				},
-				// removalDelay: 200,
-				// mainClass: 'mfp-fade',
+				removalDelay: 200,
+				mainClass: 'mfp-fade',
 				image: {
 					titleSrc: function(item) {
-						var titleHtml;
-
-						$(this).each(function() {
-							if($(this).attr('href') == item.el.attr('src')) {
-								titleHtml = item.el.children('img').data('caption');
-							}
-						});
-
-						return titleHtml;
+						if(item.el.children('img').data('caption') != null) {
+							return item.el.children('img').data('caption')
+						} else {
+							return ''
+						}
+					}
+				},
+				callbacks: {
+					markupParse: function(template, values, item) {
 					}
 				}
 			});
