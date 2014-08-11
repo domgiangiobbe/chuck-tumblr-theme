@@ -1417,7 +1417,7 @@ div.sharing-post { display: none; }
 	<div id="posts">
 		{block:Posts}
 			{block:Photo}
-			<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+			<article id="{PostID}" class="entry {block:HasTags}{block:Tags}{Tag} {/block:Tags}{/block:HasTags}{PostType}-post">
 				<img src="{PhotoURL-500}" {block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes} width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="" {block:Caption}data-caption="{Caption}"{/block:caption} />
 			</article>
 	        {/block:Photo}
@@ -1426,7 +1426,7 @@ div.sharing-post { display: none; }
 		{block:TagPage}
 			{block:Posts}
 				{block:Text}
-				<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+				<article id="{PostID}" class="entry {block:HasTags}{block:Tags}{Tag} {/block:Tags}{/block:HasTags}{PostType}-post">
 		        	<div class="text">
 						{block:Title}<h2>{Title}</h2>{/block:Title}
 						{Body}
@@ -1435,7 +1435,7 @@ div.sharing-post { display: none; }
 				{/block:Text}
 
 		        {block:Link}
-		        <article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+		        <article id="{PostID}" class="entry {block:HasTags}{block:Tags}{Tag} {/block:Tags}{/block:HasTags}{PostType}-post">
 		        	<a href="{URL}" class="text-blue sz37 arb">{Name}</a>
 					{block:Description}
 						{Description}
@@ -1448,7 +1448,7 @@ div.sharing-post { display: none; }
 	    {block:permalinkpage}
 	    	{block:Posts}
 				{block:Text}
-				<article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+				<article id="{PostID}" class="entry {block:HasTags}{block:Tags}{Tag} {/block:Tags}{/block:HasTags}{PostType}-post">
 		        	<div class="text">
 						{block:Title}<h2>{Title}</h2>{/block:Title}
 						{Body}
@@ -1457,7 +1457,7 @@ div.sharing-post { display: none; }
 				{/block:Text}
 
 		        {block:Link}
-		        <article id="{PostID}" class="entry{block:HasTags}{block:Tags}{Tag}{/block:Tags}{/block:HasTags} {PostType}-post">
+		        <article id="{PostID}" class="entry {block:HasTags}{block:Tags}{Tag} {/block:Tags}{/block:HasTags}{PostType}-post">
 		        	<a href="{URL}" class="text-blue sz37 arb">{Name}</a>
 					{block:Description}
 						{Description}
@@ -1571,7 +1571,6 @@ div.sharing-post { display: none; }
 		}
 	});
 
-	// var rndBg = bgImgs[Math.floor(Math.random()*bgImgs.length)];
 	$('body.contact-page, #hero li').css('background-image', 'url(' + bgImgs[Math.floor(Math.random()*bgImgs.length)] + ')');
 
 	$('#cover').click(function(){
