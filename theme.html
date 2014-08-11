@@ -238,8 +238,8 @@ blockquote{
 
 
 
-/*
-a,
+
+/*a,
 .like_button,
 #sidebar img,
 .entry .photo .photo-hover a.overlay,
@@ -255,8 +255,8 @@ a,
 .entry .photo .photoset-grid img {
 	-webkit-transition: all .4s ease;
 	transition: all .4s ease;
-}
-*/
+}*/
+
 
 #tumblr_controls {
 	position: fixed;
@@ -671,6 +671,10 @@ div.mfp-bg {
 	background: {color:Lightbox Background};
 }
 
+.mfp-content {
+	/*top: -5%;*/
+}
+
 .mfp-fade.mfp-bg.mfp-ready {
 	opacity: 0.93;
 }
@@ -685,6 +689,7 @@ div.mfp-bottom-bar {
 
 img.mfp-img {
 	padding: 0;
+	/*max-height: 70% !important;*/
 }
 
 /* Images title */
@@ -1331,6 +1336,27 @@ div.cv-group.p0 li > p {
 
 	div.subnav-foot {
 		margin-left: 0;
+	}
+}
+
+@media screen and (max-width:500px){
+	.index-page #posts-container, #paintings #posts-container, #drawings #posts-container {
+		padding: 100px 0;
+	}
+
+	.photoset-row {
+		margin: 0;
+	}
+
+	.photoset-row .photo-post, .photoset-row .photo-post:first-child, .photoset-row .photo-post:last-child, .photoset-row:nth-of-type(6n+4) .photo-post:first-child, .photoset-row:nth-of-type(6n+5) .photo-post:first-child, .photoset-row:nth-of-type(6n+4) .photo-post:last-child, .photoset-row:nth-of-type(6n+5) .photo-post:last-child  {
+		float: none;
+		margin: 0;
+		width: 100% !important;
+	}
+
+	.photoset-row .photo-post a, .photoset-row:nth-of-type(6n+4) .photo-post:first-child > a, .photoset-row:nth-of-type(6n+5) .photo-post:first-child > a, .photoset-row:nth-of-type(6n+4) .photo-post:last-child > a, .photoset-row:nth-of-type(6n+5) .photo-post:last-child > a {
+		margin: 13px 27px 14px;
+		width: auto;
 	}
 }
 
