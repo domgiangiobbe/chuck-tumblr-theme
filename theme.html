@@ -694,7 +694,19 @@ img.mfp-img {
 
 /* MFP Buttons */
 button.mfp-arrow {
-	background: {color:Main Color};
+	background: transparent;
+}
+
+.mfp-arrow-left:after, .mfp-arrow-left .mfp-a {
+	border-right-color: {color:Main Color};
+}
+
+.mfp-arrow-right:after, .mfp-arrow-right .mfp-a {
+	border-left-color: {color:Main Color};
+}
+
+.mfp-arrow:active {
+	margin-top: -55px;
 }
 
 /* Images title */
@@ -1646,7 +1658,8 @@ div.sharing-post { display: none; }
 				gallery: {
 					enabled: true,
 					preload: [1,2],
-					navigateByImgClick: true
+					navigateByImgClick: false,
+					tCounter: ''
 				},
 				removalDelay: 200,
 				mainClass: 'mfp-fade',
