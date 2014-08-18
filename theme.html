@@ -1599,7 +1599,7 @@ div.sharing-post { display: none; }
 	// remove all elements with class hidden
 	$('.hidden').remove();
 	
-	if(window.location.href == "http://chucktheme.tumblr.com/") {
+	if(window.location.href == "http://chucktheme.tumblr.com/" || window.location.pathname.match(/^\/page\//) ) {
 		$('body').addClass('index-page');
 		 
 		// $(window).scroll(function() {
@@ -1607,7 +1607,7 @@ div.sharing-post { display: none; }
 		// });
 	}
 
-	if(window.location.href == "http://chucktheme.tumblr.com/" || $('#paintings').length || $('#drawings').length) {
+	if(window.location.href == "http://chucktheme.tumblr.com/" || window.location.pathname.match(/^\/page\//) || $('#paintings').length || $('#drawings').length) {
 		$('#posts')
 			.addClass('photoset-grid')
 			.attr({
@@ -1660,6 +1660,7 @@ div.sharing-post { display: none; }
 			onComplete: function(){
 				console.log('grid is complete');
 				photoModal();
+				infiniteScroll();
 			}
 		});
 	}
@@ -1694,6 +1695,38 @@ div.sharing-post { display: none; }
 		});
 	}
 
+	function infiniteScroll() {
+		{block:ifinfinitescrolling}
+		var postContainer = $('#posts');
+
+		postContainer.infinitescroll({
+			navSelector:'#pagination',
+			nextSelector:'#pagination a#older',
+			itemSelector: '.entry',
+			animate: false,
+			loading:{
+				finishedMsg: function(){
+					$('#infscr-loading').fadeOut("slow")
+				}
+			}
+		},
+		function(newElements){
+			console.log(newElements);
+
+			// var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
+			// var $newElemsIDs = $newElems.map(function (){
+			// 	return this.id;
+			// }).get();
+			// $newElems.imagesLoaded(function (){
+			// 	//$('#infscr-loading').fadeOut("slow");
+			// 	$newElems.css("opacity","1").css("pointer-events","auto");
+			// 	postContainer.masonry('appended', $newElems, false);
+			// 	// console.log($newElems,$newElemsIDs);
+			// 	Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
+			// });
+		});
+		{/block:ifinfinitescrolling}
+	}
 
 	function masonryInfinite(){
 		var postContainer = $('#posts');
