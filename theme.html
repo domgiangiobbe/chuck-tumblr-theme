@@ -262,14 +262,14 @@ blockquote{
 	position: fixed;
 }
 
-.like_button {
+/*.like_button {
 	position: absolute;
 	opacity: 0;
 }
 
 .like_button.liked {
 	opacity:1 !important
-}
+}*/
 /*      End-Setting     */
 
 /*		Overlay 	*/
@@ -499,10 +499,19 @@ a#slide:hover{
 
 /* Video/Audio Post */
 .entry iframe {
-	width: 100%;
 	display: block;
 }
 
+/* Like Reblog */
+.like_and_reblog_buttons {
+	margin: 10px 0 -5px;
+	padding: 0;
+}
+
+.like_and_reblog_buttons li {
+	display: inline-block;
+	margin-right: 8px;
+}
 
 /* Photo Post */
 
@@ -603,6 +612,12 @@ a#slide:hover{
 
 .photo-post .photo .photoset-grid img:hover {
 	opacity: 0.7;
+}
+
+.photo-post .like_and_reblog_buttons {
+	margin: -30px 10% 0;
+	text-align: right;
+	width: 80%;
 }
 
 .photo-post .details {
@@ -1474,10 +1489,10 @@ div.sharing-post { display: none; }
 			<article id="{PostID}" class="entry {block:HasTags}{block:Tags}{Tag} {/block:Tags}{/block:HasTags}{PostType}-post">
 				<img src="{PhotoURL-500}" {block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes} width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="" {block:Caption}data-caption="{Caption}"{/block:caption} />
 				
-				<!-- <ul class="like_and_reblog_buttons">
-					<li>{ReblogButton}</li>
-	            	<li>{LikeButton}</li>
-	            </ul> -->
+				<ul class="like_and_reblog_buttons">
+					<li>{ReblogButton color="white"}</li>
+	            	<li>{LikeButton color="white"}</li>
+	            </ul>
 			</article>
 	        {/block:Photo}
 	    {/block:Posts}
@@ -1488,6 +1503,10 @@ div.sharing-post { display: none; }
 				<article id="{PostID}" class="entry {block:HasTags}{block:Tags}{Tag} {/block:Tags}{/block:HasTags}{PostType}-post">
 		        	<div class="text">
 						{block:Title}<h2>{Title}</h2>{/block:Title}
+						<ul class="like_and_reblog_buttons">
+							<li>{ReblogButton}</li>
+			            	<li>{LikeButton}</li>
+			            </ul>
 						{Body}
 					</div>
 				</article>
@@ -1530,8 +1549,8 @@ div.sharing-post { display: none; }
     {/block:Posts}
 	</div><!--  Posts       -->
 
-	<div id="pagination" {block:ifinfinitescrolling}class="hidden"{/block:ifinfinitescrolling}>
-		{block:Pagination}
+	<div id="pagination">
+ 		{block:Pagination}
 			{block:PreviousPage}
 				<a class="left" href="{PreviousPage}">&larr; Newer</a>
 			{/block:PreviousPage}
@@ -1615,9 +1634,12 @@ div.sharing-post { display: none; }
 				'data-layout': '232332'
 				// data-layout: '{PhotosetLayout}'
 			});
+
+		{block:ifinfinitescrolling}
+		infiniteScroll();
+		{/block:ifinfinitescrolling}
 		
 		photoControls();
-		// masonryInfinite();
 	}
 
 	// Random BG Image
@@ -1658,9 +1680,7 @@ div.sharing-post { display: none; }
 			highresLinks: true,
 			rel: $('.photoset-grid').attr('data-id'),
 			onComplete: function(){
-				console.log('grid is complete');
 				photoModal();
-				infiniteScroll();
 			}
 		});
 	}
@@ -1699,6 +1719,8 @@ div.sharing-post { display: none; }
 		{block:ifinfinitescrolling}
 		var postContainer = $('#posts');
 
+		console.log('go infinite');
+
 		postContainer.infinitescroll({
 			navSelector:'#pagination',
 			nextSelector:'#pagination a#older',
@@ -1706,24 +1728,26 @@ div.sharing-post { display: none; }
 			animate: false,
 			loading:{
 				finishedMsg: function(){
-					$('#infscr-loading').fadeOut("slow")
+					$('#infscr-loading').show();
 				}
 			}
 		},
 		function(newElements){
 			console.log(newElements);
 
-			// var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
-			// var $newElemsIDs = $newElems.map(function (){
-			// 	return this.id;
-			// }).get();
-			// $newElems.imagesLoaded(function (){
-			// 	//$('#infscr-loading').fadeOut("slow");
-			// 	$newElems.css("opacity","1").css("pointer-events","auto");
-			// 	postContainer.masonry('appended', $newElems, false);
-			// 	// console.log($newElems,$newElemsIDs);
-			// 	Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
-			// });
+			var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
+			var $newElemsIDs = $newElems.map(function (){
+				return this.id;
+			}).get();
+			$newElems.imagesLoaded(function (){
+				$('#infscr-loading').hide();
+				$newElems.css("opacity","1").css("pointer-events","auto");
+				// postContainer.masonry('appended', $newElems, false);
+				postContainer.append($newElems);
+				// console.log($newElems,$newElemsIDs);
+				Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
+				$('.photoset-grid').photosetGrid();
+			});
 		});
 		{/block:ifinfinitescrolling}
 	}
