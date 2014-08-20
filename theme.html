@@ -1720,51 +1720,17 @@ div.sharing-post { display: none; }
 					}
 				},
 				callbacks: {
-					change: function() {
-						console.log('change ' + this.currItem.el.next());
-					},
 					open: function() {
-						console.log('open ' + this.currItem.el.next());
 						$('div.mfp-bottom-bar').append('<ul class="like_and_reblog_buttons"></ul>');
 					},
 					close: function() {
 						$('div.mfp-bottom-bar ul.like_and_reblog_buttons').remove();
-						console.log('close ' + this.currItem.el.next());
-					},
-					change: function() {
-						// $('div.mfp-bottom-bar ul.like_and_reblog_buttons').remove();
-						console.log('change ' + this);
-						// this.currItem.el.next().clone().appendTo('div.mfp-bottom-bar');
-						// $('div.mfp-bottom-bar ul.like_and_reblog_buttons').html(this.currItem.el.next().html());
-						// if($('div.mfp-bottom-bar ul.like_and_reblog_buttons')) {
-
-						// 	console.log('change ' + this);
-						// }
 					},
 					imageLoadComplete: function() {
 						$('div.mfp-bottom-bar').find('ul.like_and_reblog_buttons').html(this.currItem.el.next().html());
-							// .append(this.currItem.el.next().clone());
-						// this.currItem.el.next().clone().appendTo('div.mfp-bottom-bar');
-						console.log('img complete ' + this.currItem.el.next());
 					}
 				}
 			});
-
-			// $('a.photoset-cell').on('mfpOpen', function(event) {
-			// 	console.log('Popup opened',  $.magnificPopup.instance.currItem.parent());
-			// 	$('div.mfp-bottom-bar > ul').remove();
-			// 	$.magnificPopup.instance.currItem.next().clone().appendTo('div.mfp-bottom-bar');
-				
-			// 	event.stopPropagation();
-			// });
-
-			// $('a.photoset-cell').on('mfpOpen', function(e /*, params */) {
-			// 	console.log('Popup opened',  $.magnificPopup.instance.currItem.el.next());
-			// 	$('div.mfp-bottom-bar > ul').remove();
-			// 	$.magnificPopup.instance.currItem.el.next().clone().appendTo('div.mfp-bottom-bar');
-
-			// 	event.stopPropagation();
-			// });
 
 		// });
 	}
