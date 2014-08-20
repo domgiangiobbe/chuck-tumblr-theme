@@ -538,7 +538,7 @@ a#slide:hover{
 
 .photoset-row {
 	margin-bottom: 5%;
-	overflow: auto;
+	overflow: hidden;
 }
 
 .photoset-row .photo-post {
@@ -615,9 +615,10 @@ a#slide:hover{
 }
 
 .photo-post .like_and_reblog_buttons {
-	margin: -30px 10% 0;
+	display: none;
+	/*margin: -30px 10% 0;
 	text-align: right;
-	width: 80%;
+	width: 80%;*/
 }
 
 .photo-post .details {
@@ -727,8 +728,11 @@ button.mfp-arrow {
 /* Images title */
 .mfp-title {
 	font-size: 14px;
+	float: none;
 	line-height: 15px;
-	margin: 25px 0 0 25px;
+	position: absolute;
+	top: 13px;
+	left: 11px;
 	color: {color:Main Color};
 }
 
@@ -743,6 +747,14 @@ button.mfp-arrow {
 
 .mfp-title strong {
 	color: #000;
+}
+
+/* Image Like Reblog */
+div.mfp-bottom-bar ul.like_and_reblog_buttons {
+	margin: 0;
+	position: absolute;
+	top: 15px;
+	right: 5px;
 }
 
 
@@ -1490,8 +1502,8 @@ div.sharing-post { display: none; }
 				<img src="{PhotoURL-500}" {block:HighRes}data-highres="{PhotoURL-HighRes}"{/block:HighRes} width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="" {block:Caption}data-caption="{Caption}"{/block:caption} />
 				
 				<ul class="like_and_reblog_buttons">
-					<li>{ReblogButton color="white"}</li>
-	            	<li>{LikeButton color="white"}</li>
+					<li>{ReblogButton color="black"}</li>
+	            	<li>{LikeButton color="black"}</li>
 	            </ul>
 			</article>
 	        {/block:Photo}
@@ -1687,7 +1699,7 @@ div.sharing-post { display: none; }
 
 	function photoModal() {
 		// Lightbox
-		$('div.photoset-grid').each(function() {
+		// $('div.photoset-grid').each(function() {
 			$('a.photoset-cell').magnificPopup({
 				type: 'image',
 				gallery: {
@@ -1708,11 +1720,53 @@ div.sharing-post { display: none; }
 					}
 				},
 				callbacks: {
-					markupParse: function(template, values, item) {
+					change: function() {
+						console.log('change ' + this.currItem.el.next());
+					},
+					open: function() {
+						console.log('open ' + this.currItem.el.next());
+						$('div.mfp-bottom-bar').append('<ul class="like_and_reblog_buttons"></ul>');
+					},
+					close: function() {
+						$('div.mfp-bottom-bar ul.like_and_reblog_buttons').remove();
+						console.log('close ' + this.currItem.el.next());
+					},
+					change: function() {
+						// $('div.mfp-bottom-bar ul.like_and_reblog_buttons').remove();
+						console.log('change ' + this);
+						// this.currItem.el.next().clone().appendTo('div.mfp-bottom-bar');
+						// $('div.mfp-bottom-bar ul.like_and_reblog_buttons').html(this.currItem.el.next().html());
+						// if($('div.mfp-bottom-bar ul.like_and_reblog_buttons')) {
+
+						// 	console.log('change ' + this);
+						// }
+					},
+					imageLoadComplete: function() {
+						$('div.mfp-bottom-bar').find('ul.like_and_reblog_buttons').html(this.currItem.el.next().html());
+							// .append(this.currItem.el.next().clone());
+						// this.currItem.el.next().clone().appendTo('div.mfp-bottom-bar');
+						console.log('img complete ' + this.currItem.el.next());
 					}
 				}
 			});
-		});
+
+			// $('a.photoset-cell').on('mfpOpen', function(event) {
+			// 	console.log('Popup opened',  $.magnificPopup.instance.currItem.parent());
+			// 	$('div.mfp-bottom-bar > ul').remove();
+			// 	$.magnificPopup.instance.currItem.next().clone().appendTo('div.mfp-bottom-bar');
+				
+			// 	event.stopPropagation();
+			// });
+
+			// $('a.photoset-cell').on('mfpOpen', function(e /*, params */) {
+			// 	console.log('Popup opened',  $.magnificPopup.instance.currItem.el.next());
+			// 	$('div.mfp-bottom-bar > ul').remove();
+			// 	$.magnificPopup.instance.currItem.el.next().clone().appendTo('div.mfp-bottom-bar');
+
+			// 	event.stopPropagation();
+			// });
+
+		// });
 	}
 
 	function infiniteScroll() {
