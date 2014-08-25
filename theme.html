@@ -1735,9 +1735,10 @@ div.sharing-post { display: none; }
 		// });
 	}
 
+	{block:ifinfinitescrolling}
 	function infiniteScroll() {
-		{block:ifinfinitescrolling}
-		var postContainer = $('#posts');
+		var postContainer = $('#posts-container'),
+			postHolder = postContainer.first('.photoset-grid');
 
 		console.log('go infinite');
 
@@ -1749,28 +1750,77 @@ div.sharing-post { display: none; }
 			loading:{
 				finishedMsg: function(){
 					$('#infscr-loading').show();
+					console.log('finished loading .entry posts');
 				}
 			}
-		},
-		function(newElements){
+		}, function(newElements){
+		// array of new elements added
 			console.log(newElements);
 
-			var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
-			var $newElemsIDs = $newElems.map(function (){
-				return this.id;
-			}).get();
-			$newElems.imagesLoaded(function (){
-				$('#infscr-loading').hide();
-				$newElems.css("opacity","1").css("pointer-events","auto");
-				// postContainer.masonry('appended', $newElems, false);
-				postContainer.append($newElems);
-				// console.log($newElems,$newElemsIDs);
-				Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
-				$('.photoset-grid').photosetGrid();
-			});
+			newElements.appendTo(postHolder);
+			$('.photoset-grid').photosetGrid();
+
+			// var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
+			// var $newElemsIDs = $newElems.map(function (){
+			// 	return this.id;
+			// }).get();
+			// $newElems.imagesLoaded(function (){
+			// 	$('#infscr-loading').hide();
+			// 	$newElems.css("opacity","1").css("pointer-events","auto");
+			// 	// postContainer.masonry('appended', $newElems, false);
+			// 	postContainer.append('<div id="posts" class="photoset-grid photoset-grid-2" data-id="photoset" data-layout="232332">');
+			// 	$('.photoset-grid-2').append($newElems);
+			// 	// postContainer.append($newElems);
+			// 	// console.log($newElems,$newElemsIDs);
+			// 	Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
+			// 	$('.photoset-grid').photosetGrid();
+			// });
 		});
-		{/block:ifinfinitescrolling}
 	}
+
+	photoControls();
+	{/block:ifinfinitescrolling}
+
+	// {block:ifinfinitescrolling}
+	// function infiniteScroll() {
+	// 	var postContainer = $('#posts-container');
+
+	// 	console.log('go infinite');
+
+	// 	postContainer.infinitescroll({
+	// 		navSelector:'#pagination',
+	// 		nextSelector:'#pagination a#older',
+	// 		itemSelector: '.entry',
+	// 		animate: false,
+	// 		loading:{
+	// 			finishedMsg: function(){
+	// 				$('#infscr-loading').show();
+	// 			}
+	// 		}
+	// 	},
+	// 	function(newElements){
+	// 		console.log(newElements);
+
+	// 		var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
+	// 		var $newElemsIDs = $newElems.map(function (){
+	// 			return this.id;
+	// 		}).get();
+	// 		$newElems.imagesLoaded(function (){
+	// 			$('#infscr-loading').hide();
+	// 			$newElems.css("opacity","1").css("pointer-events","auto");
+	// 			// postContainer.masonry('appended', $newElems, false);
+	// 			postContainer.append('<div id="posts" class="photoset-grid photoset-grid-2" data-id="photoset" data-layout="232332">');
+	// 			$('.photoset-grid-2').append($newElems);
+	// 			// postContainer.append($newElems);
+	// 			// console.log($newElems,$newElemsIDs);
+	// 			Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
+	// 			$('.photoset-grid').photosetGrid();
+	// 		});
+	// 	});
+	// }
+
+	// photoControls();
+	// {/block:ifinfinitescrolling}
 
 	function masonryInfinite(){
 		var postContainer = $('#posts');
