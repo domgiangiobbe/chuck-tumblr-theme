@@ -481,6 +481,14 @@ a#slide:hover{
 	z-index: 13;
 }
 
+.index-page #post-info {
+	position: relative;
+}
+
+.index-page #post-info.fixed {
+	position: fixed;
+}
+
 #post-info > h3 {
 	margin: 0;
 	text-transform: capitalize;1
@@ -1015,43 +1023,6 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 		}
 */
 
-/*      Animation       */
-/*
-#infscr-loading img,#posts,#loading{
-	opacity: 0;
-	-webkit-transition: opacity 1s ease;
-	transition: opacity 1s ease;
-}
-
-#infscr-loading{
-	display:block;
-	position:absolute;
-	bottom:25px;
-	left:50%;
-	margin:0 0 0 -27px
-}
-
-#infscr-loading img{
-	opacity:1;
-	padding:15px;
-	-webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,.1);
-	box-shadow:0 1px 2px 0 rgba(0,0,0,.1)
-}
-
-#loading{
-	position:absolute;
-	width:36px;
-	height:36px;
-	top:300px;
-	left:50%;
-	margin:-20px 0 0 -19px;
-	border-radius:4px;
-	z-index:100;
-	background:url('http://static.tumblr.com/j6tha7z/AFfmuponn/ajax-loader.gif') no-repeat center #fff;
-	opacity:1;
-	filter:alpha(opacity = 0)
-}*/
-
 /*      Responsive      */
 
 @media screen and (max-width:640px){
@@ -1109,33 +1080,45 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 /*      End-Responsive      */
 
 /*      Adjustments     */
+/* Infinite Loader */
+#infscr-loading {
+	display:block;
+	position:absolute;
+	bottom:25px;
+	left:50%;
+	margin:0 0 0 -27px;
+}
 
+#infscr-loading img{
+	opacity:1;
+	padding:15px;
+}
 
-#infscr-loading img,#permalink .permalink-box, .entry{
-		background:{color:Post Background}
-		}
+#infscr-loading img, #permalink .permalink-box, .entry{
+	background:{color:Post Background}
+}
 
 #permalink .permalink-box{
-		border-top:1px solid {color:Post Dividers}
-		}
+	border-top:1px solid {color:Post Dividers}
+}
 
 #permalink .permalink-box ol.notes li.more_notes_link_container{
-		border-top:1px solid {color:Post Dividers}
-		}
+	border-top:1px solid {color:Post Dividers}
+}
 
 #permalink .permalink-box ol.notes li.more_notes_link_container,
 #permalink .permalink-box ol.notes li.more_notes_link_container a.more_notes_link{
-		text-transform:uppercase;
-		letter-spacing:1px;
-		font:11px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-		color:{color:Body Text}
-		}
+	text-transform:uppercase;
+	letter-spacing:1px;
+	font:11px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
+	color:{color:Body Text}
+}
 
 #pagination a{
-		font:13px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-		color:{color:Body Title};
-		background:{color:Post Background}
-		}
+	font:13px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
+	color:{color:Body Title};
+	background:{color:Post Background}
+}
 
 #footer {
 	background-color: #e3e3e3;
@@ -1492,6 +1475,7 @@ div.sharing-post { display: none; }
 </div>
 
 <section>
+
 <div id="posts-container" class="{select:Post Size}">
 	<div id="loading"></div>
 
@@ -1632,7 +1616,20 @@ div.sharing-post { display: none; }
 	
 	if(window.location.href == "http://chucktheme.tumblr.com/" || window.location.pathname.match(/^\/page\//) ) {
 		$('body').addClass('index-page');
-		 
+		$('#post-info')
+			.detach()
+			.prependTo('section')
+				.find('h3')
+				.html('Recent');
+		
+		$(window).scroll(function(){
+			if($(window).scrollTop() >= $('section').offset().top) {
+				$('#post-info').addClass('fixed');
+			} else {
+				$('#post-info').removeClass('fixed');
+			}
+		});
+
 		// $(window).scroll(function() {
 		// 	EasyPeasyParallax();
 		// });
@@ -1767,8 +1764,6 @@ div.sharing-post { display: none; }
 				photoControls();
 			});
 		});
-
-		
 	};
 	{/block:ifinfinitescrolling}
 
