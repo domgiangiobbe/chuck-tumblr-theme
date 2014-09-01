@@ -478,6 +478,7 @@ a#slide:hover{
 	position: fixed;
 	left: 27px;
 	top: 55px;
+	max-width: 90%;
 	z-index: 13;
 }
 
@@ -1322,6 +1323,9 @@ div.cv-group.p0 li > p {
 		font-size: 30px;
 	}
 
+	a#slide {
+		padding: 13px;
+	}
 
 	.cv-page #posts-container {
 		padding: 170px 0 50px;
@@ -1365,9 +1369,7 @@ div.cv-group.p0 li > p {
 	div.subnav-foot {
 		margin-left: 0;
 	}
-}
 
-@media screen and (max-width:500px){
 	.index-page #posts-container, #paintings #posts-container, #drawings #posts-container {
 		padding: 100px 0;
 	}
@@ -1395,6 +1397,16 @@ div.cv-group.p0 li > p {
 	
 	.index-page #cover {
 		width: auto;
+	}	
+}
+
+@media screen and (max-width:400px){
+	.sz37 {
+		font-size: 28px;
+	}
+
+	a#slide {
+		padding: 11px;
 	}
 }
 
