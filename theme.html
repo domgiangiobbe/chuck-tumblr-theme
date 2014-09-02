@@ -484,6 +484,7 @@ a#slide:hover{
 
 .index-page #post-info {
 	position: relative;
+	top: 20px;
 }
 
 .index-page #post-info.fixed {
@@ -527,6 +528,10 @@ a#slide:hover{
 /* Set max-width on photo-posts */
 .index-page #posts-container, #paintings #posts-container, #drawings #posts-container {
 	padding: 100px 29px;
+}
+
+.index-page #posts-container {
+	padding-top: 0;
 }
 
 .index-page #posts, #paintings #posts, #drawings #posts {
@@ -601,6 +606,14 @@ a#slide:hover{
 .photo-post .photo img{
 	width: 100%;
 }
+
+/*.chuck2008 {
+	background-color: red;
+}
+
+.chuck2011 {
+	background-color: blue;
+}*/
 
 .photo-post .photo:hover a.overlay {
 	opacity: 0.{text:Photo Overlay Opacity};
@@ -1095,9 +1108,11 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 	padding:15px;
 }
 
-#infscr-loading img, #permalink .permalink-box, .entry{
+#infscr-loading img, #permalink .permalink-box {
 	background:{color:Post Background}
 }
+
+/*, .entry*/
 
 #permalink .permalink-box{
 	border-top:1px solid {color:Post Dividers}
@@ -1408,6 +1423,15 @@ div.cv-group.p0 li > p {
 	a#slide {
 		padding: 11px;
 	}
+
+	/* Homepage mobile edits */
+	.index-page #post-info {
+		display: none;
+	}
+
+	.index-page #posts-container {
+		padding-top: 25px;
+	}
 }
 
 {block:ifnotfullscreencover}
@@ -1472,8 +1496,8 @@ div.sharing-post { display: none; }
 <aside id="sidebar">
 	<nav id="navigation">
 		<li><a class="arb sz28" href="/" title="Recent">Recent</a></li>
-		<li><a class="arb sz28" href="/tagged/paintings" title="Paintings">Paintings</a></li>
-		<li><a class="arb sz28" href="/tagged/drawings" title="Drawings">Drawings</a></li>
+		<li><a class="arb sz28" href="/tagged/paintings/chrono" title="Paintings">Paintings</a></li>
+		<li><a class="arb sz28" href="/tagged/drawings/chrono" title="Drawings">Drawings</a></li>
 		<li><a class="arb sz28" href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
 		<li><a class="arb sz28" href="/contact" title="Contact">Contact</a></li>
 		<li><a class="arb sz28" href="/cv" title="CV">CV</a></li>
@@ -1702,13 +1726,26 @@ div.sharing-post { display: none; }
 			rel: $('.photoset-grid').attr('data-id'),
 			onComplete: function(){
 				photoModal();
+				dateHeaders();
 			}
 		});
 	}
 
+	function dateHeaders() {
+		var years = ["2008", "2009", "2010", "2011"];
+
+		years.forEach(function(item) {
+			// if on painting or drawings page and doesn't already exsist add year h2
+			if($('#paintings .photo-post, #drawings .photo-post').hasClass(item) && !$('h2').hasClass(item)) {
+				$('.' + item).first().before('<h2 class="clear ' + item + '">' + item + '</h2>');
+			}
+		});
+	};
+
 	function photoModal() {
 		// Lightbox
 		$('div.photoset-grid').each(function() {
+
 			$('a.photoset-cell').magnificPopup({
 				type: 'image',
 				gallery: {
@@ -1748,11 +1785,13 @@ div.sharing-post { display: none; }
 	function infiniteScroll() {
 		var postContainer = $('#posts-container');
 
+		$('#pagination').hide();
+
 		postContainer.infinitescroll({
 			navSelector:'#pagination',
 			nextSelector:'#pagination a#older',
 			itemSelector: '.entry',
-			animate: false,
+			animate: true,
 			loading:{
 				finishedMsg: function(){
 					$('#infscr-loading').show();
@@ -1760,8 +1799,7 @@ div.sharing-post { display: none; }
 			}
 		},
 		function(newElements){
-			console.log(newElements);
-
+			// console.log(newElements); 
 			var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
 			var $newElemsIDs = $newElems.map(function (){
 				return this.id;
