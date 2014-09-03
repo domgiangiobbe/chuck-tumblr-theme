@@ -531,7 +531,7 @@ a#slide:hover{
 
 /* Set max-width on photo-posts */
 .index-page #posts-container, #paintings #posts-container, #drawings #posts-container {
-	padding: 100px 29px;
+	padding: 75px 29px;
 }
 
 .index-page #posts-container {
@@ -735,6 +735,14 @@ img.mfp-img {
 }
 
 /* MFP Buttons */
+div.close-btn {
+	cursor: pointer;
+	padding: 10px 25px;
+	position: absolute;
+	top: 15px;
+	right: 10px;
+}
+
 button.mfp-arrow {
 	background: transparent;
 }
@@ -848,7 +856,7 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 
 /* Link Post */
 #press #posts-container {
-	padding: 100px 0;
+	padding: 75px 0;
 }
 
 .link-post {
@@ -1394,7 +1402,7 @@ div.cv-group.p0 li > p {
 	}
 
 	.index-page #posts-container, #paintings #posts-container, #drawings #posts-container {
-		padding: 100px 0;
+		padding: 80px 0;
 	}
 
 	.photoset-row {
@@ -1410,6 +1418,12 @@ div.cv-group.p0 li > p {
 	.photoset-row .photo-post a, .photoset-row:nth-of-type(6n+4) .photo-post:first-child > a, .photoset-row:nth-of-type(6n+5) .photo-post:first-child > a, .photoset-row:nth-of-type(6n+4) .photo-post:last-child > a, .photoset-row:nth-of-type(6n+5) .photo-post:last-child > a {
 		margin: 13px 27px 14px;
 		width: auto;
+	}
+
+	div.close-btn {
+		top: 0px;
+		right: 0px;
+		padding: 10px 20px;
 	}
 }
 
@@ -1745,7 +1759,7 @@ div.sharing-post { display: none; }
 		years.forEach(function(item) {
 			// if on painting or drawings page and doesn't already exsist add year h2
 			if($('#paintings .photo-post, #drawings .photo-post').hasClass(item) && !$('h2').hasClass(item)) {
-				$('.' + item).first().before('<h2 class="clear ' + item + '">' + item + '</h2>');
+				$('.' + item).first().before('<h2 class="sz37 arb main-color clear ' + item + '">' + item + '</h2>');
 			}
 		});
 	};
@@ -1764,6 +1778,8 @@ div.sharing-post { display: none; }
 				},
 				removalDelay: 200,
 				mainClass: 'mfp-fade',
+				closeMarkup: '<div class="sz37 arb main-color close-btn">X</div>',
+				closeBtnInside: false,
 				image: {
 					titleSrc: function(item) {
 						if(item.el.children('img').data('caption') != null) {
@@ -1776,6 +1792,10 @@ div.sharing-post { display: none; }
 				callbacks: {
 					open: function() {
 						$('div.mfp-bottom-bar').append('<ul class="like_and_reblog_buttons"></ul>');
+
+						$('div.close-btn').click(function() {
+							$.magnificPopup.close();
+						});
 					},
 					close: function() {
 						$('div.mfp-bottom-bar ul.like_and_reblog_buttons').remove();
