@@ -1532,7 +1532,7 @@ div.sharing-post { display: none; }
 	<h3 class="sz37 arb main-color">{block:TagPage}{Tag}{/block:TagPage}</h3>
 </div>
 
-<section>
+<section id="main">
 
 <div id="posts-container" class="{select:Post Size}">
 	<div id="loading"></div>
@@ -1763,6 +1763,42 @@ div.sharing-post { display: none; }
 			}
 		});
 	};
+
+	// function dateHeaders() {
+	// 	var years = ["2008", "2009", "2010", "2011"];
+
+	// 	years.forEach(function(item) {
+	// 		if($('.photo-post').first().hasClass(item) && !$('#post-info h3:last-child').hasClass('activated')) {
+	// 			$('<h3 class="sz37 arb main-color activated">' + item + '</h3>').appendTo('#post-info');
+	// 		}
+
+	// 		$(window).scroll(function() {
+	// 			// console.log(item + " top position " + $('.' + item).first().closest('.photoset-row').offset().top);
+	// 		});
+
+	// 		// console.log($('.' + item).first().length);
+
+	// 		// if($('.' + item).first().length) {
+	// 		// 	console.log($('.' + item).first());
+
+	// 			// $(window).scroll(function() {
+	// 			// 	// console.log($(this));
+	// 			// 	// console.log(item + " top position " + $('.' + item).first().offset.top);
+	// 			// });
+	// 		// }
+	// 		// if on painting or drawings page and doesn't already exsist add year h2
+	// 		// if($('#paintings .photo-post, #drawings .photo-post').hasClass(item) && !$('h2').hasClass(item)) {
+	// 		// 	$('.' + item).first().before('<h2 class="sz37 arb main-color clear ' + item + '">' + item + '</h2>');
+	// 		// 	$('<h3 class="sz37 arb main-color">' + item + '</h3>').appendTo('#post-info');
+				
+	// 		// 	$(window).scroll(function() {
+	// 		// 		if ($window.scrollTop() >= $('section').offset().top ) {
+	// 		// 			// Your div has reached the top
+	// 		// 		}
+	// 		// 	});
+	// 		// }
+	// 	});
+	// };
 
 	function photoModal() {
 		// Lightbox
