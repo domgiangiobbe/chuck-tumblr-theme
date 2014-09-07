@@ -1552,8 +1552,8 @@ div.sharing-post { display: none; }
 <aside id="sidebar">
 	<nav id="navigation">
 		<li><a class="arb sz28" href="/" title="Recent">Recent</a></li>
-		<li><a class="arb sz28" href="/tagged/paintings/chrono" title="Paintings">Paintings</a></li>
-		<li><a class="arb sz28" href="/tagged/drawings/chrono" title="Drawings">Drawings</a></li>
+		<li><a class="arb sz28" href="/tagged/paintings" title="Paintings">Paintings</a></li>
+		<li><a class="arb sz28" href="/tagged/drawings" title="Drawings">Drawings</a></li>
 		<li><a class="arb sz28" href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
 		<li><a class="arb sz28" href="/contact" title="Contact">Contact</a></li>
 		<li><a class="arb sz28" href="/cv" title="CV">CV</a></li>
@@ -1812,12 +1812,13 @@ $(function() {
 				// add grid-breaks
 				$('.' + val).first().before('<div class="clear grid-break break-' + val + '"></div>');
 
-				// if within break-grid range give value if above take current value and subtract
 				$(window).on('scroll', function(){
-					if($(window).scrollTop() > (parseInt($('.break-' + val).offset().top.toFixed())-150) && $(window).scrollTop() < (parseInt($('.break-' + val).offset().top.toFixed())+150)) {
+					var topOfYear = parseInt($('.break-' + activeYears[i]).offset().top.toFixed()),
+						bottomOfYear = parseInt($('.' + activeYears[i]).last().offset().top.toFixed()) + $('.' + activeYears[i]).last().height();
+					
+					// if scroll is between year set year
+					if($(window).scrollTop() > topOfYear && $(window).scrollTop() < bottomOfYear ) {
 						$('h3.activated').html(activeYears[i]);
-					} else if($(window).scrollTop() < (parseInt($('.break-' + val).offset().top.toFixed())-150)) {
-						$('h3.activated').html(activeYears[i-1]);
 					}
 				});
 			}
