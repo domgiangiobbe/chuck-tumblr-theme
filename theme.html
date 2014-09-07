@@ -243,14 +243,12 @@ blockquote{
 
 
 
-/*a,
-.like_button,
-#sidebar img,
+a, .like_button, #sidebar img,
 .entry .photo .photo-hover a.overlay,
 .entry .photo .photo-buttons, #full-overlay, #full-overlay.overlay-show, 
 #topbar, #topbar h1, #sidebar, #posts-container {
-	-webkit-transition: all .3s ease;
-	transition: all .3s ease;
+	-webkit-transition: all .35s ease;
+	transition: all .35s ease;
 }
 
 #cover #cover-scroll,
@@ -259,7 +257,7 @@ blockquote{
 .entry .photo .photoset-grid img {
 	-webkit-transition: all .4s ease;
 	transition: all .4s ease;
-}*/
+}
 
 
 #tumblr_controls {
@@ -600,6 +598,12 @@ a#slide:hover{
 	
 }
 
+div.grid-break {
+	display: block;
+	height: 50px;
+	width: 100%;
+}
+
 .photo-post {
 	/*margin: 0 25px 50px 25px;*/
 	/*padding: 0;*/
@@ -610,14 +614,6 @@ a#slide:hover{
 .photo-post .photo img{
 	width: 100%;
 }
-
-/*.chuck2008 {
-	background-color: red;
-}
-
-.chuck2011 {
-	background-color: blue;
-}*/
 
 .photo-post .photo:hover a.overlay {
 	opacity: 0.{text:Photo Overlay Opacity};
@@ -732,6 +728,40 @@ div.mfp-bottom-bar {
 img.mfp-img {
 	padding: 0;
 	/*max-height: 70% !important;*/
+}
+
+/* overlay at start */
+.mfp-fade.mfp-bg {
+  opacity: 0;
+
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+}
+/* overlay animate in */
+.mfp-fade.mfp-bg.mfp-ready {
+  opacity: 0.8;
+}
+/* overlay animate out */
+.mfp-fade.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+
+/* content at start */
+.mfp-fade.mfp-wrap .mfp-content {
+  opacity: 0;
+
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+}
+/* content animate it */
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+/* content animate out */
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
 }
 
 /* MFP Buttons */
@@ -1376,6 +1406,10 @@ div.cv-group.p0 li > p {
 		top: 50px;
 	}
 
+	div.grid-break {
+		height: 0;
+	}
+
 	div.foot-main {
 		padding: 35px 10px;
 	}
@@ -1665,7 +1699,7 @@ div.sharing-post { display: none; }
 <script src="http://static.tumblr.com/8u4ydgr/A0knagn24/base.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-
+$(function() {
 	$('#contact-head').closest('body').addClass('contact-page');
 	$('#cv-head').closest('body').addClass('cv-page');
 	
@@ -1705,6 +1739,8 @@ div.sharing-post { display: none; }
 		{block:ifinfinitescrolling}
 		infiniteScroll();
 		{/block:ifinfinitescrolling}
+
+		$('<h3 class="sz37 arb main-color activated"></h3>').appendTo('#paintings #post-info, #drawings #post-info');
 		
 		photoControls();
 	}
@@ -1737,7 +1773,7 @@ div.sharing-post { display: none; }
 		console.log('nav is open');
 	};
 
-	$(window).scroll(function(){
+	$(window).on('scroll', function(){
 		navControl.close();
 	});
 
@@ -1754,51 +1790,39 @@ div.sharing-post { display: none; }
 	}
 
 	function dateHeaders() {
-		var years = ["2008", "2009", "2010", "2011"];
-
-		years.forEach(function(item) {
-			// if on painting or drawings page and doesn't already exsist add year h2
-			if($('#paintings .photo-post, #drawings .photo-post').hasClass(item) && !$('h2').hasClass(item)) {
-				$('.' + item).first().before('<h2 class="sz37 arb main-color clear ' + item + '">' + item + '</h2>');
+		var years = ["1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004" ,"2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018"],
+			activeYears = [];
+		
+		// check which years are active
+		$.each(years, function(i, val) {
+			if($('.photo-post').hasClass(val)) {
+				activeYears.push(val);
 			}
 		});
-	};
 
-	// function dateHeaders() {
-	// 	var years = ["2008", "2009", "2010", "2011"];
+		// parse through activeYears
+		$.each(activeYears, function(i, val) {
+			// set first post to active class
+			if($('.photo-post').first().hasClass(val)){
+				$('h3.activated').html(val);
+			}
 
-	// 	years.forEach(function(item) {
-	// 		if($('.photo-post').first().hasClass(item) && !$('#post-info h3:last-child').hasClass('activated')) {
-	// 			$('<h3 class="sz37 arb main-color activated">' + item + '</h3>').appendTo('#post-info');
-	// 		}
+			// if a photo post has this year and this year doesn't already register, post grid-break
+			if($('.photo-post').hasClass(val) && !$('div.grid-break').hasClass('break-'+val)) {
+				// add grid-breaks
+				$('.' + val).first().before('<div class="clear grid-break break-' + val + '"></div>');
 
-	// 		$(window).scroll(function() {
-	// 			// console.log(item + " top position " + $('.' + item).first().closest('.photoset-row').offset().top);
-	// 		});
-
-	// 		// console.log($('.' + item).first().length);
-
-	// 		// if($('.' + item).first().length) {
-	// 		// 	console.log($('.' + item).first());
-
-	// 			// $(window).scroll(function() {
-	// 			// 	// console.log($(this));
-	// 			// 	// console.log(item + " top position " + $('.' + item).first().offset.top);
-	// 			// });
-	// 		// }
-	// 		// if on painting or drawings page and doesn't already exsist add year h2
-	// 		// if($('#paintings .photo-post, #drawings .photo-post').hasClass(item) && !$('h2').hasClass(item)) {
-	// 		// 	$('.' + item).first().before('<h2 class="sz37 arb main-color clear ' + item + '">' + item + '</h2>');
-	// 		// 	$('<h3 class="sz37 arb main-color">' + item + '</h3>').appendTo('#post-info');
-				
-	// 		// 	$(window).scroll(function() {
-	// 		// 		if ($window.scrollTop() >= $('section').offset().top ) {
-	// 		// 			// Your div has reached the top
-	// 		// 		}
-	// 		// 	});
-	// 		// }
-	// 	});
-	// };
+				// if within break-grid range give value if above take current value and subtract
+				$(window).on('scroll', function(){
+					if($(window).scrollTop() > (parseInt($('.break-' + val).offset().top.toFixed())-150) && $(window).scrollTop() < (parseInt($('.break-' + val).offset().top.toFixed())+150)) {
+						$('h3.activated').html(activeYears[i]);
+					} else if($(window).scrollTop() < (parseInt($('.break-' + val).offset().top.toFixed())-150)) {
+						$('h3.activated').html(activeYears[i-1]);
+					}
+				});
+			}
+		});
+	}
 
 	function photoModal() {
 		// Lightbox
@@ -1812,7 +1836,7 @@ div.sharing-post { display: none; }
 					navigateByImgClick: false,
 					tCounter: ''
 				},
-				removalDelay: 200,
+				removalDelay: 300,
 				mainClass: 'mfp-fade',
 				closeMarkup: '<div class="sz37 arb main-color close-btn">X</div>',
 				closeBtnInside: false,
@@ -1962,7 +1986,7 @@ div.sharing-post { display: none; }
 		// $('#cover #hero').css({'top':-(scrollPos/5)+"px"});
 		// $('#topbar').css({'opacity':scrollPos/($("#cover").outerHeight() - 90),'height':$("#cover").outerHeight() - scrollPos + "px"});
 	};
-
+});
 
 	{block:ifGoogleAnalyticsID}var _gaq = _gaq || [];_gaq.push(['_setAccount', '{text:Google Analytics ID}']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
 	{/block:ifGoogleAnalyticsID}
