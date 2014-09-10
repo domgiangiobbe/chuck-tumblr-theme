@@ -206,20 +206,20 @@ blockquote{
 
 
 
-a, .like_button, #sidebar img,
+a, .like_button, #sidebar,
 .entry .photo .photo-hover a.overlay,
 .entry .photo .photo-buttons, #full-overlay, #full-overlay.overlay-show, 
-#topbar, #topbar h1, #sidebar, #posts-container {
-	-webkit-transition: all .35s ease;
-	transition: all .35s ease;
+#topbar {
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
 }
 
 #cover #cover-scroll,
 .mfp-fade.mfp-bg,
 .mfp-fade.mfp-wrap .mfp-content,
 .entry .photo .photoset-grid img {
-	-webkit-transition: all .4s ease;
-	transition: all .4s ease;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
 }
 
 
@@ -325,17 +325,17 @@ a#slide:hover{
 }
 
 #topbar.topbar-move #slide {
-	margin-right: 300px;
+	margin-right: 320px;
 }
 
 #sidebar {
 	position: fixed;
 	z-index: 18;
-	width: 300px;
+	width: 320px;
 	height: 100%;
 	top: 0;
-	right: -300px;
-	padding: 40px 45px;
+	right: -320px;
+	padding: 35px 45px;
 	overflow-y: scroll;
 	background: {color:Secondary Color};
 }
@@ -353,8 +353,16 @@ a#slide:hover{
 }
 
 #navigation li a {
+	background-size: contain;
+	display: block;
 	line-height: 1em;
+	margin-bottom: 10px;
+	text-indent: -99999px;
 	color:{color:Background};
+}
+
+#navigation li a#cw-btn {
+	margin-bottom: 30px;
 }
 
 #navigation li a:hover{
@@ -364,40 +372,79 @@ a#slide:hover{
 
 /* Navigation Elements */
 #cw-btn {
-
+	background: url('http://static.tumblr.com/8u4ydgr/LWinbo1vk/logo.png') no-repeat 0 0 transparent;
 }
 
 #recent-btn {
-
+	background: url('http://static.tumblr.com/8u4ydgr/lLLnbo1yj/recent.png') no-repeat 0 0 transparent;
 }
 
 #paintings-btn {
-
+	background: url('http://static.tumblr.com/8u4ydgr/iq3nbo1wq/paintings.png') no-repeat 0 0 transparent;
 }
 
 #drawings-btn {
-
+	background: url('http://static.tumblr.com/8u4ydgr/Zt9nbo1tf/drawings.png') no-repeat 0 0 transparent;
 }
 
 #upcoming-btn {
-
+	background: url('http://static.tumblr.com/8u4ydgr/eHmnbo1zn/upcoming.png') no-repeat 0 0 transparent;
 }
 
 #contact-btn {
-
+	background: url('http://static.tumblr.com/8u4ydgr/lI4nbo1r4/contact.png') no-repeat 0 0 transparent;
 }
 
 #cv-btn {
-
+	background: url('http://static.tumblr.com/8u4ydgr/mVwnbo1s5/cv.png') no-repeat 0 0 transparent;
 }
 
 #press-btn {
-
+	background: url('http://static.tumblr.com/8u4ydgr/Kg8nbo1xn/press.png') no-repeat 0 0 transparent;
 }
 
 #etc-btn {
-	
+	background: url('http://static.tumblr.com/8u4ydgr/3mxnbo1uf/etc.png') no-repeat 0 0 transparent;
 }
+/* for retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	#cw-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/ilsnbo1wa/logo_x2.png') no-repeat 0 0 transparent;
+	}
+
+	#recent-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/CAHnbo1z0/recent_x2.png') no-repeat 0 0 transparent;
+	}
+
+	#paintings-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/mFfnbo1x9/paintings_x2.png') no-repeat 0 0 transparent;
+	}
+
+	#drawings-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/MEGnbo1u2/drawings_x2.png') no-repeat 0 0 transparent;
+	}
+
+	#upcoming-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/zDAnbo206/upcoming_x2.png') no-repeat 0 0 transparent;
+	}
+
+	#contact-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/qlhnbo1rr/contact_x2.png') no-repeat 0 0 transparent;
+	}
+
+	#cv-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/RGQnbo1sz/cv_x2.png') no-repeat 0 0 transparent;
+	}
+
+	#press-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/IWanbo1y4/press_x2.png') no-repeat 0 0 transparent;
+	}
+
+	#etc-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/yT5nbo1v4/etc_x2.png') no-repeat 0 0 transparent;
+	}
+}
+
 
 /*    End Topbar/Nav    */
 
@@ -1098,9 +1145,6 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 /*      Responsive      */
 
 @media screen and (max-width:640px){
-	#topbar.topbar-move #slide {
-		margin-right: 0;
-	}
 }
 
 @media screen and (max-width:720px){
@@ -1204,6 +1248,8 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 }
 
 div.foot-top {
+	height: 140px;
+	padding-top: 40px;
 	background-color: {color:Secondary Color};
 }
 
@@ -1214,11 +1260,18 @@ div.foot-logo, div.foot-main {
 }
 
 div.foot-logo {
-	background: url('http://static.tumblr.com/8u4ydgr/bNhn93g4s/footer-logo.png') no-repeat 50% 50% transparent;
+	background: url('http://static.tumblr.com/8u4ydgr/LWinbo1vk/logo.png') no-repeat 50% 50% transparent;
+	background-size: contain;
 	display: block;
-	height: 240px;
+	height: 50px;
 	min-width: 160px;
 	text-indent: -10000px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	div.foot-logo {
+		background: url('http://static.tumblr.com/8u4ydgr/ilsnbo1wa/logo_x2.png') no-repeat 0 0 transparent;
+	}
 }
 
 div.foot-main {
@@ -1350,6 +1403,22 @@ div.cv-group.p0 li > p {
 }
 
 @media screen and (max-width:700px){
+	#sidebar {
+		position: fixed;
+		z-index: 18;
+		width: 220px;
+		height: 100%;
+		top: 0;
+		right: -220px;
+		padding: 35px 45px;
+		overflow-y: scroll;
+		background: {color:Secondary Color};
+	}
+
+	#topbar.topbar-move #slide {
+		margin-right: 0;
+	}
+
 	.cv-page #posts-container {
 		padding: 200px 0 50px;
 	}
