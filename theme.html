@@ -48,7 +48,6 @@
 <meta name="select:Body Font" content="Source Sans Pro" title="Source Sans Pro"/>
 <meta name="select:Body Font" content="Times New Roman" title="Times New Roman"/>
 
-<meta name="text:Cover Overlay Opacity" content="60"/>
 <meta name="text:Photo Overlay Opacity" content="70"/>
 <meta name="text:Google Analytics ID" content=""/>
 
@@ -326,17 +325,17 @@ a#slide:hover{
 }
 
 #topbar.topbar-move #slide {
-	margin-right: 215px;
+	margin-right: 300px;
 }
 
 #sidebar {
 	position: fixed;
 	z-index: 18;
-	width: 215px;
+	width: 300px;
 	height: 100%;
 	top: 0;
-	right: -215px;
-	padding: 22px;
+	right: -300px;
+	padding: 40px 45px;
 	overflow-y: scroll;
 	background: {color:Secondary Color};
 }
@@ -355,12 +354,51 @@ a#slide:hover{
 
 #navigation li a {
 	line-height: 1em;
-	color:{color:Main Color};
+	color:{color:Background};
 }
 
 #navigation li a:hover{
-	color:{color:Main Color};
+	color:{color:Background};
 }
+
+
+/* Navigation Elements */
+#cw-btn {
+
+}
+
+#recent-btn {
+
+}
+
+#paintings-btn {
+
+}
+
+#drawings-btn {
+
+}
+
+#upcoming-btn {
+
+}
+
+#contact-btn {
+
+}
+
+#cv-btn {
+
+}
+
+#press-btn {
+
+}
+
+#etc-btn {
+	
+}
+
 /*    End Topbar/Nav    */
 
 
@@ -456,6 +494,7 @@ a#slide:hover{
 .index-page h1 {
 	height: 65px;
 	left: 27px;
+	letter-spacing: -0.04em;
 	padding-top: 20px;
 	margin: 0;
 	top: 0px;
@@ -1503,14 +1542,16 @@ div.sharing-post { display: none; }
 
 <aside id="sidebar">
 	<nav id="navigation">
-		<li><a class="arb sz28" href="/" title="Recent">Recent</a></li>
-		<li><a class="arb sz28" href="/tagged/paintings" title="Paintings">Paintings</a></li>
-		<li><a class="arb sz28" href="/tagged/drawings" title="Drawings">Drawings</a></li>
-		<li><a class="arb sz28" href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
-		<li><a class="arb sz28" href="/contact" title="Contact">Contact</a></li>
-		<li><a class="arb sz28" href="/cv" title="CV">CV</a></li>
-		<li><a class="arb sz28" href="/tagged/press" title="Press">Press</a></li>
-		<li><a class="arb sz28" href="/tagged/etc" title="Etc.">Etc.</a></li>	
+		<li><a id="cw-btn" class="arb sz28" href="/" title="C.W.">C.W.</a></li>
+
+		<li><a id="recent-btn" class="arb sz28" href="/" title="Recent">Recent</a></li>
+		<li><a id="paintings-btn" class="arb sz28" href="/tagged/paintings" title="Paintings">Paintings</a></li>
+		<li><a id="drawings-btn" class="arb sz28" href="/tagged/drawings" title="Drawings">Drawings</a></li>
+		<li><a id="upcoming-btn" class="arb sz28" href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
+		<li><a id="contact-btn" class="arb sz28" href="/contact" title="Contact">Contact</a></li>
+		<li><a id="cv-btn" class="arb sz28" href="/cv" title="CV">CV</a></li>
+		<li><a id="press-btn" class="arb sz28" href="/tagged/press" title="Press">Press</a></li>
+		<li><a id="etc-btn" class="arb sz28" href="/tagged/etc" title="Etc.">Etc.</a></li>	
 	</nav>
 </aside>
 
