@@ -14,9 +14,6 @@
 
 <meta name="viewport" content="width=device-width,user-scalable=false">
 
-<meta name="image:Background" content=""/>
-<meta name="image:Sidebar Portrait" content=""/>
-<meta name="image:Cover Logo" content=""/>
 <meta name="image:Cover Slide 1" content=""/>
 <meta name="image:Cover Slide 2" content=""/>
 <meta name="image:Cover Slide 3" content=""/>
@@ -26,37 +23,11 @@
 <meta name="image:Cover Slide 7" content=""/>
 <meta name="image:Cover Slide 8" content=""/>
 
-<meta name="color:Main Color" content="#0006ff"/>
-<meta name="color:Cover Title" content="#ffffff"/>
-<meta name="color:Cover Text" content="#eeeeee"/>
-<meta name="color:Background" content="#f4f4f4"/>
-<meta name="color:Body Text" content="#777777"/>
-<meta name="color:Body Title" content="#555555"/>
-<meta name="color:Links" content="#0e6e8b"/>
-<meta name="color:Links Hover" content="#239fc5"/>
+<meta name="color:Main Color" content="#000000"/>
+<meta name="color:Secondary Color" content="#666666"/>
+<meta name="color:Background" content="#ffffff"/>
 
-<meta name="color:Top Bar Text" content="#ffffff"/>
-<meta name="color:Sidebar Links" content="#ffffff"/>
-<meta name="color:Sidebar Links Hover" content="#ffffff"/>
-<meta name="color:Post Background" content="#ffffff"/>
-<meta name="color:Post Dividers" content="#efefef"/>
-<meta name="color:Post Information" content="#bbbbbb"/>
-<meta name="color:Post Information Hover" content="#777777"/>
-<meta name="color:Photo Overlay" content="#000000"/>
-<meta name="color:Photo Buttons" content="#ffffff"/>
-
-<meta name="color:Lightbox Background" content="#ffffff"/>
-
-<meta name="if:Full Screen Cover" content="1"/>
-<meta name="if:Animated Loading" content="1"/>
-<meta name="if:Uppercase Sidebar Links" content="1"/>
-<meta name="if:Show Credit" content="1"/>
-<meta name="if:Show Post Notes" content="1"/>
-<meta name="if:Hide Post Tags" content="0"/>
-<meta name="if:Photo Captions" content="0"/>
-<meta name="if:Open Links In New Tab" content="1"/>
 <meta name="if:Infinite Scrolling" contet="1"/>
-<meta name="if:Detailed Footer" contet="0"/>
 
 <meta name="select:Body Font" content="Arial" title="Arial"/>
 <meta name="select:Body Font" content="Arial Black" title="Arial Black"/>
@@ -76,13 +47,6 @@
 <meta name="select:Body Font" content="Ropa Sans" title="Ropa Sans"/>
 <meta name="select:Body Font" content="Source Sans Pro" title="Source Sans Pro"/>
 <meta name="select:Body Font" content="Times New Roman" title="Times New Roman"/>
-
-<meta name="select:Post Size" content="width" Title="Default"/>
-<meta name="select:Post Size" content="width-tiny" Title="Tiny"/>
-<meta name="select:Post Size" content="width-small" Title="Small"/>
-<meta name="select:Post Size" content="width-normal" Title="Normal"/>
-<meta name="select:Post Size" content="width-large" Title="large"/>
-<meta name="select:Post Size" content="width-huge" Title="Huge"/>
 
 <meta name="text:Cover Overlay Opacity" content="60"/>
 <meta name="text:Photo Overlay Opacity" content="70"/>
@@ -106,7 +70,7 @@ html, body {
 	padding: 0;
 	height: 100%;
 	-webkit-font-smoothing: antialiased;
-	color: {color:Body Text};
+	color: {color:Main Color};
 }
 
 body.contact-page {
@@ -129,11 +93,11 @@ body.contact-page section {
 a, a:hover, a:link, a:visited {		
 	word-wrap: break-word;
 	text-decoration: none;
-	color: {color:Main Color};
+	color: {color:Secondary Color};
 }
 
 a:hover {
-	color: {color:Links Hover};
+	color: {color:Secondary Color};
 }
 
 img {
@@ -143,7 +107,7 @@ img {
 
 h1, h2, h3, h4, h5 {
 	font: 400 16px/1em "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-	color: {color:Body Title};
+	color: {color:Main Color};
 }
 
 h2 {
@@ -191,11 +155,11 @@ blockquote{
 }
 
 .main-color {
-	color: {color:Main Color};
+	color: {color:Secondary Color};
 }
 
 .main-color-bg {
-	background-color: {color:Main Color};
+	background-color: {color:Secondary Color};
 }
 
 /*
@@ -344,7 +308,7 @@ a, .like_button, #sidebar img,
 }
 
 #topbar h1 a {
-	color: {color:Top Bar Text};
+	color: {color:Main Color};
 }
 
 a#slide {
@@ -354,11 +318,11 @@ a#slide {
 	font: 18px "icon";
 	padding: 15px;
 	cursor: pointer;
-	color: {color:Top Bar Text};
+	color: {color:Main Color};
 }
 
 a#slide:hover{
-	background: rgba({RGBcolor:Top Bar Text}, .1);
+	background: rgba({RGBcolor:Main Color}, .1);
 }
 
 #topbar.topbar-move #slide {
@@ -374,7 +338,7 @@ a#slide:hover{
 	right: -215px;
 	padding: 22px;
 	overflow-y: scroll;
-	background: {color:Main Color};
+	background: {color:Secondary Color};
 }
 
 #sidebar.sidebar-move{
@@ -391,11 +355,11 @@ a#slide:hover{
 
 #navigation li a {
 	line-height: 1em;
-	color:{color:Sidebar Links};
+	color:{color:Main Color};
 }
 
 #navigation li a:hover{
-	color:{color:Sidebar Links Hover};
+	color:{color:Main Color};
 }
 /*    End Topbar/Nav    */
 
@@ -484,12 +448,25 @@ a#slide:hover{
 	z-index: 13;
 }
 
-.index-page #post-info {
-	position: relative;
-	top: 20px;
+.index-page #post-info, .index-page h1 {
+	position: absolute;
+	z-index: 13;
 }
 
-.index-page #post-info.fixed {
+.index-page h1 {
+	height: 65px;
+	left: 27px;
+	padding-top: 20px;
+	margin: 0;
+	top: 0px;
+	max-width: 90%;
+}
+
+.index-page h1 a {
+	color: {color:Main Color};;
+}
+
+.index-page #post-info.fixed, .index-page h1.fixed {
 	position: fixed;
 }
 
@@ -533,7 +510,7 @@ a#slide:hover{
 }
 
 .index-page #posts-container {
-	padding-top: 0;
+	padding-top: 100px;
 }
 
 .index-page #posts, #paintings #posts, #drawings #posts {
@@ -620,16 +597,16 @@ div.grid-break {
 }
 
 .photo-post .photo .photo-hover a.overlay {
-	background: {color:Photo Overlay};
+	background: {color:Background};
 }
 
 .photo-post .photo .photo-hover .photo-buttons a{
-	color: {color:Photo Buttons};
-	border: 2px solid {color:Photo Buttons};
+	color: {color:Secondary Color};
+	border: 2px solid {color:Secondary Color};
 }
 
 .photo-post .photo .photo-hover .photo-buttons a:hover {
-	background: rgba({RGBcolor:Photo Buttons},.3);
+	background: rgba({RGBcolor:Secondary Color},.3);
 }
 
 .photo-post .photo .photoset-grid img:hover {
@@ -706,7 +683,7 @@ div.grid-break {
 
 /* Photo Popup */
 div.mfp-bg {
-	background: {color:Lightbox Background};
+	background: {color:Background};
 }
 
 .mfp-content {
@@ -778,11 +755,11 @@ button.mfp-arrow {
 }
 
 .mfp-arrow-left:after, .mfp-arrow-left .mfp-a {
-	border-right-color: {color:Main Color};
+	border-right-color: {color:Secondary Color};
 }
 
 .mfp-arrow-right:after, .mfp-arrow-right .mfp-a {
-	border-left-color: {color:Main Color};
+	border-left-color: {color:Secondary Color};
 }
 
 .mfp-arrow:active {
@@ -797,7 +774,7 @@ button.mfp-arrow {
 	position: absolute;
 	top: 13px;
 	left: 11px;
-	color: {color:Main Color};
+	color: {color:Secondary Color};
 }
 
 .mfp-title ul {
@@ -922,7 +899,7 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 /* Answer Post */
 .answer-post .text .question {
 	padding: 0 0 15px 0;
-	border-bottom: 1px solid {color:Post Dividers};
+	border-bottom: 1px solid {color:Main Color};
 }
 
 
@@ -932,17 +909,17 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 .entry .details {
 	margin: 20px 0 0 0;
 	padding: 15px 0 0;
-	border-top: 1px solid {color:Post Dividers};
+	border-top: 1px solid {color:Main Color};
 }
  
 .entry .details,
 .entry .details a {
 	font: 11px/20px "arial";
-	color: {color:Post Information};
+	color: {color:Secondary Color};
 }
 
 .entry .details a:hover {
-	color: {color:Post Information Hover};
+	color: {color:Secondary Color};
 }
 
 .entry .details .tags {
@@ -1151,17 +1128,17 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 }
 
 #infscr-loading img, #permalink .permalink-box {
-	background:{color:Post Background}
+	background:{color:Background}
 }
 
 /*, .entry*/
 
 #permalink .permalink-box{
-	border-top:1px solid {color:Post Dividers}
+	border-top:1px solid {color:Main Color}
 }
 
 #permalink .permalink-box ol.notes li.more_notes_link_container{
-	border-top:1px solid {color:Post Dividers}
+	border-top:1px solid {color:Main Color}
 }
 
 #permalink .permalink-box ol.notes li.more_notes_link_container,
@@ -1169,13 +1146,13 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 	text-transform:uppercase;
 	letter-spacing:1px;
 	font:11px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-	color:{color:Body Text}
+	color:{color:Main Color}
 }
 
 #pagination a{
 	font:13px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
-	color:{color:Body Title};
-	background:{color:Post Background}
+	color:{color:Main Color};
+	background:{color:Background}
 }
 
 #footer {
@@ -1188,7 +1165,7 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 }
 
 div.foot-top {
-	background-color: {color:Main Color};
+	background-color: {color:Secondary Color};
 }
 
 div.foot-logo, div.foot-main {
@@ -1490,28 +1467,6 @@ div.cv-group.p0 li > p {
 	}
 }
 
-{block:ifnotfullscreencover}
-#cover,#cover #hero{height:400px}
-#cover #cover-information{top:50%}
-{/block:ifnotfullscreencover}
-
-{block:ifuppercaseSidebarlinks}
-/*#sidebar #navigation li a{text-transform:uppercase}*/
-{/block:ifuppercaseSidebarlinks}
-
-{block:ifnotphotocaptions}
-.photo-post .photo-post{display:none}
-{/block:ifnotphotocaptions}
-
-{block:ifnotanimatedloading}
-#cover #cover-scroll,#container,#posts,#pagination{opacity:1}
-#loading{opacity:0}
-{/block:ifnotanimatedloading}
-
-{block:ifshowcredit}
-#tumblr_controls{margin:0 105px 0 0 !important}
-{/block:ifshowcredit}
-
 {block:Indexpage}
 #topbar h1 { display: none; }
 {/block:Indexpage}
@@ -1529,9 +1484,6 @@ div.sharing-post { display: none; }
 </style>
 </head>
 <body {block:permalinkpage}id="permalink"{/block:permalinkpage}{block:TagPage}id="{Tag}"{/block:TagPage}>
-
-{block:ifshowcredit}
-{/block:ifshowcredit}
 
 <div id="full-overlay"></div>
 
@@ -1568,7 +1520,7 @@ div.sharing-post { display: none; }
 
 <section id="main">
 
-<div id="posts-container" class="{select:Post Size}">
+<div id="posts-container">
 	<div id="loading"></div>
 
 	<div id="posts">
@@ -1658,41 +1610,6 @@ div.sharing-post { display: none; }
 			CW
 		</div>
 	</div>
-	{block:ifdetailedfooter}
-	<div class="foot-main">
-		<div class="foot-contact left">
-			<div class="foot-logo-2">CW</div>
-
-			<div class="name-foot left">
-				<span>Chuck Webster</span>
-				<a href="#">studio@chuckwebster.biz</a>
-			</div>
-
-			<div class="gallery-foot left">
-				<span>Gallery Representation</span>
-				<span>Ziehersmith Gallery</span>
-				<span>New York City</span>
-				<a href="#">info@ziehersmith.com</a>
-			</div>
-		</div>
-
-		<div class="foot-nav-wrap clear">
-			<div class="nav-foot left">
-				<li><a href="/" title="Recent">Recent</a></li>
-				<li><a href="/tagged/paintings" title="Paintings">Paintings</a></li>
-				<li><a href="/tagged/drawings" title="Drawings">Drawings</a></li>
-				<li><a href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
-			</div>
-			
-			<div class="subnav-foot left">
-			{block:Pages}
-				<li><a class="sub-nav" href="{URL}" title="{Label}">{Label}</a></li>
-			{/block:Pages}
-			</div>
-		</div>
-
-	</div>
-	{/block:ifdetailedfooter}
 </footer>
 
 <!-- <script type="text/javascript" src="http://static.tumblr.com/3zmswwt/SmLmzp5h9/scripts.js"></script> -->
@@ -1708,7 +1625,7 @@ $(function() {
 	
 	if(window.location.href == "http://chucktheme.tumblr.com/" || window.location.pathname.match(/^\/page\//) ) {
 		$('body').addClass('index-page');
-		$('#post-info')
+		$('#post-info, h1')
 			.detach()
 			.prependTo('section')
 				.find('h3')
@@ -1716,9 +1633,9 @@ $(function() {
 		
 		$(window).scroll(function(){
 			if($(window).scrollTop() >= $('section').offset().top) {
-				$('#post-info').addClass('fixed');
+				$('#post-info, h1, .index-page #posts-container').addClass('fixed');
 			} else {
-				$('#post-info').removeClass('fixed');
+				$('#post-info, h1, .index-page #posts-container').removeClass('fixed');
 			}
 		});
 
@@ -1784,7 +1701,10 @@ $(function() {
 			rel: $('.photoset-grid').attr('data-id'),
 			onComplete: function(){
 				photoModal();
+				
+				{block:TagPage}
 				dateHeaders();
+				{/block:TagPage}
 			}
 		});
 	}
@@ -1905,56 +1825,6 @@ $(function() {
 		});
 	};
 	{/block:ifinfinitescrolling}
-
-	function masonryInfinite(){
-		var postContainer = $('#posts');
-
-		// Masonry
-		postContainer.imagesLoaded(function (){
-			postContainer.masonry({
-				itemSelector: '.photo-post',
-				columnWidth: 1,
-				isFitWidth: true
-			})
-		});
-
-		$(window).masonry('bindResize');
-
-		// Infinite Scrolling
-		// {block:ifinfinitescrolling}
-		// postContainer.infinitescroll({
-		// 	navSelector:'#pagination',
-		// 	nextSelector:'#pagination a#older',
-		// 	itemSelector: ".entry",
-		// 	animate: false,
-		// 	loading:{
-		// 		finishedMsg: function(){
-		// 			$('#infscr-loading').fadeOut("slow")
-		// 		}
-		// 	}
-		// },
-		// function(newElements){
-		// 	var $newElems = $(newElements).css("opacity","0").css("pointer-events","none");
-		// 	var $newElemsIDs = $newElems.map(function (){
-		// 		return this.id;
-		// 	}).get();
-		// 	$newElems.imagesLoaded(function (){
-		// 		//$('#infscr-loading').fadeOut("slow");
-		// 		$newElems.css("opacity","1").css("pointer-events","auto");
-		// 		postContainer.masonry('appended', $newElems, false);
-		// 		// console.log($newElems,$newElemsIDs);
-		// 		Tumblr.LikeButton.get_status_by_post_ids($newElemsIDs);
-		// 	});
-		// });
-		// {/block:ifinfinitescrolling}
-	};
-	
-
-	// User controlled settings
-	{block:ifopenlinksinnewtab}
-		$('a[href^="http://"]').attr('target','_blank');
-	{/block:ifopenlinksinnewtab}
-
 
 	// REUSABLES
 	var navControl = {
