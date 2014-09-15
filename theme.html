@@ -51,7 +51,7 @@
 <meta name="text:Photo Overlay Opacity" content="70"/>
 <meta name="text:Google Analytics ID" content=""/>
 
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family={select:Body Font}{select:Title Font}:400,400italic,700,700italic">
+<!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={select:Body Font}{select:Title Font}:400,400italic,700,700italic"> -->
 <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'> -->
  
 <link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/i0umzp1kg/icon-embedded.css"/><!--[if IE 7]><link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/Parmzp1kj/icon-ie7.css"/><![endif]-->
@@ -251,7 +251,7 @@ a, .like_button, #sidebar,
 #full-overlay.overlay-show {
 	cursor: pointer;
 	opacity: 1;
-	z-index: 16;
+	z-index: 100;
 }
 /*      End Overlay  */
 
@@ -330,7 +330,7 @@ a#slide:hover{
 
 #sidebar {
 	position: fixed;
-	z-index: 18;
+	z-index: 200;
 	width: 320px;
 	height: 100%;
 	top: 0;
@@ -549,7 +549,7 @@ a#slide:hover{
 }
 
 .index-page h1 a {
-	color: {color:Main Color};;
+	color: {color:Main Color};
 }
 
 .index-page #post-info.fixed, .index-page h1.fixed {
@@ -558,7 +558,7 @@ a#slide:hover{
 
 #post-info > h3 {
 	margin: 0;
-	text-transform: capitalize;1
+	text-transform: capitalize;
 }
 
 #posts {
@@ -790,16 +790,16 @@ div.mfp-bottom-bar {
 
 img.mfp-img {
 	padding: 0;
-	/*max-height: 70% !important;*/
+	max-height: 70% !important;
 }
 
 /* overlay at start */
 .mfp-fade.mfp-bg {
   opacity: 0;
 
-  -webkit-transition: all 0.15s ease-out;
-  -moz-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out;
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
 }
 /* overlay animate in */
 .mfp-fade.mfp-bg.mfp-ready {
@@ -811,41 +811,62 @@ img.mfp-img {
 }
 
 /* content at start */
-.mfp-fade.mfp-wrap .mfp-content {
+.mfp-fade.mfp-wrap .mfp-content, .mfp-fade.mfp-wrap .mfp-arrow, .mfp-fade.mfp-wrap .close-btn {
   opacity: 0;
 
-  -webkit-transition: all 0.15s ease-out;
-  -moz-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out;
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
 }
 /* content animate it */
-.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content, .mfp-fade.mfp-wrap.mfp-ready .mfp-arrow, .mfp-fade.mfp-wrap.mfp-ready .close-btn {
   opacity: 1;
 }
 /* content animate out */
-.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content, .mfp-fade.mfp-wrap.mfp-removing .mfp-arrow, .mfp-fade.mfp-wrap.mfp-removing .close-btn {
   opacity: 0;
 }
 
 /* MFP Buttons */
 div.close-btn {
+	background: url('http://static.tumblr.com/8u4ydgr/3rpnbx3h7/close.png') no-repeat 0 0 transparent;
+	background-size: contain;
 	cursor: pointer;
+	display: block;
+	height: 40px;
+	width: 30px;
 	padding: 10px 25px;
 	position: absolute;
-	top: 15px;
-	right: 10px;
+	text-indent: -99999px;
+	top: 30px;
+	right: 30px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	div.close-btn {
+		background-size: contain;
+		background: url('http://static.tumblr.com/8u4ydgr/MKEnbx3g5/close_x2.png') no-repeat 0 0 transparent;
+	}
+}
+
+.mfp-arrow:before, .mfp-arrow:after, .mfp-arrow .mfp-b, .mfp-arrow .mfp-a {
+	border: none;
 }
 
 button.mfp-arrow {
-	background: transparent;
+	opacity: 1;
+	height: 62px;
+	width: 54px;
 }
 
-.mfp-arrow-left:after, .mfp-arrow-left .mfp-a {
-	border-right-color: {color:Secondary Color};
+button.mfp-arrow.mfp-arrow-left {
+	background: url('http://static.tumblr.com/8u4ydgr/dsQnbx459/left.png') no-repeat 0 0 transparent;
+	background-size: contain;
 }
 
-.mfp-arrow-right:after, .mfp-arrow-right .mfp-a {
-	border-left-color: {color:Secondary Color};
+button.mfp-arrow.mfp-arrow-right {
+	background: url('http://static.tumblr.com/8u4ydgr/5Mwnbx466/right.png') no-repeat 0 0 transparent;
+	background-size: contain;
 }
 
 .mfp-arrow:active {
@@ -1263,7 +1284,7 @@ div.foot-logo {
 	background: url('http://static.tumblr.com/8u4ydgr/LWinbo1vk/logo.png') no-repeat 50% 50% transparent;
 	background-size: contain;
 	display: block;
-	height: 50px;
+	height: 56px;
 	min-width: 160px;
 	text-indent: -10000px;
 }
@@ -1271,6 +1292,8 @@ div.foot-logo {
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 	div.foot-logo {
 		background: url('http://static.tumblr.com/8u4ydgr/ilsnbo1wa/logo_x2.png') no-repeat 0 0 transparent;
+		width: 50%;
+		background-size: 270px 56px;
 	}
 }
 
@@ -1471,6 +1494,7 @@ div.cv-group.p0 li > p {
 
 	a#slide {
 		padding: 13px;
+		margin-top: -10px;
 	}
 
 	.cv-page #posts-container {
@@ -1521,7 +1545,7 @@ div.cv-group.p0 li > p {
 	}
 
 	.index-page #posts-container, #paintings #posts-container, #drawings #posts-container {
-		padding: 80px 0;
+		padding: 120px 0 80px;
 	}
 
 	.photoset-row {
@@ -1540,9 +1564,12 @@ div.cv-group.p0 li > p {
 	}
 
 	div.close-btn {
-		top: 0px;
+		background-size: contain;
+		top: 10px;
 		right: 0px;
 		padding: 10px 20px;
+		height: 40px;
+		width: 40px;
 	}
 }
 
@@ -1553,6 +1580,11 @@ div.cv-group.p0 li > p {
 	
 	.index-page #cover {
 		width: auto;
+	}
+
+	#contact-head {
+		font-size: 24px;
+		top: 120px;
 	}	
 }
 
@@ -1566,7 +1598,7 @@ div.cv-group.p0 li > p {
 	}
 
 	/* Homepage mobile edits */
-	.index-page #post-info {
+	.index-page #post-info, .index-page h1 {
 		display: none;
 	}
 
@@ -1797,7 +1829,7 @@ $(function() {
 	});
 
 	if($("#full-overlay").hasClass("overlay-show")){
-		console.log('nav is open');
+		// console.log('nav is open');
 	};
 
 	$(window).on('scroll', function(){
@@ -1958,7 +1990,7 @@ $(function() {
 			scrollTop: $("section").offset().top
 		},1000);
 
-		console.log('offset top ' + $("section").offset().top);
+		// console.log('offset top ' + $("section").offset().top);
 	};
 	
 	// EasyPeasyParallax
