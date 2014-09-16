@@ -23,9 +23,11 @@
 <meta name="image:Cover Slide 6" content=""/>
 <meta name="image:Cover Slide 7" content=""/>
 <meta name="image:Cover Slide 8" content=""/>
+<meta name="image:Cover Slide 9" content=""/>
+<meta name="image:Cover Slide 10" content=""/>
 
 <meta name="color:Main Color" content="#000000"/>
-<meta name="color:Secondary Color" content="#666666"/>
+<meta name="color:Secondary Color" content="#3b3b3b"/>
 <meta name="color:Background" content="#ffffff"/>
 
 <meta name="if:Infinite Scrolling" contet="1"/>
@@ -49,7 +51,7 @@
 <meta name="select:Body Font" content="Source Sans Pro" title="Source Sans Pro"/>
 <meta name="select:Body Font" content="Times New Roman" title="Times New Roman"/>
 
-<meta name="text:Photo Overlay Opacity" content="70"/>
+<!-- <meta name="text:Photo Overlay Opacity" content="70"/> -->
 <meta name="text:Google Analytics ID" content=""/>
  
 <link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/i0umzp1kg/icon-embedded.css"/><!--[if IE 7]><link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/Parmzp1kj/icon-ie7.css"/><![endif]-->
@@ -767,15 +769,12 @@ div.grid-break {
 
 /* Photo Popup */
 div.mfp-bg {
-	background: {color:Background};
+	/*background: {color:Background};*/
+	background: url('http://static.tumblr.com/8u4ydgr/qgIn8s61o/nav-bg.png') 0 0 repeat;
 }
 
 .mfp-content {
 	/*top: -5%;*/
-}
-
-.mfp-fade.mfp-bg.mfp-ready {
-	opacity: 0.93;
 }
 
 div.mfp-figure:after {
@@ -801,7 +800,7 @@ img.mfp-img {
 }
 /* overlay animate in */
 .mfp-fade.mfp-bg.mfp-ready {
-  opacity: 0.8;
+  opacity: 1;
 }
 /* overlay animate out */
 .mfp-fade.mfp-bg.mfp-removing {
@@ -828,7 +827,7 @@ img.mfp-img {
 /* MFP Buttons */
 div.close-btn {
 	background: url('http://static.tumblr.com/8u4ydgr/3rpnbx3h7/close.png') no-repeat 0 0 transparent;
-	background-size: contain;
+	background-size: 30px 40px;
 	cursor: pointer;
 	display: block;
 	height: 40px;
@@ -842,7 +841,7 @@ div.close-btn {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 	div.close-btn {
-		background-size: contain;
+		background-size: 30px 40px;
 		background: url('http://static.tumblr.com/8u4ydgr/MKEnbx3g5/close_x2.png') no-repeat 0 0 transparent;
 	}
 }
@@ -853,18 +852,21 @@ div.close-btn {
 
 button.mfp-arrow {
 	opacity: 1;
-	height: 62px;
-	width: 54px;
+	height: 42px;
+	width: 48px;
+	top: 54%;
 }
 
 button.mfp-arrow.mfp-arrow-left {
 	background: url('http://static.tumblr.com/8u4ydgr/dsQnbx459/left.png') no-repeat 0 0 transparent;
-	background-size: contain;
+	background-size: 48px 42px;
+	left: 4%;
 }
 
 button.mfp-arrow.mfp-arrow-right {
 	background: url('http://static.tumblr.com/8u4ydgr/5Mwnbx466/right.png') no-repeat 0 0 transparent;
-	background-size: contain;
+	background-size: 48px 42px;
+	right: 4%;
 }
 
 .mfp-arrow:active {
@@ -1254,7 +1256,7 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 #pagination a{
 	font:13px "{select:Body Font}", "Arial-BoldMT", Arial, sans-serif;
 	color:{color:Main Color};
-	background:{color:Background}
+	background:{color:Background};
 }
 
 #footer {
@@ -1290,7 +1292,7 @@ div.foot-logo {
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 	div.foot-logo {
 		background: url('http://static.tumblr.com/8u4ydgr/ilsnbo1wa/logo_x2.png') no-repeat 0 0 transparent;
-		width: 50%;
+		min-width: 160px;
 		background-size: 270px 56px;
 	}
 }
@@ -1369,8 +1371,16 @@ div.contact-group {
 	margin-bottom: 30px;
 }
 
+.cv-page a, .cv-page a:hover, .cv-page a:link, .cv-page a:visited {	
+	text-decoration: underline;
+}
+
+.cv-page h1 > a, .cv-page h1 > a:hover, .cv-page h1 > a:link, .cv-page h1 > a:visited {
+	text-decoration: none;
+}
+
 .cv-page #posts-container {
-	padding: 130px 0;
+	padding: 120px 0;
 }
 
 .cv-page #posts {
@@ -1441,7 +1451,7 @@ div.cv-group.p0 li > p {
 	}
 
 	.cv-page #posts-container {
-		padding: 200px 0 50px;
+		padding: 100px 0 50px;
 	}
 
 	#cv-head {
@@ -1493,10 +1503,6 @@ div.cv-group.p0 li > p {
 	a#slide {
 		padding: 13px;
 		margin-top: -10px;
-	}
-
-	.cv-page #posts-container {
-		padding: 170px 0 50px;
 	}
 
 	#cv-head {
@@ -1803,7 +1809,7 @@ $(function() {
 	}
 
 	// Random BG Image
-	var bgs = ["{image:Cover Slide 1}", "{image:Cover Slide 2}", "{image:Cover Slide 3}", "{image:Cover Slide 4}", "{image:Cover Slide 5}", "{image:Cover Slide 6}", "{image:Cover Slide 7}", "{image:Cover Slide 8}"],
+	var bgs = ["{image:Cover Slide 1}", "{image:Cover Slide 2}", "{image:Cover Slide 3}", "{image:Cover Slide 4}", "{image:Cover Slide 5}", "{image:Cover Slide 6}", "{image:Cover Slide 7}", "{image:Cover Slide 8}", "{image:Cover Slide 9}", "{image:Cover Slide 10}"],
 		bgImgs = [];
 
 	bgs.forEach(function(item) {
