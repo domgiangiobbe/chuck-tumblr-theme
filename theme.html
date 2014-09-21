@@ -42,6 +42,7 @@
 <meta name="select:Body Font" content="helvetica" title="Helvetica"/>
 <meta name="select:Body Font" content="Karla" Title="Karla"/>
 <meta name="select:Body Font" content="Mako" title="Mako"/>
+<meta name="select:Body Font" content="Montserrat" title="Montserrat"/>
 <meta name="select:Body Font" content="Noto Sans" title="Noto Sans"/>
 <meta name="select:Body Font" content="PT Mono" title="PT Mono"/>
 <meta name="select:Body Font" content="Raleway" title="Raleway"/>
@@ -50,12 +51,12 @@
 <meta name="select:Body Font" content="Ropa Sans" title="Ropa Sans"/>
 <meta name="select:Body Font" content="Source Sans Pro" title="Source Sans Pro"/>
 <meta name="select:Body Font" content="Times New Roman" title="Times New Roman"/>
-<meta name="select:Body Font" content="Ubuntu" title="Ubuntu"/>
+
 
 <!-- <meta name="text:Photo Overlay Opacity" content="70"/> -->
 <meta name="text:Google Analytics ID" content=""/>
 
-<link href='http://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/i0umzp1kg/icon-embedded.css"/><!--[if IE 7]><link rel="stylesheet" href="http://static.tumblr.com/3zmswwt/Parmzp1kj/icon-ie7.css"/><![endif]-->
  
 <link href='http://static.tumblr.com/3zmswwt/ZdRmwnqj6/lightbox.css' rel='stylesheet' type='text/css'>
@@ -123,7 +124,7 @@ h2.clear {
 }
 
 p, blockquote {
-	font: 12px/1.5em Arial, sans-serif;
+	font: 14px/1.5em Arial, sans-serif;
 	margin: 10px 0;
 }
 
@@ -379,8 +380,8 @@ a#slide:hover{
 	background: url('http://static.tumblr.com/8u4ydgr/LWinbo1vk/logo.png') no-repeat 0 0 transparent;
 }
 
-#recent-btn {
-	background: url('http://static.tumblr.com/8u4ydgr/lLLnbo1yj/recent.png') no-repeat 0 0 transparent;
+#various-btn {
+	background: url('http://static.tumblr.com/8u4ydgr/NLJnc95ku/various.png') no-repeat 0 0 transparent;
 }
 
 #paintings-btn {
@@ -416,8 +417,8 @@ a#slide:hover{
 		background: url('http://static.tumblr.com/8u4ydgr/ilsnbo1wa/logo_x2.png') no-repeat 0 0 transparent;
 	}
 
-	#recent-btn {
-		background: url('http://static.tumblr.com/8u4ydgr/CAHnbo1z0/recent_x2.png') no-repeat 0 0 transparent;
+	#various-btn {
+		background: url('http://static.tumblr.com/8u4ydgr/cRvnc95kf/various_x2.png') no-repeat 0 0 transparent;
 	}
 
 	#paintings-btn {
@@ -1652,7 +1653,7 @@ div.sharing-post { display: none; }
 	<nav id="navigation">
 		<li><a id="cw-btn" class="arb sz28" href="/" title="C.W.">C.W.</a></li>
 
-		<li><a id="recent-btn" class="arb sz28" href="/" title="Recent">Recent</a></li>
+		<li><a id="various-btn" class="arb sz28" href="/" title="Various">Various</a></li>
 		<li><a id="paintings-btn" class="arb sz28" href="/tagged/paintings" title="Paintings">Paintings</a></li>
 		<li><a id="drawings-btn" class="arb sz28" href="/tagged/drawings" title="Drawings">Drawings</a></li>
 		<li><a id="upcoming-btn" class="arb sz28" href="/tagged/upcoming" title="Upcoming">Upcoming</a></li>
@@ -1778,7 +1779,7 @@ $(function() {
 			.detach()
 			.prependTo('section')
 				.find('h3')
-				.html('Recent');
+				.html('Various');
 		
 		$(window).scroll(function(){
 			if($(window).scrollTop() >= $('section').offset().top) {
