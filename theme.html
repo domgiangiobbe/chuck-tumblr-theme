@@ -239,7 +239,7 @@ a, .like_button, #sidebar,
 
 /*		Overlay 	*/
 #full-overlay {
-	background: url('http://static.tumblr.com/8u4ydgr/qgIn8s61o/nav-bg.png') 0 0 repeat;
+	background: url('http://static.tumblr.com/8u4ydgr/x4Lnc93ii/nav-bg-3.png') 0 0 repeat;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -770,7 +770,7 @@ div.grid-break {
 /* Photo Popup */
 div.mfp-bg {
 	/*background: {color:Background};*/
-	background: url('http://static.tumblr.com/8u4ydgr/qgIn8s61o/nav-bg.png') 0 0 repeat;
+	background: url('http://static.tumblr.com/8u4ydgr/x4Lnc93ii/nav-bg-3.png') 0 0 repeat;
 }
 
 .mfp-content {
@@ -1789,7 +1789,7 @@ $(function() {
 		// });
 	}
 
-	if(window.location.href == "http://chucktheme.tumblr.com/" || window.location.href == "http://www.chuck-webster.com/" || window.location.pathname.match(/^\/page\//) || $('#paintings').length || $('#drawings').length) || $('#etc').length) {
+	if(window.location.href == "http://chucktheme.tumblr.com/" || window.location.href == "http://www.chuck-webster.com/" || window.location.pathname.match(/^\/page\//) || $('#paintings').length || $('#drawings').length || $('#etc').length ) {
 		$('#posts')
 			.addClass('photoset-grid')
 			.attr({
@@ -1848,7 +1848,9 @@ $(function() {
 				photoModal();
 				
 				{block:TagPage}
-				dateHeaders();
+				if(! $('#etc').length) {
+					dateHeaders();
+				}
 				{/block:TagPage}
 			}
 		});
