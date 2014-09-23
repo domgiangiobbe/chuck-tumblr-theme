@@ -913,36 +913,42 @@ div.mfp-bottom-bar ul.like_and_reblog_buttons {
 
 /* Text Post */
 /* hide all text posts expect on tagged pages */
-#upcoming #posts-container, #etc #posts-container {
+#upcoming #posts-container {
 	margin-top: 15px;
 	max-width: 850px;
 	width: auto;
 }
 
-.text-post span.date {
+#upcoming .text-post {
+	margin-bottom: 60px;
+}
+
+#upcoming .text-post p {
+	width: 80%;
+}
+
+.text-post em {
 	color: #262626;
 	display: inline-block;
+	font-size: 18px;
+	font-style: normal;
 	padding: 3px 0;
 }
 
 .text-post img {
-	margin-bottom: 40px;
-	width: 95%;
+	margin-bottom: 20px;
+	width: 75%;
 }
 
-#upcoming .text-post p.left , #etc .text-post p.left {
+.text-post p > span {
 	margin: 0;
 	padding: 10px 0;
-	width: 57%;
 }
 
-#upcoming .text-post p:last-of-type, #etc .text-post p:last-of-type {
-	font-size: 14px;
+.text-post p > strong {
+	display: block;
+	font-size: 18px;
 	line-height: 1.3em;
-	margin: 10px 0 0;
-	position: absolute;
-	right: 0;
-	width: 35%;
 }
 
 .text {
@@ -1462,20 +1468,17 @@ div.cv-group.p0 li > p {
 		width: 356px;
 	}
 	
-	.text-post img {
-		margin-bottom: 20px;
+	#upcoming .text-post p {
 		width: 100%;
 	}
 
-	#upcoming .text-post p.left, #etc .text-post p.left {
-		float: none;
+	#upcoming .text-post p > span {
 		margin: 0;
 		padding: 10px 0;
 		width: 100%;
 	}
 
-	#upcoming .text-post p:last-of-type, #etc .text-post p:last-of-type {
-		float: none;
+	#upcoming .text-post p > strong {
 		font-size: 14px;
 		line-height: 1.3em;
 		margin-top: 10px;
@@ -1515,8 +1518,12 @@ div.cv-group.p0 li > p {
 		max-width: 356px;
 	}
 
-	#upcoming #posts-container, #etc #posts-container {
+	#upcoming #posts-container {
 		padding-top: 70px;
+	}
+
+	.text-post img {
+		width: 90%;
 	}
 	
 	#post-info {
