@@ -1602,11 +1602,6 @@ div.cv-group.p0 li > p {
 	
 	.index-page #cover {
 		width: auto;
-	}
-
-	#contact-head {
-		font-size: 24px;
-		top: 120px;
 	}	
 }
 
@@ -2023,6 +2018,27 @@ $(function() {
 		// $('#cover #hero').css({'top':-(scrollPos/5)+"px"});
 		// $('#topbar').css({'opacity':scrollPos/($("#cover").outerHeight() - 90),'height':$("#cover").outerHeight() - scrollPos + "px"});
 	};
+
+	function UnCryptMailto( s )
+    {
+        var n = 0;
+        var r = "";
+        for( var i = 0; i < s.length; i++)
+        {
+            n = s.charCodeAt( i );
+            if( n >= 8364 )
+            {
+                n = 128;
+            }
+            r += String.fromCharCode( n - 1 );
+        }
+        return r;
+    }
+
+    function linkTo_UnCryptMailto( s )
+    {
+        location.href=UnCryptMailto( s );
+    }
 });
 
 	{block:ifGoogleAnalyticsID}var _gaq = _gaq || [];_gaq.push(['_setAccount', '{text:Google Analytics ID}']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
